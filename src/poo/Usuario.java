@@ -113,8 +113,7 @@ public class Usuario implements Serializable{
         StringBuilder m_aux = new StringBuilder();
         
         if (c.getPelicula().equals(p.getTitulo())) {
-            m_aux.append(c.getPuntuacion());
-            m_aux.append(c.getTexto());
+            m_aux.append(c);
             this.setMuro(m_aux);
         }
         else
