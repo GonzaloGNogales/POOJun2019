@@ -8,7 +8,17 @@ public class Critica extends Compartible {
         this.pelicula = p.getTitulo();
         this.puntuacion = 10;
         this.texto = "10 de 10 Ma emosionao";
-    }    
+    }   
+
+    public Critica() {
+    }
+
+    public Critica(String pelicula, double puntuacion, String texto) {
+        this.pelicula = pelicula;
+        this.puntuacion = puntuacion;
+        this.texto = texto;
+    }
+    
     
 //---------------**GETTERS & SETTERS**----------------    
     public String getPelicula() {

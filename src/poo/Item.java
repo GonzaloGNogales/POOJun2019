@@ -17,6 +17,12 @@ public class Item {
 	ptos = ((u.getPartidas_ganadas() * 3) + (u.getPartidas_empatadas()));
     }
     
+    public void detallePartidas(String nombre) {
+        
+    }
+    
+    
+    //Métodos GET y SET
     public String getNombreUsuario() {
 	return nombreUsuario;
     }    
@@ -70,28 +76,17 @@ public class Item {
     }
 
     public void setPorcentajeVictorias(Usuario u) {
-	this.porcentaje_victorias = (this.getGanadas() / this.getJugadas());
+	this.porcentaje_victorias = ((this.getGanadas() / this.getJugadas())*100);
     }
-    
-    public void setPorcentajeVictorias (String dato){
-	this.porcentaje_victorias = Integer.parseInt(dato);
-    }
-    
+
     public int getPtos() {
 	return ptos;
-    }
-   
-     public void setPtos (String dato){
-	this.ptos = Integer.parseInt(dato);
     }
     
     public void setPtos (int dato){
 	this.ptos = dato;
     }
-    
-    public void setPtos() {
-	this.ptos = ((this.ganadas * 3) + (this.jugadas-(this.ganadas + this.perdidas)));
-    }
+
     @Override
     public String toString (){
         String mensaje= ("Nombre: " + nombreUsuario +" Jugadas: "+ jugadas +

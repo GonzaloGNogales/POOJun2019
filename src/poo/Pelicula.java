@@ -4,28 +4,27 @@ import java.util.*;
 
 public class Pelicula extends Compartible {
     private String titulo;
-    private int year;
+    private int año;
     private String director;
     private String genero;
     private String actor;
     private String actriz;
-    private Vector<Critica> criticas;
+    
+    private ArrayList<Critica> criticas = new ArrayList<>();
 
-    
-//Constructor de Película
-// Dejo constructor cambiado para hacer pruebas.
-//String titulo, int year, String director, String genero, String actor, String actriz
-    
-    public Pelicula() { //a�adir entrada desde interfaz grafica 
-        this.titulo = "titulo";
-        this.year = 1;
-        this.director = "dire";
-        this.genero = "genero";
-        this.actor = "actor";
-        this.actriz = "actriz";
-        this.criticas = new Vector<Critica>(0);
+    //Constructores
+    public Pelicula(String titulo, int año, String director, String genero, String actor, String actriz, ArrayList<Critica> criticas) { //add entrada desde interfaz grafica 
+        this.titulo = titulo;
+        this.año = año;
+        this.director = director;
+        this.genero = genero;
+        this.actor = actor;
+        this.actriz = actriz;
+        this.criticas = criticas;
     }
 
+    public Pelicula() {
+    }
 
     public Critica addCritica() { //No es void para que sea compatible con Usuario
     	Critica crit = new Critica(this);
@@ -34,10 +33,7 @@ public class Pelicula extends Compartible {
     }
     
     
-    
-    
-   
-//-------------**GETTERS & SETTERS**---------------------- 
+    //Métodos GET y SET
     public String getTitulo() {
         return titulo;
     }
@@ -47,11 +43,11 @@ public class Pelicula extends Compartible {
     }
 
     public int getYear() {
-        return year;
+        return año;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setYear(int año) {
+        this.año = año;
     }
 
     public String getDirector() {
