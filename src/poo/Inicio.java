@@ -16,6 +16,10 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+    
+    //Usuario global para gestionar la visualización de todos los datos.
+    private Usuario usuarioSesion = new Usuario();
+    
     public Inicio() {
         initComponents();
     }
@@ -54,6 +58,22 @@ public class Inicio extends javax.swing.JFrame {
         selecPelicula = new javax.swing.JButton();
         cancelarSeleccionadorPelicula = new javax.swing.JButton();
         Critica = new javax.swing.JDialog();
+        AltaPeliculas = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        tituloAlta = new javax.swing.JTextField();
+        añoAlta = new javax.swing.JTextField();
+        generoAlta = new javax.swing.JTextField();
+        directorAlta = new javax.swing.JTextField();
+        actorAlta = new javax.swing.JTextField();
+        actrizAlta = new javax.swing.JTextField();
+        cancelarAlta = new javax.swing.JButton();
+        aceptarAlta = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -150,6 +170,11 @@ public class Inicio extends javax.swing.JFrame {
 
         altaPeliculaFilmx.setText("Alta Película");
         altaPeliculaFilmx.setPreferredSize(new java.awt.Dimension(100, 75));
+        altaPeliculaFilmx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                altaPeliculaFilmxActionPerformed(evt);
+            }
+        });
 
         salirFilmx.setText("Salir");
         salirFilmx.setPreferredSize(new java.awt.Dimension(90, 30));
@@ -305,6 +330,112 @@ public class Inicio extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        AltaPeliculas.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        AltaPeliculas.setModal(true);
+        AltaPeliculas.setResizable(false);
+        AltaPeliculas.setSize(new java.awt.Dimension(400, 430));
+
+        jLabel10.setText("Título:");
+
+        jLabel11.setText("Año de estreno:");
+
+        jLabel12.setText("Género:");
+
+        jLabel13.setText("Director/a:");
+
+        jLabel14.setText("Actor protagonista:");
+
+        jLabel15.setText("Actriz protagonista:");
+
+        tituloAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tituloAltaActionPerformed(evt);
+            }
+        });
+
+        cancelarAlta.setText("Cancelar");
+        cancelarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarAltaActionPerformed(evt);
+            }
+        });
+
+        aceptarAlta.setText("Dar de Alta");
+        aceptarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarAltaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AltaPeliculasLayout = new javax.swing.GroupLayout(AltaPeliculas.getContentPane());
+        AltaPeliculas.getContentPane().setLayout(AltaPeliculasLayout);
+        AltaPeliculasLayout.setHorizontalGroup(
+            AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AltaPeliculasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AltaPeliculasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(aceptarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(cancelarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AltaPeliculasLayout.createSequentialGroup()
+                        .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addGroup(AltaPeliculasLayout.createSequentialGroup()
+                                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15))
+                                .addGap(18, 18, 18)
+                                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(actrizAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(actorAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(directorAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(generoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(añoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tituloAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 67, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        AltaPeliculasLayout.setVerticalGroup(
+            AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AltaPeliculasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tituloAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(añoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(generoAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(directorAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(actorAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(actrizAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGroup(AltaPeliculasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aceptarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jLabel9.setText("jLabel9");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Inicio"); // NOI18N
         setResizable(false);
@@ -407,6 +538,7 @@ public class Inicio extends javax.swing.JFrame {
         boolean autenticado = Usuarios.autenticar(u);
         
         if (autenticado) {
+            usuarioSesion = u;
             FILMX.setLocationRelativeTo(null);
             FILMX.setTitle("Filmx");
             FILMX.setVisible(true);
@@ -485,6 +617,58 @@ public class Inicio extends javax.swing.JFrame {
   
     }//GEN-LAST:event_registrarRegistroActionPerformed
 
+    private void tituloAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tituloAltaActionPerformed
+
+    private void altaPeliculaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPeliculaFilmxActionPerformed
+        AltaPeliculas.setModal(true);
+        AltaPeliculas.setLocationRelativeTo(null);
+        tituloAlta.setText(null);
+        añoAlta.setText(null);
+        generoAlta.setText(null);
+        directorAlta.setText(null);
+        actorAlta.setText(null);
+        actrizAlta.setText(null);
+        AltaPeliculas.setTitle("Seleccionador de Peliculas");
+        AltaPeliculas.setVisible(true);
+    }//GEN-LAST:event_altaPeliculaFilmxActionPerformed
+
+    private void cancelarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAltaActionPerformed
+        AltaPeliculas.dispose();
+    }//GEN-LAST:event_cancelarAltaActionPerformed
+    
+    private static boolean esNumero (String cadena){
+	try {
+            Integer.parseInt(cadena);
+            return true;
+	} catch (NumberFormatException nfe){
+            return false;
+	}
+    }
+    
+    private void aceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarAltaActionPerformed
+        if ("".equals(tituloAlta.getText()) || "".equals(añoAlta.getText()) || "".equals(generoAlta.getText()) || "".equals(directorAlta.getText()) || "".equals(actorAlta.getText()) || "".equals(actrizAlta.getText())) {
+            JOptionPane.showMessageDialog(this, "Algunos campos del formulario están vacios, rellénelos si desea dar de alta la película.","INFO", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (!esNumero(añoAlta.getText())) {
+            JOptionPane.showMessageDialog(this, "El campo de año de estreno debe contener números únicamente","INFO", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Pelicula p = new Pelicula(tituloAlta.getText(), Integer.parseInt(añoAlta.getText()), generoAlta.getText(), directorAlta.getText(), actorAlta.getText(), actrizAlta.getText());
+            boolean dadaAlta = Peliculas.addPelicula(p);
+            
+            if (dadaAlta) {
+                JOptionPane.showMessageDialog(this, "La pelicula se ha dado de alta correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                AltaPeliculas.dispose();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "La pelicula ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
+                AltaPeliculas.dispose();
+            }
+        }
+    }//GEN-LAST:event_aceptarAltaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -521,20 +705,34 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog AltaPeliculas;
     private javax.swing.JDialog Critica;
     private javax.swing.JFrame FILMX;
     private javax.swing.JDialog Registro;
     private javax.swing.JDialog SeleccionadorPelicula;
+    private javax.swing.JButton aceptarAlta;
+    private javax.swing.JTextField actorAlta;
+    private javax.swing.JTextField actrizAlta;
     private javax.swing.JButton altaPeliculaFilmx;
     private javax.swing.JList<String> amigosFilmx;
+    private javax.swing.JTextField añoAlta;
+    private javax.swing.JButton cancelarAlta;
     private javax.swing.JButton cancelarInicio;
     private javax.swing.JButton cancelarRegistro;
     private javax.swing.JButton cancelarSeleccionadorPelicula;
     private javax.swing.JButton cerrarSesionFilmx;
     private javax.swing.JButton criticarPeliculaFilmx;
+    private javax.swing.JTextField directorAlta;
+    private javax.swing.JTextField generoAlta;
     private javax.swing.JButton inicioSesionInicio;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -542,6 +740,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea muroFilmx;
@@ -553,6 +752,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton registrarseInicio;
     private javax.swing.JButton salirFilmx;
     private javax.swing.JButton selecPelicula;
+    private javax.swing.JTextField tituloAlta;
     private javax.swing.JTextField usuInicio;
     // End of variables declaration//GEN-END:variables
 }

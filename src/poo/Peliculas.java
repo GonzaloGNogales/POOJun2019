@@ -17,31 +17,29 @@ public class Peliculas {
     	logReg.toString(); // *** Necesitamos sobreescribir el toString de Pelicula y de critica.
     } 
 
-    public void addPelicula (Pelicula p) {
+    public static boolean addPelicula (Pelicula p) {
 	ArrayList<Pelicula> logReg = leer();  //logReg es el vector con Peliculas registrados
 	boolean repetido = false;
+        boolean terminado = false;
 	
         for(Pelicula pelicula: logReg) {
             if (pelicula.getTitulo().compareTo(p.getTitulo()) == 0) { 
 		repetido = true;
-		System.out.println("la pelicula ya existe");
             }
 	}
 	
         if (!repetido) {
             logReg.add(p);
+            terminado = true;
 	}
 	
         escribir(logReg);
-	
-        //debug
-        for(Pelicula pelicula: logReg) { 
-            System.out.println("Pelicula: "+ pelicula.getTitulo());
-	}
+        
+        return terminado;
     }
         
     private static ArrayList<Pelicula> leer () { 
-        ArrayList<Pelicula> vectorLeido = new ArrayList<>();
+        ArrayList<Pelicula> vectorLeido = new ArrayList<Pelicula>(0);
         try {
             ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo.getAbsolutePath()));
             vectorLeido = (ArrayList<Pelicula>) ficheroLect.readObject();

@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 public class Usuarios{
-	static File archivo = new File("usuarios.txt");	
+    static File archivo = new File("usuarios.txt");	
 	
     public static boolean autenticar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados

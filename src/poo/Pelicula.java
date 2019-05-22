@@ -1,8 +1,9 @@
 package poo;
 
 import java.util.*;
+import java.io.*;
 
-public class Pelicula extends Compartible {
+public class Pelicula extends Compartible implements Serializable{
     private String titulo;
     private int año;
     private String director;
@@ -13,14 +14,13 @@ public class Pelicula extends Compartible {
     private ArrayList<Critica> criticas = new ArrayList<>();
 
     //Constructores
-    public Pelicula(String titulo, int año, String director, String genero, String actor, String actriz, ArrayList<Critica> criticas) { //add entrada desde interfaz grafica 
+    public Pelicula(String titulo, int año, String director, String genero, String actor, String actriz) { //add entrada desde interfaz grafica 
         this.titulo = titulo;
         this.año = año;
         this.director = director;
         this.genero = genero;
         this.actor = actor;
         this.actriz = actriz;
-        this.criticas = criticas;
     }
 
     public Pelicula() {
