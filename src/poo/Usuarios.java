@@ -7,43 +7,41 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Usuarios{
 	static File archivo = new File("usuarios.txt");	
 	
-    public void autenticar (Usuario u) {
+    public static boolean autenticar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        boolean encontrado = false;
         
         for(Usuario usuario: logReg) {
             if ((usuario.getNombre().compareTo(u.getNombre()) == 0) && (usuario.getPass().compareTo(u.getPass()) == 0) ) {
-                System.out.println("Log-In Correcto");
-            }
-            else { 
-                System.out.println("El usuario o la clave son incorrectos");
+                encontrado = true;
             }
         }
+        
+        return encontrado;
     }
     
-    public void registrar (Usuario u) {
+    public static boolean registrar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        boolean terminado = false;
         
         boolean repetido = false;
         for(Usuario usuario: logReg) {
             if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
                 repetido = true;
-                System.out.println("El usuario ya existe");
             }
         }
         if (!repetido) {
             logReg.add(u);
+            terminado = true;
         }
         
         escribir(logReg);
-        
-        //debug
-        for(Usuario usuario: logReg) {
-            System.out.println("usuario: "+ usuario.getNombre());
-        }
+        return terminado;
     }
     
     private static ArrayList<Usuario> leer () { 

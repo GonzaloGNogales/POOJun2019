@@ -21,9 +21,9 @@ public class Usuario implements Serializable{
     private ArrayList<Usuario> amigos = new ArrayList<>();
     
     //Constructores
-    public Usuario () { //Falta añadir que el usuario pueda poner nombre y contraseña (Enterno grafico)
-        this.nombre = "a";
-        this.pass = "a";
+    public Usuario (String nombre, String pass) {
+        this.nombre = nombre;
+        this.pass = pass;
         this.muro = null;
         this.partidas_ganadas = 0;
         this.partidas_perdidas = 0;
@@ -39,6 +39,10 @@ public class Usuario implements Serializable{
         this.partidas_empatadas = partidas_empatadas;
         this.partidas_completas = partidas_completas;
         this.partidas_pendientes = partidas_pendientes;
+    }
+    
+    public Usuario () {
+        
     }
 
     
