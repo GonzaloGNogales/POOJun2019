@@ -44,6 +44,19 @@ public class Usuarios{
         return terminado;
     }
     
+    public static void actualizar (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                logReg.remove(usuario);
+                logReg.add(u);
+            }
+        }
+        
+        escribir(logReg);
+    }
+    
     private static ArrayList<Usuario> leer () { 
         ArrayList<Usuario> vectorLeido = new ArrayList<Usuario>(0);
         try {
@@ -57,7 +70,7 @@ public class Usuarios{
 	return vectorLeido;
     }
     
-    private static void escribir(ArrayList<Usuario> vectEscr) {
+    private static void escribir (ArrayList<Usuario> vectEscr) {
         try {
             ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo.getAbsolutePath()));
             ficheroEscr.writeObject(vectEscr);
@@ -66,4 +79,17 @@ public class Usuarios{
             System.out.println("Exception al Escribir");
         }
     }   
+    
+    public static StringBuilder leerMuroUsuario (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        StringBuilder aux = new StringBuilder();
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getMuro();                
+            }
+        }      
+        
+        return aux;
+    }
 }

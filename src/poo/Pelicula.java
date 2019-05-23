@@ -42,11 +42,11 @@ public class Pelicula extends Compartible implements Serializable{
         this.titulo = titulo;
     }
 
-    public int getYear() {
+    public int getAño() {
         return año;
     }
 
-    public void setYear(int año) {
+    public void setAño(int año) {
         this.año = año;
     }
 
@@ -82,5 +82,9 @@ public class Pelicula extends Compartible implements Serializable{
         this.actriz = actriz;
     }
     
+    @Override
+    public String toString () {
+        return '\n' + "  Titulo de la película: " + this.titulo + '\n' + "  Año de estreno: " + this.año + '\n' + "  Director: " + this.director + '\n' + "  Género: " + this.genero +'\n' + "  Actor protagonista: " + this.actor + '\n' + "  Actiz protagonista: " + this.actriz + '\n';
+    }
     
 }

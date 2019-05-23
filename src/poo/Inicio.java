@@ -6,6 +6,7 @@
 package poo;
 
 import javax.swing.JOptionPane;
+import poo.Usuario.*;
 
 /**
  *
@@ -55,6 +56,7 @@ public class Inicio extends javax.swing.JFrame {
         invitarAmigosFILMX = new javax.swing.JButton();
         notificacionesFILMX = new javax.swing.JButton();
         eliminarAmigoFILMX = new javax.swing.JButton();
+        refrescarMuroFILMX = new javax.swing.JButton();
         SeleccionadorPelicula = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         peliculaSelec = new javax.swing.JComboBox<>();
@@ -236,35 +238,48 @@ public class Inicio extends javax.swing.JFrame {
         eliminarAmigoFILMX.setText("Eliminar Amigo");
         eliminarAmigoFILMX.setPreferredSize(new java.awt.Dimension(120, 40));
 
+        refrescarMuroFILMX.setText("⟳");
+        refrescarMuroFILMX.setPreferredSize(new java.awt.Dimension(50, 50));
+        refrescarMuroFILMX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refrescarMuroFILMXActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FILMXLayout = new javax.swing.GroupLayout(FILMX.getContentPane());
         FILMX.getContentPane().setLayout(FILMXLayout);
         FILMXLayout.setHorizontalGroup(
             FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FILMXLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FILMXLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(altaPeliculaFilmx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(FILMXLayout.createSequentialGroup()
-                        .addComponent(criticarPeliculaFilmx, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(compartirFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(198, 198, 198)
-                        .addComponent(cerrarSesionFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(salirFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(refrescarMuroFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FILMXLayout.createSequentialGroup()
-                        .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(invitarAmigosFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(notificacionesFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eliminarAmigoFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(altaPeliculaFilmx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FILMXLayout.createSequentialGroup()
+                                .addComponent(criticarPeliculaFilmx, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(compartirFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(198, 198, 198)
+                                .addComponent(cerrarSesionFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(salirFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(FILMXLayout.createSequentialGroup()
+                                .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(invitarAmigosFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(notificacionesFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eliminarAmigoFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(58, 58, 58))
         );
         FILMXLayout.setVerticalGroup(
@@ -284,7 +299,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(notificacionesFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(eliminarAmigoFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(refrescarMuroFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(altaPeliculaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -619,13 +636,19 @@ public class Inicio extends javax.swing.JFrame {
 
     private void inicioSesionInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionInicioActionPerformed
         String pass = new String(passInicio.getPassword());
-        Usuario u = new Usuario(usuInicio.getText(),pass);
+        Usuario uAux = new Usuario(usuInicio.getText(),pass);
+        Usuario u = new Usuario(usuInicio.getText(),pass,Usuarios.leerMuroUsuario(uAux));
         boolean autenticado = Usuarios.autenticar(u);
         
         if (autenticado) {
             usuarioSesion = u;
             FILMX.setLocationRelativeTo(null);
             FILMX.setTitle("Filmx");
+            
+            muroFilmx.setText(null);
+            String infoMuro = new String(usuarioSesion.getMuro());
+            muroFilmx.setText(infoMuro);
+            
             FILMX.setVisible(true);
             this.dispose();
         }
@@ -744,6 +767,9 @@ public class Inicio extends javax.swing.JFrame {
             boolean dadaAlta = Peliculas.addPelicula(p);
             
             if (dadaAlta) {
+                String infoMuro = new String(usuarioSesion.muroPelicula(p));
+                muroFilmx.append(infoMuro);
+                Usuarios.actualizar(usuarioSesion);
                 JOptionPane.showMessageDialog(this, "La pelicula se ha dado de alta correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
                 AltaPeliculas.dispose();
             }
@@ -765,6 +791,12 @@ public class Inicio extends javax.swing.JFrame {
     private void cancelarInvitarAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarInvitarAmigosActionPerformed
         InvitarAmigos.dispose();  
     }//GEN-LAST:event_cancelarInvitarAmigosActionPerformed
+
+    private void refrescarMuroFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarMuroFILMXActionPerformed
+        muroFilmx.setText(null);
+        String infoMuro = new String(usuarioSesion.getMuro());
+        muroFilmx.setText(infoMuro);
+    }//GEN-LAST:event_refrescarMuroFILMXActionPerformed
 
     /**
      * @param args the command line arguments
@@ -851,6 +883,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPasswordField passInicio;
     private javax.swing.JTextField passRegistro;
     private javax.swing.JComboBox<String> peliculaSelec;
+    private javax.swing.JButton refrescarMuroFILMX;
     private javax.swing.JButton registrarRegistro;
     private javax.swing.JButton registrarseInicio;
     private javax.swing.JButton salirFilmx;

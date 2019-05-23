@@ -24,12 +24,21 @@ public class Usuario implements Serializable{
     public Usuario (String nombre, String pass) {
         this.nombre = nombre;
         this.pass = pass;
-        this.muro = null;
+        this.muro = new StringBuilder("");
         this.partidas_ganadas = 0;
         this.partidas_perdidas = 0;
         this.partidas_empatadas = 0;
     }
 
+    public Usuario (String nombre, String pass, StringBuilder muro) {
+        this.nombre = nombre;
+        this.pass = pass;
+        this.muro = muro;
+        this.partidas_ganadas = 0;
+        this.partidas_perdidas = 0;
+        this.partidas_empatadas = 0;
+    }
+    
     public Usuario(String nombre, String pass, StringBuilder muro, int partidas_ganadas, int partidas_perdidas, int partidas_empatadas, Partida[] partidas_completas, Partida[] partidas_pendientes) {
         this.nombre = nombre;
         this.pass = pass;
@@ -96,17 +105,11 @@ public class Usuario implements Serializable{
         
     }
     
-    public void addPelicula (Pelicula p) {
-        StringBuilder m_aux = new StringBuilder();
+    public StringBuilder muroPelicula (Pelicula p) {
         
-        m_aux.append(p.getTitulo());
-        m_aux.append(p.getActor());
-        m_aux.append(p.getActriz());
-        m_aux.append(p.getYear());
-        m_aux.append(p.getDirector());
-        m_aux.append(p.getGenero());
-        
-        this.setMuro(m_aux);
+        StringBuilder mAux = new StringBuilder(p.toString());       
+        this.setMuro(mAux);
+        return mAux;
         
     }
     
@@ -200,10 +203,15 @@ public class Usuario implements Serializable{
     }
 
     public StringBuilder getMuro() {
-            return muro;
+        return this.muro;
     }
 
     public void setMuro (StringBuilder s) {
-        this.muro.append(s); 
+        if ("".equals(this.getMuro())) {
+            this.getMuro().insert(0, s);
+        }
+        else {
+            this.getMuro().append(s);
+        }
     }
 }
