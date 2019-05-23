@@ -92,4 +92,127 @@ public class Usuarios{
         
         return aux;
     }
+    
+    public static ArrayList<Usuario> leerAmigos (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        ArrayList<Usuario> aux = new ArrayList<>();
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getAmigos();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static ArrayList<Usuario> leerSolicitudesEnviadas (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        ArrayList<Usuario> aux = new ArrayList<>();
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getSolicitudes_amigos_enviadas();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static ArrayList<Usuario> leerSolicitudesRecibidas (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        ArrayList<Usuario> aux = new ArrayList<>();
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getSolicitudes_amigos_recibidas();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static int leerPartidasGanadas (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        int aux = 0;
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getPartidas_ganadas();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static int leerPartidasPerdidas (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        int aux = 0;
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getPartidas_perdidas();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static int leerPartidasEmpatadas (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        int aux = 0;
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getPartidas_empatadas();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static Partida[] leerPartidasCompletas (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Partida[] aux = null;
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getPartidas_completas();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static Partida[] leerPartidasPendientes (Usuario u) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Partida[] aux = null;
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
+                aux = usuario.getPartidas_pendientes();                
+            }
+        }      
+        
+        return aux;
+    }
+    
+    public static Usuario obtenerUsuario (String nom) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Usuario uaux = new Usuario();
+        boolean encontrado = false;
+        
+        for (Usuario usuario: logReg) {
+            if (usuario.getNombre().compareTo(nom) == 0) { 
+                uaux = usuario;  
+                encontrado = true;
+            }
+        } 
+        
+        if (!encontrado) {
+            uaux = null;
+        }
+        
+        return uaux;
+    }
 }

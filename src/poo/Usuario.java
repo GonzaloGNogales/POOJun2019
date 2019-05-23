@@ -38,7 +38,7 @@ public class Usuario implements Serializable{
         this.partidas_empatadas = 0;
     }
     
-    public Usuario(String nombre, String pass, StringBuilder muro, int partidas_ganadas, int partidas_perdidas, int partidas_empatadas, Partida[] partidas_completas, Partida[] partidas_pendientes) {
+    public Usuario(String nombre, String pass, StringBuilder muro, int partidas_ganadas, int partidas_perdidas, int partidas_empatadas, Partida[] partidas_completas, Partida[] partidas_pendientes, ArrayList<Usuario> solicitudes_amigos_recibidas, ArrayList<Usuario> solicitudes_amigos_enviadas, ArrayList<Usuario> amigos) {
         this.nombre = nombre;
         this.pass = pass;
         this.muro = muro;
@@ -47,6 +47,9 @@ public class Usuario implements Serializable{
         this.partidas_empatadas = partidas_empatadas;
         this.partidas_completas = partidas_completas;
         this.partidas_pendientes = partidas_pendientes;
+        this.solicitudes_amigos_recibidas = solicitudes_amigos_recibidas;
+        this.solicitudes_amigos_enviadas = solicitudes_amigos_enviadas;
+        this.amigos = amigos;
     }
     
     public Usuario () {
@@ -181,6 +184,10 @@ public class Usuario implements Serializable{
             return partidas_completas;
     }
 
+    public Partida[] getPartidas_pendientes() {
+            return partidas_pendientes;
+    }
+    
     public void setPartidas_completas(Partida[] partidas_completas) {
             this.partidas_completas = partidas_completas;
     }

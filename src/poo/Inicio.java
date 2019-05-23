@@ -5,8 +5,8 @@
  */
 package poo;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import poo.Usuario.*;
 
 /**
  *
@@ -20,6 +20,7 @@ public class Inicio extends javax.swing.JFrame {
     
     //Usuario global para gestionar la visualización de todos los datos.
     private Usuario usuarioSesion = new Usuario();
+    private DefaultListModel dlm = new DefaultListModel();
     
     public Inicio() {
         initComponents();
@@ -510,6 +511,11 @@ public class Inicio extends javax.swing.JFrame {
         usuarioBusInvitarAmigos.setPreferredSize(new java.awt.Dimension(310, 40));
 
         invitarInvitarAmigos.setText("Invitar");
+        invitarInvitarAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                invitarInvitarAmigosActionPerformed(evt);
+            }
+        });
 
         cancelarInvitarAmigos.setText("Cancelar");
         cancelarInvitarAmigos.addActionListener(new java.awt.event.ActionListener() {
@@ -722,7 +728,7 @@ public class Inicio extends javax.swing.JFrame {
     private void inicioSesionInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionInicioActionPerformed
         String pass = new String(passInicio.getPassword());
         Usuario uAux = new Usuario(usuInicio.getText(),pass);
-        Usuario u = new Usuario(usuInicio.getText(),pass,Usuarios.leerMuroUsuario(uAux));
+        Usuario u = new Usuario(usuInicio.getText(),pass,Usuarios.leerMuroUsuario(uAux),Usuarios.leerPartidasGanadas(uAux),Usuarios.leerPartidasPerdidas(uAux),Usuarios.leerPartidasEmpatadas(uAux),Usuarios.leerPartidasCompletas(uAux),Usuarios.leerPartidasPendientes(uAux),Usuarios.leerSolicitudesRecibidas(uAux),Usuarios.leerSolicitudesEnviadas(uAux),Usuarios.leerAmigos(uAux));
         boolean autenticado = Usuarios.autenticar(u);
         
         if (autenticado) {
@@ -733,6 +739,20 @@ public class Inicio extends javax.swing.JFrame {
             muroFilmx.setText(null);
             String infoMuro = new String(usuarioSesion.getMuro());
             muroFilmx.setText(infoMuro);
+            
+            for (Usuario amigo: usuarioSesion.getAmigos()) {
+                dlm.addElement(amigo.getNombre());
+                dlm.addElement("");
+            }
+            amigosFilmx.setModel(dlm);
+            
+            for (Usuario sol1: usuarioSesion.getSolicitudes_amigos_enviadas()) {
+                solEnviadasNotificacionesAmigos.addItem(sol1.getNombre());
+            }
+            
+            for (Usuario sol2: usuarioSesion.getSolicitudes_amigos_recibidas()) {
+                solRecibidasNotificacionesAmigos.addItem(sol2.getNombre());
+            }
             
             FILMX.setVisible(true);
             this.dispose();
@@ -792,18 +812,18 @@ public class Inicio extends javax.swing.JFrame {
 
     private void registrarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarRegistroActionPerformed
         if ("".equals(nombreRegistro.getText()) || "".equals(passRegistro.getText())) {
-            JOptionPane.showMessageDialog(this, "Los campos de registro están vacios, rellénelos si desea registrarse.","INFO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(Registro, "Los campos de registro están vacios, rellénelos si desea registrarse.","INFO", JOptionPane.WARNING_MESSAGE);
         }
         else {
             Usuario u = new Usuario(nombreRegistro.getText(), passRegistro.getText());
             boolean registrado = Usuarios.registrar(u);
             
             if (registrado) {
-                JOptionPane.showMessageDialog(this, "El usuario se ha registrado correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(Registro, "El usuario se ha registrado correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
                 Registro.dispose();
             }
             else {
-                JOptionPane.showMessageDialog(this, "El usuario ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(Registro, "El usuario ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
                 Registro.dispose();
             }
         }
@@ -842,10 +862,10 @@ public class Inicio extends javax.swing.JFrame {
     
     private void aceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarAltaActionPerformed
         if ("".equals(tituloAlta.getText()) || "".equals(añoAlta.getText()) || "".equals(generoAlta.getText()) || "".equals(directorAlta.getText()) || "".equals(actorAlta.getText()) || "".equals(actrizAlta.getText())) {
-            JOptionPane.showMessageDialog(this, "Algunos campos del formulario están vacios, rellénelos si desea dar de alta la película.","INFO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(AltaPeliculas, "Algunos campos del formulario están vacios, rellénelos si desea dar de alta la película.","INFO", JOptionPane.WARNING_MESSAGE);
         }
         else if (!esNumero(añoAlta.getText())) {
-            JOptionPane.showMessageDialog(this, "El campo de año de estreno debe contener números únicamente","INFO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(AltaPeliculas, "El campo de año de estreno debe contener números únicamente","INFO", JOptionPane.WARNING_MESSAGE);
         }
         else {
             Pelicula p = new Pelicula(tituloAlta.getText(), Integer.parseInt(añoAlta.getText()), generoAlta.getText(), directorAlta.getText(), actorAlta.getText(), actrizAlta.getText());
@@ -855,11 +875,11 @@ public class Inicio extends javax.swing.JFrame {
                 String infoMuro = new String(usuarioSesion.muroPelicula(p));
                 muroFilmx.append(infoMuro);
                 Usuarios.actualizar(usuarioSesion);
-                JOptionPane.showMessageDialog(this, "La pelicula se ha dado de alta correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(AltaPeliculas, "La pelicula se ha dado de alta correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
                 AltaPeliculas.dispose();
             }
             else {
-                JOptionPane.showMessageDialog(this, "La pelicula ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(AltaPeliculas, "La pelicula ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
                 AltaPeliculas.dispose();
             }
         }
@@ -893,6 +913,21 @@ public class Inicio extends javax.swing.JFrame {
     private void cancelarNotificacionesAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarNotificacionesAmigosActionPerformed
         NotificacionesAmigos.dispose();
     }//GEN-LAST:event_cancelarNotificacionesAmigosActionPerformed
+
+    private void invitarInvitarAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invitarInvitarAmigosActionPerformed
+        if (Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()) != null) {
+            usuarioSesion.invitarAmigo(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()));
+            Usuarios.actualizar(usuarioSesion);
+            Usuarios.actualizar(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()));
+            solEnviadasNotificacionesAmigos.addItem(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()).getNombre());
+            JOptionPane.showMessageDialog(InvitarAmigos,"Se ha enviado la solicitud correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            InvitarAmigos.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(InvitarAmigos, "El usuario que busca no existe.","ERROR", JOptionPane.ERROR_MESSAGE);
+            usuarioBusInvitarAmigos.setText(null);
+        }
+    }//GEN-LAST:event_invitarInvitarAmigosActionPerformed
 
     /**
      * @param args the command line arguments
