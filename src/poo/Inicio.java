@@ -917,8 +917,10 @@ public class Inicio extends javax.swing.JFrame {
     private void invitarInvitarAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invitarInvitarAmigosActionPerformed
         if (Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()) != null) {
             usuarioSesion.invitarAmigo(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()));
+            /* ERROR AQUÍ
             Usuarios.actualizar(usuarioSesion);
             Usuarios.actualizar(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()));
+            */
             solEnviadasNotificacionesAmigos.addItem(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()).getNombre());
             JOptionPane.showMessageDialog(InvitarAmigos,"Se ha enviado la solicitud correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             InvitarAmigos.dispose();
@@ -958,6 +960,7 @@ public class Inicio extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Inicio().setVisible(true);
             }
