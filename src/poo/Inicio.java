@@ -83,6 +83,14 @@ public class Inicio extends javax.swing.JFrame {
         usuarioBusInvitarAmigos = new javax.swing.JTextField();
         invitarInvitarAmigos = new javax.swing.JButton();
         cancelarInvitarAmigos = new javax.swing.JButton();
+        NotificacionesAmigos = new javax.swing.JDialog();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        solEnviadasNotificacionesAmigos = new javax.swing.JComboBox<>();
+        solRecibidasNotificacionesAmigos = new javax.swing.JComboBox<>();
+        aceptarNotificacionesAmigos = new javax.swing.JButton();
+        rechazarNotificacionesAmigos = new javax.swing.JButton();
+        cancelarNotificacionesAmigos = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -234,6 +242,11 @@ public class Inicio extends javax.swing.JFrame {
 
         notificacionesFILMX.setText("Notificaciones");
         notificacionesFILMX.setPreferredSize(new java.awt.Dimension(120, 40));
+        notificacionesFILMX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notificacionesFILMXActionPerformed(evt);
+            }
+        });
 
         eliminarAmigoFILMX.setText("Eliminar Amigo");
         eliminarAmigoFILMX.setPreferredSize(new java.awt.Dimension(120, 40));
@@ -538,6 +551,78 @@ public class Inicio extends javax.swing.JFrame {
 
         InvitarAmigos.getAccessibleContext().setAccessibleParent(FILMX);
 
+        NotificacionesAmigos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        NotificacionesAmigos.setModal(true);
+        NotificacionesAmigos.setResizable(false);
+        NotificacionesAmigos.setSize(new java.awt.Dimension(436, 263));
+
+        jLabel9.setText("Solicitudes enviadas:");
+
+        jLabel17.setText("Solicitudes recibidas:");
+
+        solEnviadasNotificacionesAmigos.setPreferredSize(new java.awt.Dimension(180, 30));
+
+        solRecibidasNotificacionesAmigos.setPreferredSize(new java.awt.Dimension(186, 30));
+
+        aceptarNotificacionesAmigos.setText("Aceptar");
+        aceptarNotificacionesAmigos.setPreferredSize(new java.awt.Dimension(80, 30));
+
+        rechazarNotificacionesAmigos.setText("Rechazar");
+        rechazarNotificacionesAmigos.setPreferredSize(new java.awt.Dimension(80, 30));
+
+        cancelarNotificacionesAmigos.setText("Cancelar");
+        cancelarNotificacionesAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarNotificacionesAmigosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout NotificacionesAmigosLayout = new javax.swing.GroupLayout(NotificacionesAmigos.getContentPane());
+        NotificacionesAmigos.getContentPane().setLayout(NotificacionesAmigosLayout);
+        NotificacionesAmigosLayout.setHorizontalGroup(
+            NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NotificacionesAmigosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(solEnviadasNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cancelarNotificacionesAmigos, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NotificacionesAmigosLayout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(81, 81, 81))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NotificacionesAmigosLayout.createSequentialGroup()
+                        .addComponent(aceptarNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rechazarNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(solRecibidasNotificacionesAmigos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        NotificacionesAmigosLayout.setVerticalGroup(
+            NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NotificacionesAmigosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NotificacionesAmigosLayout.createSequentialGroup()
+                        .addGroup(NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)
+                        .addGroup(NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(solEnviadasNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(solRecibidasNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(NotificacionesAmigosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aceptarNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rechazarNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NotificacionesAmigosLayout.createSequentialGroup()
+                        .addGap(0, 211, Short.MAX_VALUE)
+                        .addComponent(cancelarNotificacionesAmigos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Inicio"); // NOI18N
         setResizable(false);
@@ -798,6 +883,17 @@ public class Inicio extends javax.swing.JFrame {
         muroFilmx.setText(infoMuro);
     }//GEN-LAST:event_refrescarMuroFILMXActionPerformed
 
+    private void notificacionesFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificacionesFILMXActionPerformed
+        NotificacionesAmigos.setModal(true);
+        NotificacionesAmigos.setLocationRelativeTo(null);
+        NotificacionesAmigos.setTitle("Notificaciones");
+        NotificacionesAmigos.setVisible(true);
+    }//GEN-LAST:event_notificacionesFILMXActionPerformed
+
+    private void cancelarNotificacionesAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarNotificacionesAmigosActionPerformed
+        NotificacionesAmigos.dispose();
+    }//GEN-LAST:event_cancelarNotificacionesAmigosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -838,9 +934,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JDialog Critica;
     private javax.swing.JFrame FILMX;
     private javax.swing.JDialog InvitarAmigos;
+    private javax.swing.JDialog NotificacionesAmigos;
     private javax.swing.JDialog Registro;
     private javax.swing.JDialog SeleccionadorPelicula;
     private javax.swing.JButton aceptarAlta;
+    private javax.swing.JButton aceptarNotificacionesAmigos;
     private javax.swing.JTextField actorAlta;
     private javax.swing.JTextField actrizAlta;
     private javax.swing.JButton altaPeliculaFilmx;
@@ -849,6 +947,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton cancelarAlta;
     private javax.swing.JButton cancelarInicio;
     private javax.swing.JButton cancelarInvitarAmigos;
+    private javax.swing.JButton cancelarNotificacionesAmigos;
     private javax.swing.JButton cancelarRegistro;
     private javax.swing.JButton cancelarSeleccionadorPelicula;
     private javax.swing.JButton cerrarSesionFilmx;
@@ -868,6 +967,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -875,6 +975,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea muroFilmx;
@@ -883,11 +984,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPasswordField passInicio;
     private javax.swing.JTextField passRegistro;
     private javax.swing.JComboBox<String> peliculaSelec;
+    private javax.swing.JButton rechazarNotificacionesAmigos;
     private javax.swing.JButton refrescarMuroFILMX;
     private javax.swing.JButton registrarRegistro;
     private javax.swing.JButton registrarseInicio;
     private javax.swing.JButton salirFilmx;
     private javax.swing.JButton selecPelicula;
+    private javax.swing.JComboBox<String> solEnviadasNotificacionesAmigos;
+    private javax.swing.JComboBox<String> solRecibidasNotificacionesAmigos;
     private javax.swing.JTextField tituloAlta;
     private javax.swing.JTextField usuInicio;
     private javax.swing.JTextField usuarioBusInvitarAmigos;

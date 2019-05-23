@@ -15,7 +15,6 @@ public class Usuario implements Serializable{
     private Partida[] partidas_completas;
     private Partida[] partidas_pendientes; 
     
-    private ArrayList<Usuario> solicitudes_amigos_pendientes = new ArrayList<>();
     private ArrayList<Usuario> solicitudes_amigos_recibidas = new ArrayList<>();
     private ArrayList<Usuario> solicitudes_amigos_enviadas = new ArrayList<>();
     private ArrayList<Usuario> amigos = new ArrayList<>();
