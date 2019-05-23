@@ -46,12 +46,18 @@ public class Usuarios{
     
     public static void actualizar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        boolean encontrado = false;
+        Usuario aux = new Usuario ();
         
         for (Usuario usuario: logReg) {
             if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
-                logReg.remove(usuario);
-                logReg.add(u);
+                encontrado = true;
+                aux = usuario;
             }
+        }
+        if (encontrado) {
+            logReg.remove(aux);
+            logReg.add(u);
         }
         
         escribir(logReg);
@@ -204,11 +210,10 @@ public class Usuarios{
         
         for (Usuario usuario: logReg) {
             if (usuario.getNombre().compareTo(nom) == 0) { 
-                uaux = usuario;  
+                uaux = usuario; 
                 encontrado = true;
             }
-        } 
-        
+        }
         if (!encontrado) {
             uaux = null;
         }

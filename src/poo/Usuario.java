@@ -56,6 +56,19 @@ public class Usuario implements Serializable{
         
     }
 
+    public Usuario (Usuario u) {
+        this.nombre = u.getNombre();
+        this.pass = u.getPass();
+        this.muro = u.getMuro();
+        this.partidas_ganadas = u.getPartidas_ganadas();
+        this.partidas_perdidas = u.getPartidas_perdidas();
+        this.partidas_empatadas = u.getPartidas_empatadas();
+        this.partidas_completas = u.getPartidas_completas();
+        this.partidas_pendientes = u.getPartidas_pendientes();
+        this.solicitudes_amigos_recibidas = u.getSolicitudes_amigos_recibidas();
+        this.solicitudes_amigos_enviadas = u.getSolicitudes_amigos_enviadas();
+        this.amigos = u.getAmigos();
+    }
     
     public void invitarAmigo (Usuario u) {     
         u.getSolicitudes_amigos_recibidas().add(this);
@@ -193,15 +206,15 @@ public class Usuario implements Serializable{
     }
 
     public ArrayList<Usuario> getSolicitudes_amigos_recibidas() {
-        return solicitudes_amigos_recibidas;
+        return this.solicitudes_amigos_recibidas;
     }
 
     public ArrayList<Usuario> getSolicitudes_amigos_enviadas() {
-        return solicitudes_amigos_enviadas;
+        return this.solicitudes_amigos_enviadas;
     }
 
     public ArrayList<Usuario> getAmigos() {
-        return amigos;
+        return this.amigos;
     }
 
     public static long getSerialversionuid() {

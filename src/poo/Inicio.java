@@ -746,10 +746,12 @@ public class Inicio extends javax.swing.JFrame {
             }
             amigosFilmx.setModel(dlm);
             
+            solEnviadasNotificacionesAmigos.removeAllItems();
             for (Usuario sol1: usuarioSesion.getSolicitudes_amigos_enviadas()) {
                 solEnviadasNotificacionesAmigos.addItem(sol1.getNombre());
             }
             
+            solRecibidasNotificacionesAmigos.removeAllItems();      
             for (Usuario sol2: usuarioSesion.getSolicitudes_amigos_recibidas()) {
                 solRecibidasNotificacionesAmigos.addItem(sol2.getNombre());
             }
@@ -916,11 +918,10 @@ public class Inicio extends javax.swing.JFrame {
 
     private void invitarInvitarAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invitarInvitarAmigosActionPerformed
         if (Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()) != null) {
-            usuarioSesion.invitarAmigo(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()));
-            /* ERROR AQUÍ
+            Usuario u = Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText());
+            usuarioSesion.invitarAmigo(u);
             Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()));
-            */
+            Usuarios.actualizar(u);
             solEnviadasNotificacionesAmigos.addItem(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()).getNombre());
             JOptionPane.showMessageDialog(InvitarAmigos,"Se ha enviado la solicitud correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             InvitarAmigos.dispose();
