@@ -3,7 +3,7 @@ package poo;
 import java.util.*;
 import java.io.*;
 
-public class Pelicula extends Compartible implements Serializable{
+public class Pelicula implements Compartible, Serializable{
     private String titulo;
     private int año;
     private String director;
@@ -32,6 +32,14 @@ public class Pelicula extends Compartible implements Serializable{
     	return crit;
     }
     
+//Implementación de los métodos abstractos para Crítica
+    
+    public void compartir (Usuario u) {
+        
+    }
+    public void compartir (Usuario[] users) {
+        
+    }    
     
     //Métodos GET y SET
     public String getTitulo() {

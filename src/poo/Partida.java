@@ -1,5 +1,5 @@
 package poo;
-public class Partida extends Compartible {
+public class Partida implements Compartible {
     private int identificador;
     private Usuario jugador1;
     private Usuario jugador2;
@@ -16,6 +16,17 @@ public class Partida extends Compartible {
         this.ptos_jugador2 = 0;   
     }
 
+//Implementación de los métodos abstractos para Crítica
+    
+    public void compartir (Usuario u) {
+        
+    }
+    public void compartir (Usuario[] users) {
+        
+    }    
+    
+ //Implementación Getters y Setters
+    
     public int getIdentificador() {
         return identificador;
     }

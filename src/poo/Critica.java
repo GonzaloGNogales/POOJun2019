@@ -1,5 +1,5 @@
 package poo;
-public class Critica extends Compartible {
+public class Critica implements Compartible {
     private String pelicula;
     private double puntuacion;
     private String texto;
@@ -19,6 +19,14 @@ public class Critica extends Compartible {
         this.texto = texto;
     }
     
+//Implementación de los métodos abstractos para Crítica
+    
+    public void compartir (Usuario u) {
+        
+    }
+    public void compartir (Usuario[] users) {
+        
+    }
     
 //---------------**GETTERS & SETTERS**----------------    
     public String getPelicula() {
