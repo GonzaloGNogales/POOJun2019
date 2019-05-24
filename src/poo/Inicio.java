@@ -5,6 +5,7 @@
  */
 package poo;
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -64,6 +65,10 @@ public class Inicio extends javax.swing.JFrame {
         selecPelicula = new javax.swing.JButton();
         cancelarSeleccionadorPelicula = new javax.swing.JButton();
         Critica = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        criticaCritica = new javax.swing.JTextArea();
+        cancelarCritica = new javax.swing.JButton();
+        publicarCritica = new javax.swing.JButton();
         AltaPeliculas = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -343,6 +348,11 @@ public class Inicio extends javax.swing.JFrame {
 
         selecPelicula.setText("Seleccionar");
         selecPelicula.setPreferredSize(new java.awt.Dimension(115, 50));
+        selecPelicula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selecPeliculaActionPerformed(evt);
+            }
+        });
 
         cancelarSeleccionadorPelicula.setText("Cancelar");
         cancelarSeleccionadorPelicula.addActionListener(new java.awt.event.ActionListener() {
@@ -387,16 +397,42 @@ public class Inicio extends javax.swing.JFrame {
         Critica.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         Critica.setModal(true);
         Critica.setResizable(false);
+        Critica.setSize(new java.awt.Dimension(400, 307));
+
+        criticaCritica.setColumns(20);
+        criticaCritica.setRows(5);
+        criticaCritica.setPreferredSize(new java.awt.Dimension(380, 200));
+        jScrollPane3.setViewportView(criticaCritica);
+        criticaCritica.getAccessibleContext().setAccessibleParent(Critica);
+
+        cancelarCritica.setText("Cancelar");
+
+        publicarCritica.setText("Publicar");
 
         javax.swing.GroupLayout CriticaLayout = new javax.swing.GroupLayout(Critica.getContentPane());
         Critica.getContentPane().setLayout(CriticaLayout);
         CriticaLayout.setHorizontalGroup(
             CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(CriticaLayout.createSequentialGroup()
+                .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CriticaLayout.createSequentialGroup()
+                        .addContainerGap(182, Short.MAX_VALUE)
+                        .addComponent(publicarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
         );
         CriticaLayout.setVerticalGroup(
             CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(CriticaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(publicarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         AltaPeliculas.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -772,6 +808,12 @@ public class Inicio extends javax.swing.JFrame {
             for (Usuario sol2: usuarioSesion.getSolicitudes_amigos_recibidas()) {
                 solRecibidasNotificacionesAmigos.addItem(sol2.getNombre());
             }
+               
+            peliculaSelec.removeAllItems();
+            ArrayList<Pelicula> peliculas = Peliculas.leer();
+            for (Pelicula p: peliculas) {
+                peliculaSelec.addItem(p.getTitulo());
+            }
             
             FILMX.setVisible(true);
             this.dispose();
@@ -891,6 +933,7 @@ public class Inicio extends javax.swing.JFrame {
             boolean dadaAlta = Peliculas.addPelicula(p);
             
             if (dadaAlta) {
+                peliculaSelec.addItem(p.getTitulo());
                 String infoMuro = new String(usuarioSesion.muroPelicula(p));
                 muroFilmx.append(infoMuro);
                 Usuarios.actualizar(usuarioSesion);
@@ -994,6 +1037,20 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarAmigoFILMXActionPerformed
 
+    private void selecPeliculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selecPeliculaActionPerformed
+        if (peliculaSelec.getSelectedItem() != null) {
+            Critica.setModal(true);
+            Critica.setLocationRelativeTo(null);
+            Critica.setTitle("Criticas");
+            Critica.setVisible(true);
+            criticaCritica.setText(null);
+        }
+        else {
+            JOptionPane.showMessageDialog(Critica,"No hay ninguna película dada de alta.","WARNING", JOptionPane.WARNING_MESSAGE);            
+        }
+        
+    }//GEN-LAST:event_selecPeliculaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1046,6 +1103,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JList<String> amigosFilmx;
     private javax.swing.JTextField añoAlta;
     private javax.swing.JButton cancelarAlta;
+    private javax.swing.JButton cancelarCritica;
     private javax.swing.JButton cancelarInicio;
     private javax.swing.JButton cancelarInvitarAmigos;
     private javax.swing.JButton cancelarNotificacionesAmigos;
@@ -1053,6 +1111,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton cancelarSeleccionadorPelicula;
     private javax.swing.JButton cerrarSesionFilmx;
     private javax.swing.JButton compartirFILMX;
+    private javax.swing.JTextArea criticaCritica;
     private javax.swing.JButton criticarPeliculaFilmx;
     private javax.swing.JTextField directorAlta;
     private javax.swing.JButton eliminarAmigoFILMX;
@@ -1079,12 +1138,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea muroFilmx;
     private javax.swing.JTextField nombreRegistro;
     private javax.swing.JButton notificacionesFILMX;
     private javax.swing.JPasswordField passInicio;
     private javax.swing.JTextField passRegistro;
     private javax.swing.JComboBox<String> peliculaSelec;
+    private javax.swing.JButton publicarCritica;
     private javax.swing.JButton rechazarNotificacionesAmigos;
     private javax.swing.JButton refrescarMuroFILMX;
     private javax.swing.JButton registrarRegistro;

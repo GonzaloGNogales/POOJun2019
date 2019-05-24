@@ -38,7 +38,7 @@ public class Peliculas {
         return terminado;
     }
         
-    private static ArrayList<Pelicula> leer () { 
+    public static ArrayList<Pelicula> leer () { 
         ArrayList<Pelicula> vectorLeido = new ArrayList<Pelicula>(0);
         try {
             ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo.getAbsolutePath()));
