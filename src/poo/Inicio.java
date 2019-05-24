@@ -766,10 +766,6 @@ public class Inicio extends javax.swing.JFrame {
             solRecibidasNotificacionesAmigos.removeAllItems();      
             for (Usuario sol2: usuarioSesion.getSolicitudes_amigos_recibidas()) {
                 solRecibidasNotificacionesAmigos.addItem(sol2.getNombre());
-                /*debug
-                Usuario uaaux = Usuarios.obtenerUsuario(sol2.getNombre());
-                System.err.println(uaaux.getNombre());
-                */
             }
             
             FILMX.setVisible(true);
@@ -833,8 +829,8 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(Registro, "Los campos de registro están vacios, rellénelos si desea registrarse.","INFO", JOptionPane.WARNING_MESSAGE);
         }
         else {
-            Usuario u = new Usuario(nombreRegistro.getText(), passRegistro.getText());
-            boolean registrado = Usuarios.registrar(u);
+            Usuario uR = new Usuario(nombreRegistro.getText(), passRegistro.getText());
+            boolean registrado = Usuarios.registrar(uR);
             
             if (registrado) {
                 JOptionPane.showMessageDialog(Registro, "El usuario se ha registrado correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
@@ -934,10 +930,10 @@ public class Inicio extends javax.swing.JFrame {
 
     private void invitarInvitarAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invitarInvitarAmigosActionPerformed
         if (Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()) != null) {
-            Usuario u = Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText());
-            usuarioSesion.invitarAmigo(u);
+            Usuario uII = Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText());
+            usuarioSesion.invitarAmigo(uII);
             Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(u);
+            Usuarios.actualizar(uII);
             solEnviadasNotificacionesAmigos.addItem(Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()).getNombre());
             JOptionPane.showMessageDialog(InvitarAmigos,"Se ha enviado la solicitud correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             InvitarAmigos.dispose();
@@ -953,13 +949,13 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ninguna solicitud recibida seleccionada, seleccione una por favor.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
-            Usuario u_aux = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
-            usuarioSesion.aceptarInvitacion(u_aux);
+            Usuario uANA = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
+            usuarioSesion.aceptarInvitacion(uANA);
             Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(u_aux);
-            dlm.addElement(u_aux.getNombre());
+            Usuarios.actualizar(uANA);
+            dlm.addElement(uANA.getNombre());
             amigosFilmx.setModel(dlm);
-            solRecibidasNotificacionesAmigos.removeItem(u_aux.getNombre());
+            solRecibidasNotificacionesAmigos.removeItem(uANA.getNombre());
             JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha aceptado la invitación correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_aceptarNotificacionesAmigosActionPerformed
@@ -969,11 +965,11 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ninguna solicitud recibida seleccionada, seleccione una por favor.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
-            Usuario u_aux = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
-            usuarioSesion.rechazarInvitacion(u_aux);
+            Usuario uRNA = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
+            usuarioSesion.rechazarInvitacion(uRNA);
             Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(u_aux);
-            solRecibidasNotificacionesAmigos.removeItem(u_aux.getNombre());
+            Usuarios.actualizar(uRNA);  
+            solRecibidasNotificacionesAmigos.removeItem(uRNA.getNombre());
             JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha rechazado la invitación correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_rechazarNotificacionesAmigosActionPerformed

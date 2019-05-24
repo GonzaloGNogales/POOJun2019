@@ -80,14 +80,22 @@ public class Usuario implements Serializable{
         u.getAmigos().add(this);    
         this.solicitudes_amigos_recibidas.remove(u);
         u.getSolicitudes_amigos_enviadas().remove(this);
-  
     }
     
     public void rechazarInvitacion (Usuario u) {
         this.solicitudes_amigos_recibidas.remove(u);
-        u.getSolicitudes_amigos_enviadas().remove(this);        
+        u.getSolicitudes_amigos_enviadas().remove(this);  
     }
 
+    @Override
+    public boolean equals (Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof Usuario)) return false;
+        Usuario o = (Usuario) obj;
+        return o.getNombre().equals(this.getNombre());
+    }
+    
     public void compartirPelicula (Pelicula p) {
         
     }
