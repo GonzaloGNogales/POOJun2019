@@ -7,7 +7,7 @@ public class Critica extends Compartible {
     public Critica (Pelicula p) {
         this.pelicula = p.getTitulo();
         this.puntuacion = 10;
-        this.texto = "10 de 10 Ma emosionao";
+        this.texto = "";
     }   
 
     public Critica() {

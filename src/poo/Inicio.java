@@ -69,6 +69,11 @@ public class Inicio extends javax.swing.JFrame {
         criticaCritica = new javax.swing.JTextArea();
         cancelarCritica = new javax.swing.JButton();
         publicarCritica = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        tituloPeliculaCritica = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        puntuacionCritica = new javax.swing.JSpinner();
+        jLabel20 = new javax.swing.JLabel();
         AltaPeliculas = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -397,43 +402,89 @@ public class Inicio extends javax.swing.JFrame {
         Critica.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         Critica.setModal(true);
         Critica.setResizable(false);
-        Critica.setSize(new java.awt.Dimension(400, 307));
+        Critica.setSize(new java.awt.Dimension(620, 465));
+
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(450, 200));
 
         criticaCritica.setColumns(20);
         criticaCritica.setRows(5);
-        criticaCritica.setPreferredSize(new java.awt.Dimension(380, 200));
+        criticaCritica.setPreferredSize(new java.awt.Dimension(450, 200));
         jScrollPane3.setViewportView(criticaCritica);
         criticaCritica.getAccessibleContext().setAccessibleParent(Critica);
 
         cancelarCritica.setText("Cancelar");
+        cancelarCritica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarCriticaActionPerformed(evt);
+            }
+        });
 
         publicarCritica.setText("Publicar");
+
+        jLabel18.setText("Título de la película:");
+        jLabel18.setPreferredSize(new java.awt.Dimension(120, 30));
+
+        tituloPeliculaCritica.setEditable(false);
+        tituloPeliculaCritica.setPreferredSize(new java.awt.Dimension(338, 30));
+
+        jLabel19.setText("Puntuación:");
+        jLabel19.setPreferredSize(new java.awt.Dimension(120, 30));
+
+        puntuacionCritica.setPreferredSize(new java.awt.Dimension(40, 30));
+
+        jLabel20.setText("Crítica:");
+        jLabel20.setPreferredSize(new java.awt.Dimension(120, 30));
 
         javax.swing.GroupLayout CriticaLayout = new javax.swing.GroupLayout(Critica.getContentPane());
         Critica.getContentPane().setLayout(CriticaLayout);
         CriticaLayout.setHorizontalGroup(
             CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CriticaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CriticaLayout.createSequentialGroup()
-                        .addContainerGap(182, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CriticaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(publicarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3))
+                        .addGap(42, 42, 42)
+                        .addComponent(cancelarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CriticaLayout.createSequentialGroup()
+                        .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CriticaLayout.createSequentialGroup()
+                                .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(puntuacionCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tituloPeliculaCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 124, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         CriticaLayout.setVerticalGroup(
             CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CriticaLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tituloPeliculaCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puntuacionCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(CriticaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(publicarCritica, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        Critica.getAccessibleContext().setAccessibleParent(Critica);
 
         AltaPeliculas.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         AltaPeliculas.setModal(true);
@@ -1044,12 +1095,20 @@ public class Inicio extends javax.swing.JFrame {
             Critica.setTitle("Criticas");
             Critica.setVisible(true);
             criticaCritica.setText(null);
+            tituloPeliculaCritica.setText(null);
+            tituloPeliculaCritica.setText("LOL");
+            System.err.println(peliculaSelec.getSelectedItem().toString());
+            puntuacionCritica.setValue(0);
         }
         else {
             JOptionPane.showMessageDialog(Critica,"No hay ninguna película dada de alta.","WARNING", JOptionPane.WARNING_MESSAGE);            
         }
         
     }//GEN-LAST:event_selecPeliculaActionPerformed
+
+    private void cancelarCriticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCriticaActionPerformed
+        Critica.dispose();
+    }//GEN-LAST:event_cancelarCriticaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1128,7 +1187,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1146,6 +1208,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField passRegistro;
     private javax.swing.JComboBox<String> peliculaSelec;
     private javax.swing.JButton publicarCritica;
+    private javax.swing.JSpinner puntuacionCritica;
     private javax.swing.JButton rechazarNotificacionesAmigos;
     private javax.swing.JButton refrescarMuroFILMX;
     private javax.swing.JButton registrarRegistro;
@@ -1155,6 +1218,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> solEnviadasNotificacionesAmigos;
     private javax.swing.JComboBox<String> solRecibidasNotificacionesAmigos;
     private javax.swing.JTextField tituloAlta;
+    private javax.swing.JTextField tituloPeliculaCritica;
     private javax.swing.JTextField usuInicio;
     private javax.swing.JTextField usuarioBusInvitarAmigos;
     // End of variables declaration//GEN-END:variables
