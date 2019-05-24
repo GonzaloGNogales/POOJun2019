@@ -86,7 +86,12 @@ public class Usuario implements Serializable{
         this.solicitudes_amigos_recibidas.remove(u);
         u.getSolicitudes_amigos_enviadas().remove(this);  
     }
-
+    
+    public void eliminarAmigo (Usuario u) {
+        this.amigos.remove(u);
+        u.getAmigos().remove(this);
+    }
+    
     @Override
     public boolean equals (Object obj) {
         if (obj == null) return false;

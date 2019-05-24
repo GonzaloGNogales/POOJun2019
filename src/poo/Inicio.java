@@ -251,6 +251,11 @@ public class Inicio extends javax.swing.JFrame {
 
         eliminarAmigoFILMX.setText("Eliminar Amigo");
         eliminarAmigoFILMX.setPreferredSize(new java.awt.Dimension(120, 40));
+        eliminarAmigoFILMX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarAmigoFILMXActionPerformed(evt);
+            }
+        });
 
         refrescarMuroFILMX.setText("⟳");
         refrescarMuroFILMX.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -973,6 +978,22 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha rechazado la invitación correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_rechazarNotificacionesAmigosActionPerformed
+
+    private void eliminarAmigoFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAmigoFILMXActionPerformed
+        System.err.println(amigosFilmx.getSelectedValue());
+        if (amigosFilmx.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ningún amigo seleccionado.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else {           
+            Usuario uENA = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
+            usuarioSesion.eliminarAmigo(uENA);
+            Usuarios.actualizar(usuarioSesion);
+            Usuarios.actualizar(uENA);  
+            dlm.removeElement(uENA.getNombre());
+            amigosFilmx.setModel(dlm);
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha eliminado el amigo correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_eliminarAmigoFILMXActionPerformed
 
     /**
      * @param args the command line arguments
