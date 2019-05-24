@@ -572,9 +572,19 @@ public class Inicio extends javax.swing.JFrame {
 
         aceptarNotificacionesAmigos.setText("Aceptar");
         aceptarNotificacionesAmigos.setPreferredSize(new java.awt.Dimension(80, 30));
+        aceptarNotificacionesAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarNotificacionesAmigosActionPerformed(evt);
+            }
+        });
 
         rechazarNotificacionesAmigos.setText("Rechazar");
         rechazarNotificacionesAmigos.setPreferredSize(new java.awt.Dimension(80, 30));
+        rechazarNotificacionesAmigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechazarNotificacionesAmigosActionPerformed(evt);
+            }
+        });
 
         cancelarNotificacionesAmigos.setText("Cancelar");
         cancelarNotificacionesAmigos.addActionListener(new java.awt.event.ActionListener() {
@@ -740,6 +750,8 @@ public class Inicio extends javax.swing.JFrame {
             String infoMuro = new String(usuarioSesion.getMuro());
             muroFilmx.setText(infoMuro);
             
+            dlm.removeAllElements();
+            amigosFilmx.setModel(dlm);
             for (Usuario amigo: usuarioSesion.getAmigos()) {
                 dlm.addElement(amigo.getNombre());
                 dlm.addElement("");
@@ -754,6 +766,10 @@ public class Inicio extends javax.swing.JFrame {
             solRecibidasNotificacionesAmigos.removeAllItems();      
             for (Usuario sol2: usuarioSesion.getSolicitudes_amigos_recibidas()) {
                 solRecibidasNotificacionesAmigos.addItem(sol2.getNombre());
+                /*debug
+                Usuario uaaux = Usuarios.obtenerUsuario(sol2.getNombre());
+                System.err.println(uaaux.getNombre());
+                */
             }
             
             FILMX.setVisible(true);
@@ -931,6 +947,36 @@ public class Inicio extends javax.swing.JFrame {
             usuarioBusInvitarAmigos.setText(null);
         }
     }//GEN-LAST:event_invitarInvitarAmigosActionPerformed
+
+    private void aceptarNotificacionesAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarNotificacionesAmigosActionPerformed
+        if (solRecibidasNotificacionesAmigos.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ninguna solicitud recibida seleccionada, seleccione una por favor.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else {           
+            Usuario u_aux = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
+            usuarioSesion.aceptarInvitacion(u_aux);
+            Usuarios.actualizar(usuarioSesion);
+            Usuarios.actualizar(u_aux);
+            dlm.addElement(u_aux.getNombre());
+            amigosFilmx.setModel(dlm);
+            solRecibidasNotificacionesAmigos.removeItem(u_aux.getNombre());
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha aceptado la invitación correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_aceptarNotificacionesAmigosActionPerformed
+
+    private void rechazarNotificacionesAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechazarNotificacionesAmigosActionPerformed
+        if (solRecibidasNotificacionesAmigos.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ninguna solicitud recibida seleccionada, seleccione una por favor.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else {           
+            Usuario u_aux = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
+            usuarioSesion.rechazarInvitacion(u_aux);
+            Usuarios.actualizar(usuarioSesion);
+            Usuarios.actualizar(u_aux);
+            solRecibidasNotificacionesAmigos.removeItem(u_aux.getNombre());
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha rechazado la invitación correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_rechazarNotificacionesAmigosActionPerformed
 
     /**
      * @param args the command line arguments
