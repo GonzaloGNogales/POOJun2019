@@ -980,7 +980,6 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_rechazarNotificacionesAmigosActionPerformed
 
     private void eliminarAmigoFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAmigoFILMXActionPerformed
-        System.err.println(amigosFilmx.getSelectedValue());
         if (amigosFilmx.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ningún amigo seleccionado.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
