@@ -8,6 +8,7 @@ package poo;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -419,6 +420,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         publicarCritica.setText("Publicar");
+        publicarCritica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                publicarCriticaActionPerformed(evt);
+            }
+        });
 
         jLabel18.setText("Título de la película:");
         jLabel18.setPreferredSize(new java.awt.Dimension(120, 30));
@@ -1090,7 +1096,9 @@ public class Inicio extends javax.swing.JFrame {
         if (peliculaSelec.getSelectedItem() != null) {
             Critica.setModal(true);
             Critica.setLocationRelativeTo(null);
-            Critica.setTitle("Criticas");     
+            Critica.setTitle("Criticas");
+            SpinnerNumberModel model = new SpinnerNumberModel(0.0, 0.0, 10.0, 0.1);
+            puntuacionCritica.setModel(model);
             criticaCritica.setText(null);
             tituloCritica.setText(null);
             tituloCritica.setText(peliculaSelec.getSelectedItem().toString());
@@ -1106,6 +1114,31 @@ public class Inicio extends javax.swing.JFrame {
     private void cancelarCriticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCriticaActionPerformed
         Critica.dispose();
     }//GEN-LAST:event_cancelarCriticaActionPerformed
+
+    private void publicarCriticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publicarCriticaActionPerformed
+        if ("".equals(criticaCritica.getText())) {
+            JOptionPane.showMessageDialog(AltaPeliculas, "No ha escrito su crítica, por favor rellénela para publicarla.","INFO", JOptionPane.WARNING_MESSAGE);
+        }
+        /*
+        else {
+            Critica c = new Critica (tituloCritica.getText(), (Double) puntuacionCritica.getValue(), criticaCritica.getText());
+            
+            
+            if (dadaAlta) {
+                peliculaSelec.addItem(p.getTitulo());
+                String infoMuro = new String(usuarioSesion.muroPelicula(p));
+                muroFilmx.append(infoMuro);
+                Usuarios.actualizar(usuarioSesion);
+                JOptionPane.showMessageDialog(AltaPeliculas, "La pelicula se ha dado de alta correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                AltaPeliculas.dispose();
+            }
+            else {
+                JOptionPane.showMessageDialog(AltaPeliculas, "La pelicula ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
+                AltaPeliculas.dispose();
+            }
+        }
+        */
+    }//GEN-LAST:event_publicarCriticaActionPerformed
 
     /**
      * @param args the command line arguments
