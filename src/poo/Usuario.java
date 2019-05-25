@@ -141,19 +141,13 @@ public class Usuario implements Serializable{
         
     }
     
-    public void addCritica (Pelicula p) {
+    public StringBuilder muroCritica (Critica c, Pelicula p) {
     	
-    	Critica c = new Critica(p);
-    	
-        StringBuilder m_aux = new StringBuilder();
-        
-        if (c.getPelicula().equals(p.getTitulo())) {
-            m_aux.append(c);
-            this.setMuro(m_aux);
-        }
-        else
-            System.err.println("La cirtica no coincide con la pelicula.");
-  
+        p.getCriticas().add(c);
+        StringBuilder mAux = new StringBuilder(c.toString());       
+        this.setMuro(mAux);
+        return mAux;
+
     }
     
     public void iniciarPartida (Usuario u) {

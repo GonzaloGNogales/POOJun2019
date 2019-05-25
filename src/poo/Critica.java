@@ -1,5 +1,8 @@
 package poo;
-public class Critica implements Compartible {
+
+import java.io.*;
+
+public class Critica implements Compartible, Serializable {
     private String pelicula;
     private double puntuacion;
     private String texto;
@@ -53,5 +56,9 @@ public class Critica implements Compartible {
         this.texto = texto;
     }
     
-
+    @Override
+    public String toString () {
+        return '\n' + "  Titulo de la película: " + this.pelicula + '\n' + "  Puntuación: " + this.puntuacion + '\n' + "  Crítica: " + this.texto + '\n';
+    }
+    
 }

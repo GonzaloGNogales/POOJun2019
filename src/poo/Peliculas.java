@@ -37,6 +37,25 @@ public class Peliculas {
         
         return terminado;
     }
+
+        public static void actualizar (Pelicula p) {
+        ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
+        boolean encontrado = false;
+        Pelicula aux = new Pelicula ();
+        
+        for (Pelicula pelicula: logReg) {
+            if (pelicula.getTitulo().compareTo(p.getTitulo()) == 0) { 
+                encontrado = true;
+                aux = pelicula;
+            }
+        }
+        if (encontrado) {
+            logReg.remove(aux);
+            logReg.add(p);
+        }
+        
+        escribir(logReg);
+    }
         
     public static ArrayList<Pelicula> leer () { 
         ArrayList<Pelicula> vectorLeido = new ArrayList<Pelicula>(0);
@@ -58,5 +77,35 @@ public class Peliculas {
         }catch(IOException e) {
             System.out.println("Exception al Escribir");
         }
-    }   
+    }
+    
+    public static Pelicula obtenerPelicula (String nom) {
+        ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
+        Pelicula paux = new Pelicula();
+        boolean encontrado = false;
+
+        for (Pelicula pelicula: logReg) {
+            if (pelicula.getTitulo().compareTo(nom) == 0) { 
+                paux = pelicula; 
+                encontrado = true;
+            }
+        }
+        if (!encontrado) {
+            paux = null;
+        }
+
+        return paux;
+    }
+    
+    public static ArrayList<Pelicula> obtenerPeliculas () {
+        ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
+        ArrayList<Pelicula> peliculas = new ArrayList<>();
+
+        for (Pelicula pelicula: logReg) {
+            peliculas.add(pelicula);
+        }
+
+        return peliculas;
+    }    
+    
 }

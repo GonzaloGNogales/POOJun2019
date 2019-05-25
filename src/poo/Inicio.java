@@ -865,9 +865,9 @@ public class Inicio extends javax.swing.JFrame {
             }
                
             peliculaSelec.removeAllItems();
-            ArrayList<Pelicula> peliculas = Peliculas.leer();
-            for (Pelicula p: peliculas) {
+            for (Pelicula p: Peliculas.obtenerPeliculas()) {
                 peliculaSelec.addItem(p.getTitulo());
+                System.err.println(p.getTitulo());
             }
             
             FILMX.setVisible(true);
@@ -1119,25 +1119,17 @@ public class Inicio extends javax.swing.JFrame {
         if ("".equals(criticaCritica.getText())) {
             JOptionPane.showMessageDialog(AltaPeliculas, "No ha escrito su crítica, por favor rellénela para publicarla.","INFO", JOptionPane.WARNING_MESSAGE);
         }
-        /*
         else {
             Critica c = new Critica (tituloCritica.getText(), (Double) puntuacionCritica.getValue(), criticaCritica.getText());
+            Pelicula p = Peliculas.obtenerPelicula(tituloCritica.getText());
             
-            
-            if (dadaAlta) {
-                peliculaSelec.addItem(p.getTitulo());
-                String infoMuro = new String(usuarioSesion.muroPelicula(p));
-                muroFilmx.append(infoMuro);
-                Usuarios.actualizar(usuarioSesion);
-                JOptionPane.showMessageDialog(AltaPeliculas, "La pelicula se ha dado de alta correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
-                AltaPeliculas.dispose();
-            }
-            else {
-                JOptionPane.showMessageDialog(AltaPeliculas, "La pelicula ya existe.","ERROR", JOptionPane.ERROR_MESSAGE);
-                AltaPeliculas.dispose();
-            }
+            String infoMuro = new String(usuarioSesion.muroCritica(c , p));
+            muroFilmx.append(infoMuro);
+            Peliculas.actualizar(p);
+            Usuarios.actualizar(usuarioSesion);
+            JOptionPane.showMessageDialog(AltaPeliculas, "La crítica se ha publicado correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            Critica.dispose();         
         }
-        */
     }//GEN-LAST:event_publicarCriticaActionPerformed
 
     /**

@@ -24,6 +24,15 @@ public class Pelicula implements Compartible, Serializable{
         this.criticas = criticas;
     }
 
+    public Pelicula(String titulo, int año, String director, String genero, String actor, String actriz) { //add entrada desde interfaz grafica 
+        this.titulo = titulo;
+        this.año = año;
+        this.director = director;
+        this.genero = genero;
+        this.actor = actor;
+        this.actriz = actriz;
+    }
+    
     public Pelicula() {
     }
 
@@ -89,6 +98,10 @@ public class Pelicula implements Compartible, Serializable{
 
     public void setActriz(String actriz) {
         this.actriz = actriz;
+    }
+    
+    public ArrayList<Critica> getCriticas () {
+        return this.criticas;
     }
     
     @Override
