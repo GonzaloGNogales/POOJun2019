@@ -1102,6 +1102,7 @@ public class Inicio extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(Critica,"No hay ninguna película dada de alta.","WARNING", JOptionPane.WARNING_MESSAGE);            
         }
+        //re
         
     }//GEN-LAST:event_selecPeliculaActionPerformed
 
