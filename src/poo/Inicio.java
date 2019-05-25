@@ -1072,8 +1072,8 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_rechazarNotificacionesAmigosActionPerformed
 
     private void eliminarAmigoFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAmigoFILMXActionPerformed
-        if (amigosFilmx.isSelectionEmpty()) {
-            JOptionPane.showMessageDialog(NotificacionesAmigos,"No hay ningún amigo seleccionado.","WARNING", JOptionPane.WARNING_MESSAGE);
+        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Seleccione el amigo que desea eliminar haciendo click en su nombre que aparece en la lista.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
             Usuario uENA = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
@@ -1102,7 +1102,7 @@ public class Inicio extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(Critica,"No hay ninguna película dada de alta.","WARNING", JOptionPane.WARNING_MESSAGE);            
         }
-        //re
+        
         
     }//GEN-LAST:event_selecPeliculaActionPerformed
 
