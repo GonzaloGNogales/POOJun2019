@@ -5,6 +5,7 @@
  */
 package poo;
 
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
@@ -1073,16 +1074,20 @@ public class Inicio extends javax.swing.JFrame {
 
     private void eliminarAmigoFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAmigoFILMXActionPerformed
         if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
-            JOptionPane.showMessageDialog(NotificacionesAmigos,"Seleccione el amigo que desea eliminar haciendo click en su nombre que aparece en la lista.","WARNING", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Seleccione el amigo o los amigos que desea eliminar haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
-            Usuario uENA = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
-            usuarioSesion.eliminarAmigo(uENA);
-            Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(uENA);  
-            dlm.removeElement(uENA.getNombre());
-            amigosFilmx.setModel(dlm);
-            JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha eliminado el amigo correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());
+            for (String nom: usuariosNom) {
+                Usuario uENA = Usuarios.obtenerUsuario(nom);
+                usuarioSesion.eliminarAmigo(uENA);
+                Usuarios.actualizar(usuarioSesion);
+                Usuarios.actualizar(uENA);
+                dlm.removeElement(uENA.getNombre());
+                amigosFilmx.setModel(dlm);
+            }
+
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha eliminado el amigo o amigos correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_eliminarAmigoFILMXActionPerformed
 
