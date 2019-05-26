@@ -1,6 +1,7 @@
 package poo;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Critica implements Compartible, Serializable {
     private String pelicula;
@@ -24,10 +25,21 @@ public class Critica implements Compartible, Serializable {
     
 //Implementación de los métodos abstractos para Crítica
     
+    @Override
     public void compartir (Usuario u) {
         
+        StringBuilder sb = new StringBuilder(this.toString());
+        u.setMuro(sb);
+        
     }
-    public void compartir (Usuario[] users) {
+    
+    @Override
+    public void compartir (ArrayList<Usuario> users) {
+        
+        StringBuilder sb = new StringBuilder(this.toString());    
+        for (Usuario u: users) {
+            u.setMuro(sb);
+        }
         
     }
     

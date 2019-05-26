@@ -1,4 +1,7 @@
 package poo;
+
+import java.util.ArrayList;
+
 public class Partida implements Compartible {
     private int identificador;
     private Usuario jugador1;
@@ -18,10 +21,21 @@ public class Partida implements Compartible {
 
 //Implementación de los métodos abstractos para Crítica
     
+    @Override
     public void compartir (Usuario u) {
         
+        StringBuilder sb = new StringBuilder(this.toString());
+        u.setMuro(sb);
+        
     }
-    public void compartir (Usuario[] users) {
+    
+    @Override
+    public void compartir (ArrayList<Usuario> users) {
+        
+        StringBuilder sb = new StringBuilder(this.toString());    
+        for (Usuario u: users) {
+            u.setMuro(sb);
+        }
         
     }    
     

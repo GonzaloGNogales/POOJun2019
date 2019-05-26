@@ -44,11 +44,22 @@ public class Pelicula implements Compartible, Serializable{
     
 //Implementación de los métodos abstractos para Crítica
     
+    @Override
     public void compartir (Usuario u) {
         
-    }
-    public void compartir (Usuario[] users) {
+        StringBuilder sb = new StringBuilder(this.toString());
+        u.setMuro(sb);
         
+    }
+    
+    @Override
+    public void compartir (ArrayList<Usuario> users) {
+        
+        StringBuilder sb = new StringBuilder(this.toString());    
+        for (Usuario u: users) {
+            u.setMuro(sb);
+        }
+          
     }    
     
     //Métodos GET y SET
