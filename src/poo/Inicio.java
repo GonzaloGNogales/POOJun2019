@@ -278,6 +278,11 @@ public class Inicio extends javax.swing.JFrame {
 
         compartirPeliculaFilmx.setText("Compartir Película");
         compartirPeliculaFilmx.setPreferredSize(new java.awt.Dimension(150, 45));
+        compartirPeliculaFilmx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compartirPeliculaFilmxActionPerformed(evt);
+            }
+        });
 
         CompartirPartidaFilmx.setText("Compartir Partida");
         CompartirPartidaFilmx.setPreferredSize(new java.awt.Dimension(150, 45));
@@ -1133,7 +1138,7 @@ public class Inicio extends javax.swing.JFrame {
     private void eliminarAmigoFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAmigoFILMXActionPerformed
         //Se controla que la selección de amigos en la lista no sea una selección vacía y se elimina el o los usuarios seleccionados de la lista de amigos del usuario jefe de sesión.
         if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
-            JOptionPane.showMessageDialog(NotificacionesAmigos,"Seleccione el amigo o los amigos que desea eliminar haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(FILMX,"Seleccione el amigo o los amigos que desea eliminar haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
             int[] indices = amigosFilmx.getSelectedIndices();
@@ -1149,10 +1154,10 @@ public class Inicio extends javax.swing.JFrame {
             }
             
             if (indices.length == 1) {
-                JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha eliminado el amigo correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(FILMX,"Se ha eliminado el amigo correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             }
             else {
-                JOptionPane.showMessageDialog(NotificacionesAmigos,"Se han eliminado los amigos correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(FILMX,"Se han eliminado los amigos correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             }     
         }
     }//GEN-LAST:event_eliminarAmigoFILMXActionPerformed
@@ -1193,12 +1198,41 @@ public class Inicio extends javax.swing.JFrame {
             
             String infoMuro = new String(usuarioSesion.muroCritica(c , p));
             muroFilmx.append(infoMuro);
+            
+            //Con la operación de actualizar se cargan los nuevos datos añadidos en el fichero de películas.
             Peliculas.actualizar(p);
             Usuarios.actualizar(usuarioSesion);
             JOptionPane.showMessageDialog(AltaPeliculas, "La crítica se ha publicado correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             Critica.dispose();         
         }
     }//GEN-LAST:event_publicarCriticaActionPerformed
+
+    private void compartirPeliculaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirPeliculaFilmxActionPerformed
+        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+            JOptionPane.showMessageDialog(NotificacionesAmigos,"Seleccione el amigo o los amigos que desea eliminar haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else {           
+            int[] indices = amigosFilmx.getSelectedIndices();
+
+            if (indices.length == 1) {               
+                Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
+                //usuarioSesion.compartirPelicula(pSeleccionada, uC);
+                Usuarios.actualizar(uC);
+     
+                JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha compartido la película con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());
+                for (String nom: usuariosNom) {
+                    Usuario uC = Usuarios.obtenerUsuario(nom);
+                    //usuarioSesion.compartirPelicula(pSeleccionada, uC);
+                    Usuarios.actualizar(uC);
+                }
+                
+                JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha compartido la película con sus amigos.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            }     
+        }
+    }//GEN-LAST:event_compartirPeliculaFilmxActionPerformed
 
     /**
      * @param args the command line arguments
