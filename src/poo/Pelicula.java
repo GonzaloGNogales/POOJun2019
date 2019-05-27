@@ -2,6 +2,7 @@ package poo;
 
 import java.util.*;
 import java.io.*;
+import javax.swing.JOptionPane;
 
 public class Pelicula implements Compartible, Serializable{
     private String titulo;
@@ -48,8 +49,11 @@ public class Pelicula implements Compartible, Serializable{
     public void compartir (Usuario u) {
         
         StringBuilder sb = new StringBuilder(this.toString());
-        u.setMuro(sb);
-        
+        if (u.getMuro().indexOf(this.getTitulo()) == -1) {
+            u.setMuro(sb);
+            Usuarios.actualizar(u);
+        }
+
     }
     
     @Override
@@ -57,10 +61,12 @@ public class Pelicula implements Compartible, Serializable{
         
         StringBuilder sb = new StringBuilder(this.toString());    
         for (Usuario u: users) {
-            u.setMuro(sb);
-            Usuarios.actualizar(u);
+            if (u.getMuro().indexOf(this.getTitulo()) == -1) {
+                u.setMuro(sb);
+                Usuarios.actualizar(u);
+            }            
         }
-          
+           
     }    
     
     //Métodos GET y SET

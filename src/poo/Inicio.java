@@ -7,6 +7,7 @@ package poo;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
@@ -1320,20 +1321,52 @@ public class Inicio extends javax.swing.JFrame {
 
             if (indices.length == 1) {               
                 Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
-                usuarioSesion.compartirPelicula(Peliculas.obtenerPelicula(peliculaSeleccionadaSCP.getSelectedItem().toString()), uC);
-                Usuarios.actualizar(uC);
-     
-                JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la película con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                
+                if (uC.getMuro().indexOf(peliculaSeleccionadaSCP.getSelectedItem().toString()) == -1) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la película con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Ya ha compartido la película con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
+                } 
+                
+                usuarioSesion.compartirPelicula(Peliculas.obtenerPelicula(peliculaSeleccionadaSCP.getSelectedItem().toString()), uC);               
             }
             else {
+                StringBuilder mensaje1 = new StringBuilder("");
+                StringBuilder mensaje2 = new StringBuilder("");
                 ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());
                 for (String nom: usuariosNom) {
                     Usuario uCs = Usuarios.obtenerUsuario(nom);
+                    
+                    if (uCs.getMuro().indexOf(peliculaSeleccionadaSCP.getSelectedItem().toString()) == -1) {
+                        if ("".equals(mensaje1)) {
+                           mensaje1.insert(0, uCs.getNombre()).append(" ");
+                        }
+                        else {
+                            mensaje1.append(uCs.getNombre()).append(" ");
+                        }                        
+                    }  
+                    else {
+                        if ("".equals(mensaje2)) {
+                           mensaje2.insert(0, uCs.getNombre()).append(" ");
+                        }
+                        else {
+                            mensaje2.append(uCs.getNombre()).append(" ");
+                        }  
+                    }  
+                    
                     usuarioSesion.compartirPelicula(Peliculas.obtenerPelicula(peliculaSeleccionadaSCP.getSelectedItem().toString()), uCs);
-                    Usuarios.actualizar(uCs);
                 }
                 
-                JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la película con sus amigos.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                if ("".equals(mensaje1.toString())) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Ya ha compartido la pelicula con todos los amigos seleccionados.","ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+                else if ("".equals(mensaje2.toString())) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la pelicula con todos los amigos seleccionados correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);                    
+                }
+                else {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la película con " + mensaje1 + "pero " + mensaje2 + "ya contaban con la película en su muro.","WARNING", JOptionPane.WARNING_MESSAGE);                    
+                }
             }     
         }
     }//GEN-LAST:event_CompartirSeleccionadosSCPActionPerformed
