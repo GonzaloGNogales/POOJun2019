@@ -50,7 +50,7 @@ public class Pelicula implements Compartible, Serializable{
         
         StringBuilder sbaux1 = new StringBuilder(this.toString());
         if (u.getMuro().indexOf(this.getTitulo()) == -1) {
-            sbaux1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+            sbaux1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre()).append('\n');
             u.setMuro(sbaux1);
             Usuarios.actualizar(u);
         }
@@ -62,10 +62,11 @@ public class Pelicula implements Compartible, Serializable{
         
         StringBuilder sbaux2 = new StringBuilder(this.toString());    
         for (Usuario us: users) {
-            if (us.getMuro().indexOf(this.getTitulo()) == -1) {
-                sbaux2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
-                us.setMuro(sbaux2);  
-                Usuarios.actualizar(us);
+            Usuario uAux = Usuarios.obtenerUsuario(us.getNombre());
+            if (uAux.getMuro().indexOf(this.getTitulo()) == -1) {                
+                sbaux2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre()).append('\n');              
+                uAux.setMuro(sbaux2);  
+                Usuarios.actualizar(uAux);
             }       
         }
            
