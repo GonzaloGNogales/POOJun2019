@@ -1294,7 +1294,13 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_compartirPeliculaFilmxActionPerformed
 
     private void compartirTodosSCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirTodosSCPActionPerformed
-        // TODO add your handling code here:
+        if (peliculaSeleccionadaSCP.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Todavía no hay ninguna película dada de alta.","ERROR", JOptionPane.ERROR_MESSAGE); 
+        }
+        else {
+            usuarioSesion.compartirPelicula(Peliculas.obtenerPelicula(peliculaSeleccionadaSCP.getSelectedItem().toString()));
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la película con todos sus amigos.","INFO", JOptionPane.INFORMATION_MESSAGE);
+        }    
     }//GEN-LAST:event_compartirTodosSCPActionPerformed
 
     private void cancelarSCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarSCPActionPerformed
@@ -1305,6 +1311,9 @@ public class Inicio extends javax.swing.JFrame {
         //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la película, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
         if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
             JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Seleccione el amigo o los amigos que desea eliminar haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (peliculaSeleccionadaSCP.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Todavía no hay ninguna película dada de alta.","ERROR", JOptionPane.ERROR_MESSAGE);            
         }
         else {           
             int[] indices = amigosFilmx.getSelectedIndices();

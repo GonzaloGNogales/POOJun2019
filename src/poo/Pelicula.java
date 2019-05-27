@@ -58,6 +58,7 @@ public class Pelicula implements Compartible, Serializable{
         StringBuilder sb = new StringBuilder(this.toString());    
         for (Usuario u: users) {
             u.setMuro(sb);
+            Usuarios.actualizar(u);
         }
           
     }    
