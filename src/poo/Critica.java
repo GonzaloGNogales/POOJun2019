@@ -28,17 +28,25 @@ public class Critica implements Compartible, Serializable {
     @Override
     public void compartir (Usuario u) {
         
-        StringBuilder sb = new StringBuilder(this.toString());
-        u.setMuro(sb);
+        StringBuilder sbc1 = new StringBuilder(this.toString());
+        if (u.getMuro().indexOf(this.getPelicula()) == -1) {
+            sbc1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+            u.setMuro(sbc1);
+            Usuarios.actualizar(u);
+        }
         
     }
     
     @Override
     public void compartir (ArrayList<Usuario> users) {
         
-        StringBuilder sb = new StringBuilder(this.toString());    
-        for (Usuario u: users) {
-            u.setMuro(sb);
+        StringBuilder sbc2 = new StringBuilder(this.toString());    
+        for (Usuario us: users) {
+            if (us.getMuro().indexOf(this.getPelicula()) == -1) {
+                sbc2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+                us.setMuro(sbc2);  
+                Usuarios.actualizar(us);
+            }       
         }
         
     }
@@ -70,7 +78,7 @@ public class Critica implements Compartible, Serializable {
     
     @Override
     public String toString () {
-        return '\n' + "  Titulo de la película: " + this.pelicula + '\n' + "  Puntuación: " + this.puntuacion + '\n' + "  Crítica: " + this.texto + '\n';
+        return '\n' + "  ---- CRÍTICA ----  " + '\n' + "  Titulo de la película: " + this.pelicula + '\n' + "  Puntuación: " + this.puntuacion + '\n' + "  Crítica: " + this.texto + '\n';
     }
     
 }

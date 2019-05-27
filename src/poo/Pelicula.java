@@ -2,7 +2,7 @@ package poo;
 
 import java.util.*;
 import java.io.*;
-import javax.swing.JOptionPane;
+
 
 public class Pelicula implements Compartible, Serializable{
     private String titulo;
@@ -43,28 +43,30 @@ public class Pelicula implements Compartible, Serializable{
     	return crit;
     }
     
-//Implementación de los métodos abstractos para Crítica
+    //Implementación de los métodos abstractos para Crítica
     
     @Override
     public void compartir (Usuario u) {
         
-        StringBuilder sb = new StringBuilder(this.toString());
+        StringBuilder sbaux1 = new StringBuilder(this.toString());
         if (u.getMuro().indexOf(this.getTitulo()) == -1) {
-            u.setMuro(sb);
+            sbaux1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+            u.setMuro(sbaux1);
             Usuarios.actualizar(u);
         }
 
     }
-    
+
     @Override
     public void compartir (ArrayList<Usuario> users) {
         
-        StringBuilder sb = new StringBuilder(this.toString());    
-        for (Usuario u: users) {
-            if (u.getMuro().indexOf(this.getTitulo()) == -1) {
-                u.setMuro(sb);
-                Usuarios.actualizar(u);
-            }            
+        StringBuilder sbaux2 = new StringBuilder(this.toString());    
+        for (Usuario us: users) {
+            if (us.getMuro().indexOf(this.getTitulo()) == -1) {
+                sbaux2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+                us.setMuro(sbaux2);  
+                Usuarios.actualizar(us);
+            }       
         }
            
     }    
@@ -124,7 +126,7 @@ public class Pelicula implements Compartible, Serializable{
     
     @Override
     public String toString () {
-        return '\n' + "  Titulo de la película: " + this.titulo + '\n' + "  Año de estreno: " + this.año + '\n' + "  Director: " + this.director + '\n' + "  Género: " + this.genero +'\n' + "  Actor protagonista: " + this.actor + '\n' + "  Actiz protagonista: " + this.actriz + '\n';
+        return '\n' + "  ---- PELÍCULA ----  " + '\n' + "  Titulo de la película: " + this.titulo + '\n' + "  Año de estreno: " + this.año + '\n' + "  Director: " + this.director + '\n' + "  Género: " + this.genero +'\n' + "  Actor protagonista: " + this.actor + '\n' + "  Actiz protagonista: " + this.actriz + '\n';
     }
     
 }

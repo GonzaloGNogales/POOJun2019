@@ -100,7 +100,7 @@ public class Usuario implements Serializable{
         Usuario o = (Usuario) obj;
         return o.getNombre().equals(this.getNombre());
     }
-    
+
     //Compartir pelicula con todos los amigos.
     public void compartirPelicula (Pelicula p) {
         ArrayList<Usuario> usuarios = Usuarios.leerAmigos(this);
@@ -113,7 +113,8 @@ public class Usuario implements Serializable{
     }
     
     public void compartirCritica (Critica c) {
-        
+        ArrayList<Usuario> usuarios = Usuarios.leerAmigos(this);
+        c.compartir(usuarios);  //Operación de la interfaz que comparte una critica con varios usuarios.        
     }
     
     public void compartirCritica (Critica c, Usuario u) {
@@ -121,7 +122,8 @@ public class Usuario implements Serializable{
     }
     
     public void compartirPartida (Partida partida) {
-        
+        ArrayList<Usuario> usuarios = Usuarios.leerAmigos(this);
+        partida.compartir(usuarios);  //Operación de la interfaz que comparte una partida con varios usuarios.        
     }
     
     public void compartirPartida (Partida partida, Usuario u) {
