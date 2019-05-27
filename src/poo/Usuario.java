@@ -102,11 +102,12 @@ public class Usuario implements Serializable{
     }
     
     public void compartirPelicula (Pelicula p) {
-        
+        ArrayList<Usuario> usuarios = Usuarios.obtenerTodos();
+        p.compartir(usuarios);  //Operación de la interfaz que comparte una pelicula con varios usuarios.
     }
     
     public void compartirPelicula (Pelicula p, Usuario u) {
-        
+        p.compartir(u);
     }
     
     public void compartirCritica (Critica c) {
@@ -114,15 +115,15 @@ public class Usuario implements Serializable{
     }
     
     public void compartirCritica (Critica c, Usuario u) {
+        c.compartir(u);
+    }
+    
+    public void compartirPartida (Partida partida) {
         
     }
     
-    public void compartirPartida (Partida p) {
-        
-    }
-    
-    public void compartirPartida (Partida p, Usuario u) {
-        
+    public void compartirPartida (Partida partida, Usuario u) {
+        partida.compartir(u);
     }
     
     public void compartirTodo () {
@@ -154,12 +155,11 @@ public class Usuario implements Serializable{
         
     }
     
-    public void completarPartida (Partida p) {
+    public void completarPartida (Partida partida) {
         
     }
     
-    //-------------**GETTERS & SETTERS**---------------------- 
-
+    //Métodos GET y SET
     public String getNombre() {
             return nombre;
     }

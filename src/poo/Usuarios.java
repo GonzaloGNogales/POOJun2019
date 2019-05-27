@@ -63,6 +63,11 @@ public class Usuarios{
         escribir(logReg);
     }
     
+    public static ArrayList<Usuario> obtenerTodos () { 
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        return logReg;
+    }
+    
     private static ArrayList<Usuario> leer () { 
         ArrayList<Usuario> vectorLeido = new ArrayList<Usuario>(0);
         try {
