@@ -782,7 +782,7 @@ public class Inicio extends javax.swing.JFrame {
         SeleccionadorCompartirPelicula.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         SeleccionadorCompartirPelicula.setModal(true);
         SeleccionadorCompartirPelicula.setResizable(false);
-        SeleccionadorCompartirPelicula.setSize(new java.awt.Dimension(300, 256));
+        SeleccionadorCompartirPelicula.setSize(new java.awt.Dimension(300, 305));
 
         jLabel21.setText("Seleccione la película que desea compartir:");
 
@@ -841,7 +841,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(compartirTodosSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(CompartirSeleccionadosSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(cancelarSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

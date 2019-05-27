@@ -101,11 +101,13 @@ public class Usuario implements Serializable{
         return o.getNombre().equals(this.getNombre());
     }
     
+    //Compartir pelicula con todos los amigos.
     public void compartirPelicula (Pelicula p) {
-        ArrayList<Usuario> usuarios = Usuarios.obtenerTodos();
+        ArrayList<Usuario> usuarios = Usuarios.leerAmigos(this);
         p.compartir(usuarios);  //Operación de la interfaz que comparte una pelicula con varios usuarios.
     }
     
+    //Compartir pelicula con uno o varios amigos, pero no todos.
     public void compartirPelicula (Pelicula p, Usuario u) {
         p.compartir(u);
     }
