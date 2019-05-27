@@ -23,8 +23,7 @@ public class Critica implements Compartible, Serializable {
         this.texto = texto;
     }
     
-//Implementación de los métodos abstractos para Crítica
-    
+    //Implementación de los métodos abstractos para Crítica   
     @Override
     public void compartir (Usuario u) {
         
@@ -51,7 +50,7 @@ public class Critica implements Compartible, Serializable {
         
     }
     
-//---------------**GETTERS & SETTERS**----------------    
+    //Métodos GET y SET  
     public String getPelicula() {
         return pelicula;
     }
@@ -76,6 +75,7 @@ public class Critica implements Compartible, Serializable {
         this.texto = texto;
     }
     
+    //Redefinición del toString()
     @Override
     public String toString () {
         return '\n' + "  ---- CRÍTICA ----  " + '\n' + "  Titulo de la película: " + this.pelicula + '\n' + "  Puntuación: " + this.puntuacion + '\n' + "  Crítica: " + this.texto + '\n';

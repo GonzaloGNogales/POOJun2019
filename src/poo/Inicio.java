@@ -205,7 +205,6 @@ public class Inicio extends javax.swing.JFrame {
 
         FILMX.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         FILMX.setTitle("Filmx");
-        FILMX.setPreferredSize(new java.awt.Dimension(1040, 565));
         FILMX.setResizable(false);
         FILMX.setSize(new java.awt.Dimension(1040, 565));
 
@@ -376,9 +375,10 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(107, 107, 107)
                         .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(altaPeliculaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(criticarPeliculaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(criticarPeliculaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(altaPeliculaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FILMXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(salirFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cerrarSesionFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1065,6 +1065,14 @@ public class Inicio extends javax.swing.JFrame {
             for (Pelicula p: Peliculas.obtenerPeliculas()) {
                 peliculaSelec.addItem(p.getTitulo());
                 peliculaSeleccionadaSCP.addItem(p.getTitulo());
+            }
+            
+            criticaSeleccionadaSCC.removeAllItems();
+            for (Pelicula p: Peliculas.obtenerPeliculas()) {
+                ArrayList<Critica> critics = p.getCriticas();              
+                for (Critica c: critics) {
+                    criticaSeleccionadaSCC.addItem(c.getPelicula());
+                }               
             }
             
             FILMX.setVisible(true);
