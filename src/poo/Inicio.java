@@ -1527,9 +1527,12 @@ public class Inicio extends javax.swing.JFrame {
                 StringBuilder mensaje2 = new StringBuilder("");
                 ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());
                 
+                //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
                 int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
-                String critica = criticaSeleccionadaSCC.getSelectedValue().substring(index);
-                System.err.println(criticaSeleccionadaSCC.getSelectedValue().substring(index));
+                String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
+                
+                //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
+                String critica = criticaAux.substring(9, criticaAux.length()-1);
                 
                 for (String nom: usuariosNom) {
                     Usuario uCs = Usuarios.obtenerUsuario(nom);

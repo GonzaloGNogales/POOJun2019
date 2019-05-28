@@ -29,7 +29,7 @@ public class Critica implements Compartible, Serializable {
         
         StringBuilder sbc1 = new StringBuilder(this.toString());
         if (u.getMuro().indexOf(this.getTexto()) == -1) {
-            sbc1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+            sbc1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre()).append('\n');
             u.setMuro(sbc1);
             Usuarios.actualizar(u);
         }
@@ -43,7 +43,7 @@ public class Critica implements Compartible, Serializable {
         for (Usuario us: users) {
             Usuario uAux = Usuarios.obtenerUsuario(us.getNombre());
             if (uAux.getMuro().indexOf(this.getTexto()) == -1) {
-                sbc2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre());
+                sbc2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre()).append('\n');
                 uAux.setMuro(sbc2);  
                 Usuarios.actualizar(uAux);
             }       
