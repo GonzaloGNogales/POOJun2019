@@ -1492,7 +1492,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarSCCActionPerformed
 
     private void compartirSeleccionadosSCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirSeleccionadosSCCActionPerformed
-        //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la película, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
+        //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la crítica, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
         if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
             JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
@@ -1505,9 +1505,12 @@ public class Inicio extends javax.swing.JFrame {
             if (indices.length == 1) {               
                 Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
                 
+                //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
                 int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
-                String critica = criticaSeleccionadaSCC.getSelectedValue().substring(index);
-                System.err.println(criticaSeleccionadaSCC.getSelectedValue().substring(index));
+                String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
+                
+                //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
+                String critica = criticaAux.substring(9, criticaAux.length()-1);
                 
                 if (uC.getMuro().indexOf(critica) == -1) {
                     JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la crítica con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
@@ -1516,6 +1519,7 @@ public class Inicio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Ya ha compartido la película con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
                 } 
                 
+                //System.err.println(Peliculas.obtenerCritica(critica));
                 usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critica), uC);  
             }
             else {

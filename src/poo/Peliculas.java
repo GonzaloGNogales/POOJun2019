@@ -103,13 +103,18 @@ public class Peliculas {
         boolean encontrado = false;
 
         for (Pelicula pelicula: logReg) {
-            for (Critica c: pelicula.getCriticas()) {
-                if (c.getPelicula().compareTo(crit) == 0) { 
-                    caux = c;
-                    encontrado = true;
+            ArrayList<Critica> criticas = pelicula.getCriticas();
+            if (criticas.size() >= 1) {
+                for (Critica c: criticas) {                   
+                    if (c.getTexto().compareTo(crit) == 0) {
+                        caux = c;
+                        encontrado = true;
+                    }
+
                 }
             }
         }
+        
         if (!encontrado) {
             caux = null;
         }
