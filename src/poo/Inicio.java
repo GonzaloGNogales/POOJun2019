@@ -3,6 +3,7 @@ package poo;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -1046,7 +1047,7 @@ public class Inicio extends javax.swing.JFrame {
         PartidasPendientes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         PartidasPendientes.setModal(true);
         PartidasPendientes.setResizable(false);
-        PartidasPendientes.setSize(new java.awt.Dimension(428, 300));
+        PartidasPendientes.setSize(new java.awt.Dimension(475, 300));
 
         listaPendientesPP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane5.setViewportView(listaPendientesPP);
@@ -1068,11 +1069,15 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(PartidasPendientesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(PartidasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(responderPP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelarPP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PartidasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PartidasPendientesLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(responderPP, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(57, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PartidasPendientesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelarPP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         PartidasPendientesLayout.setVerticalGroup(
             PartidasPendientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1442,7 +1447,24 @@ public class Inicio extends javax.swing.JFrame {
 
     private void invitarInvitarAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invitarInvitarAmigosActionPerformed
         //Se busca el usuario que se ha escrito en la caja de texto, en el fichero, y si se encuentra se le manda la invitación a su ArrayList de solicitudes recibidas y se añade la solicitud enviada en la lista del usuario jefe de sesión.
-        if (Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()) != null) {
+        boolean repetido1 = false;
+        boolean repetido2 = false;
+        for (int i = 0; i < dlm.size(); i++) {
+            String nombre = dlm.getElementAt(i).toString();
+            
+            if (usuarioBusInvitarAmigos.getText().compareTo(nombre) == 0) {
+                repetido1 = true;
+            }
+        }
+        
+        for (Usuario usuAux: usuarioSesion.getSolicitudes_amigos_enviadas()) {
+            if (usuarioBusInvitarAmigos.getText().compareTo(usuAux.getNombre()) == 0) {
+                repetido2 = true;
+            }
+        }
+        
+        
+        if (Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText()) != null && !(repetido1) && !(repetido2)) {
             Usuario uII = Usuarios.obtenerUsuario(usuarioBusInvitarAmigos.getText());
             usuarioSesion.invitarAmigo(uII);
             Usuarios.actualizar(usuarioSesion);
@@ -1451,7 +1473,15 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(InvitarAmigos,"Se ha enviado la solicitud correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
             InvitarAmigos.dispose();
         }
-        else {
+        else if (repetido1) {
+            JOptionPane.showMessageDialog(InvitarAmigos, "El usuario que busca ya pertenece a su lista de amigos.","ERROR", JOptionPane.ERROR_MESSAGE);
+            usuarioBusInvitarAmigos.setText(null);
+        }
+        else if (repetido2) {
+            JOptionPane.showMessageDialog(InvitarAmigos, "No puede invitar 2 veces al mismo usuario, por favor espere a que su solicitud sea evaluada.","ERROR", JOptionPane.ERROR_MESSAGE);
+            usuarioBusInvitarAmigos.setText(null);
+        }
+        else{
             JOptionPane.showMessageDialog(InvitarAmigos, "El usuario que busca no existe.","ERROR", JOptionPane.ERROR_MESSAGE);
             usuarioBusInvitarAmigos.setText(null);
         }
@@ -1491,7 +1521,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void eliminarAmigoFILMXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarAmigoFILMXActionPerformed
         //Se controla que la selección de amigos en la lista no sea una selección vacía y se elimina el o los usuarios seleccionados de la lista de amigos del usuario jefe de sesión.
-        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+        if (amigosFilmx.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(Filmx,"Seleccione el amigo o los amigos que desea eliminar haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
@@ -1587,7 +1617,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void CompartirSeleccionadosSCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompartirSeleccionadosSCPActionPerformed
         //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la película, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
-        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+        if (amigosFilmx.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else if (peliculaSeleccionadaSCP.getSelectedItem() == null) {
@@ -1671,7 +1701,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void compartirSeleccionadosSCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirSeleccionadosSCCActionPerformed
         //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la crítica, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
-        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+        if (amigosFilmx.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else if (criticaSeleccionadaSCC.isSelectionEmpty() || "".equals(criticaSeleccionadaSCC.getSelectedValue())) {
@@ -1759,7 +1789,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void compartirSeleccionadosSCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirSeleccionadosSCTActionPerformed
         //Si se ha seleccionado algun amigo en la lista de amigos se le compartirán todas las críticas y películas del sistema, y estas aparecerán en su muro.
-        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+        if (amigosFilmx.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(SeleccionadorCompartirTodo,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {           
@@ -1806,7 +1836,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_partidasPendientesFilmxActionPerformed
 
     private void jugarPartidaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarPartidaFilmxActionPerformed
-        if (amigosFilmx.isSelectionEmpty() || "".equals(amigosFilmx.getSelectedValue())) {
+        if (amigosFilmx.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(Filmx,"Seleccione el amigo que desea retar a una partida de Filmx Quiz.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else {

@@ -229,11 +229,11 @@ public class Usuario implements Serializable{
     }
 
     public ArrayList<Partida> getPartidas_completas() {
-            return partidas_completas;
+            return this.partidas_completas;
     }
 
     public ArrayList<Partida> getPartidas_pendientes() {
-            return partidas_pendientes;
+            return this.partidas_pendientes;
     }
     
     public void setPartidas_completas(ArrayList<Partida> partidas_completas) {
