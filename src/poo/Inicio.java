@@ -1222,7 +1222,6 @@ public class Inicio extends javax.swing.JFrame {
             amigosFilmx.setModel(dlm);
             for (Usuario amigo: usuarioSesion.getAmigos()) {
                 dlm.addElement(amigo.getNombre());
-                dlm.addElement("");
             }
             amigosFilmx.setModel(dlm);
             
@@ -1254,12 +1253,14 @@ public class Inicio extends javax.swing.JFrame {
                     dlmC.addElement(c.toString());
                 }               
             }
+            criticaSeleccionadaSCC.setModel(dlmC);
             
             dlmP.removeAllElements();
             listaPendientesPP.setModel(dlmP);
             for (Partida partida: usuarioSesion.getPartidas_pendientes()) {
                 dlmP.addElement(partida.toString());              
             }
+            listaPendientesPP.setModel(dlmP);
             
             Filmx.setVisible(true);
             this.dispose();
