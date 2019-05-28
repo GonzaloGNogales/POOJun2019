@@ -131,11 +131,30 @@ public class Usuario implements Serializable{
     }
     
     public void compartirTodo () {
+        ArrayList<Usuario> usuarios = Usuarios.leerAmigos(this);
+        ArrayList<Pelicula> peliculasSistema = Peliculas.leer();
         
+        for (Pelicula p: peliculasSistema) {
+            p.compartir(usuarios);
+            ArrayList<Critica> criticasP = p.getCriticas();
+
+            for (Critica c: criticasP) {
+                c.compartir(usuarios);
+            }
+        }     
     }
     
     public void compartirTodo (Usuario u) {
+        ArrayList<Pelicula> peliculasSistema = Peliculas.leer();
         
+        for (Pelicula p: peliculasSistema) {
+            p.compartir(u);
+            ArrayList<Critica> criticasP = p.getCriticas();
+            
+            for (Critica c: criticasP) {
+                c.compartir(u);
+            }
+        }
     }
     
     public StringBuilder muroPelicula (Pelicula p) {
