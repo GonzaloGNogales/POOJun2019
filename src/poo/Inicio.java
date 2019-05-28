@@ -961,7 +961,7 @@ public class Inicio extends javax.swing.JFrame {
         SeleccionadorCompartirTodo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         SeleccionadorCompartirTodo.setModal(true);
         SeleccionadorCompartirTodo.setResizable(false);
-        SeleccionadorCompartirTodo.setSize(new java.awt.Dimension(220, 250));
+        SeleccionadorCompartirTodo.setSize(new java.awt.Dimension(255, 250));
 
         compartirTodosSCT.setText("Compartir con todos");
         compartirTodosSCT.setPreferredSize(new java.awt.Dimension(200, 60));
@@ -981,6 +981,11 @@ public class Inicio extends javax.swing.JFrame {
 
         cancelarSCT.setText("Cancelar");
         cancelarSCT.setPreferredSize(new java.awt.Dimension(90, 35));
+        cancelarSCT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarSCTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SeleccionadorCompartirTodoLayout = new javax.swing.GroupLayout(SeleccionadorCompartirTodo.getContentPane());
         SeleccionadorCompartirTodo.getContentPane().setLayout(SeleccionadorCompartirTodoLayout);
@@ -991,7 +996,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(SeleccionadorCompartirTodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(compartirTodosSCT, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(compartirSeleccionadosSCT, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SeleccionadorCompartirTodoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cancelarSCT, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1689,6 +1694,10 @@ public class Inicio extends javax.swing.JFrame {
         usuarioSesion.compartirTodo();
         JOptionPane.showMessageDialog(SeleccionadorCompartirTodo,"Se ha compartido todo con todos sus amigos.","INFO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_compartirTodosSCTActionPerformed
+
+    private void cancelarSCTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarSCTActionPerformed
+        SeleccionadorCompartirTodo.dispose();
+    }//GEN-LAST:event_cancelarSCTActionPerformed
 
     /**
      * @param args the command line arguments

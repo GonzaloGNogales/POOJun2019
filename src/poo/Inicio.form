@@ -1320,7 +1320,7 @@
         <Property name="modal" type="boolean" value="true"/>
         <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[220, 250]"/>
+          <Dimension value="[255, 250]"/>
         </Property>
       </Properties>
       <AccessibilityProperties>
@@ -1338,7 +1338,7 @@
                       <Component id="compartirTodosSCT" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       <Component id="compartirSeleccionadosSCT" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -1391,6 +1391,9 @@
               <Dimension value="[90, 35]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarSCTActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
