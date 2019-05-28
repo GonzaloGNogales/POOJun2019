@@ -1476,15 +1476,20 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_CompartirSeleccionadosSCPActionPerformed
 
     private void compartirTodosSCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirTodosSCCActionPerformed
-        /*
-        if (peliculaSeleccionadaSCP.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Todavía no hay ninguna película dada de alta.","ERROR", JOptionPane.ERROR_MESSAGE); 
+        if (criticaSeleccionadaSCC.isSelectionEmpty() || "".equals(criticaSeleccionadaSCC.getSelectedValue())) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Seleccione una crítica o publique alguna para compartirla.","ERROR", JOptionPane.ERROR_MESSAGE); 
         }
         else {
-            usuarioSesion.compartirPelicula(Peliculas.obtenerPelicula(peliculaSeleccionadaSCP.getSelectedItem().toString()));
+            //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
+            int ind = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
+            String critica_Aux = criticaSeleccionadaSCC.getSelectedValue().substring(ind);
+                
+            //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
+            String critic = critica_Aux.substring(9, critica_Aux.length()-1);            
+            
+            usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critic));
             JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la película con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
-        } 
-        */
+        }
     }//GEN-LAST:event_compartirTodosSCCActionPerformed
 
     private void cancelarSCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarSCCActionPerformed
@@ -1501,16 +1506,16 @@ public class Inicio extends javax.swing.JFrame {
         }
         else {           
             int[] indices = amigosFilmx.getSelectedIndices();
+            
+            //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
+            int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
+            String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
+                
+            //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
+            String critica = criticaAux.substring(9, criticaAux.length()-1);
 
             if (indices.length == 1) {               
                 Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
-                
-                //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
-                int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
-                String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
-                
-                //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
-                String critica = criticaAux.substring(9, criticaAux.length()-1);
                 
                 if (uC.getMuro().indexOf(critica) == -1) {
                     JOptionPane.showMessageDialog(SeleccionadorCompartirPelicula,"Se ha compartido la crítica con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
@@ -1525,14 +1530,7 @@ public class Inicio extends javax.swing.JFrame {
             else {
                 StringBuilder mensaje1 = new StringBuilder("");
                 StringBuilder mensaje2 = new StringBuilder("");
-                ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());
-                
-                //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
-                int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
-                String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
-                
-                //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
-                String critica = criticaAux.substring(9, criticaAux.length()-1);
+                ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());               
                 
                 for (String nom: usuariosNom) {
                     Usuario uCs = Usuarios.obtenerUsuario(nom);
