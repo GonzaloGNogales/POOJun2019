@@ -30,7 +30,7 @@ public class Partida implements Compartible {
         this.identificador = IDCONT.incrementAndGet();
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
-        this.resultado_final = "";
+        this.resultado_final = (ptos_jugador1 + " - " + ptos_jugador2);
         this.ptos_jugador1 = 0;
         this.ptos_jugador2 = 0;
     }
@@ -113,6 +113,10 @@ public class Partida implements Compartible {
     public void setPtos_jugador2(int ptos_jugador2) {
         this.ptos_jugador2 = ptos_jugador2;
     }
-        
+
+    @Override
+    public String toString () {
+        return '\n' + "  ---- PARTIDA ----  " + '\n' + "  Id: " + this.identificador + '\n' + "  Jugador 1: " + this.jugador1.getNombre() + '\n' + "  Jugador 2: " + this.jugador2.getNombre() + '\n' + "  Puntos del jugador 1: " + this.ptos_jugador1 + '\n' + "  Puntos del jugador 2: " + this.ptos_jugador2 + '\n';
+    }    
     
 } 
