@@ -177,9 +177,9 @@ public class Usuarios{
         return aux;
     }
     
-    public static Partida[] leerPartidasCompletas (Usuario u) {
+    public static ArrayList<Partida> leerPartidasCompletas (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
-        Partida[] aux = null;
+        ArrayList<Partida> aux = new ArrayList<>();
         
         for (Usuario usuario: logReg) {
             if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 
@@ -190,9 +190,9 @@ public class Usuarios{
         return aux;
     }
     
-    public static Partida[] leerPartidasPendientes (Usuario u) {
+    public static ArrayList<Partida> leerPartidasPendientes (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
-        Partida[] aux = null;
+        ArrayList<Partida> aux = new ArrayList<>();
         
         for (Usuario usuario: logReg) {
             if (usuario.getNombre().compareTo(u.getNombre()) == 0) { 

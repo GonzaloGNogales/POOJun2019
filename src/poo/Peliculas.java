@@ -14,7 +14,7 @@ public class Peliculas {
     
     public void verInfoPeliculas () {
     	ArrayList<Pelicula> logReg = leer();  //logReg es el vector con Peliculas registrados
-    	logReg.toString(); // *** Necesitamos sobreescribir el toString de Pelicula y de critica.
+    	logReg.toString();
     } 
 
     public static boolean addPelicula (Pelicula p) {

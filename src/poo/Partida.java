@@ -3,7 +3,7 @@ package poo;
 import java.util.ArrayList;
 
 public class Partida implements Compartible {
-    private int identificador;
+    private int identificador = 0;
     private Usuario jugador1;
     private Usuario jugador2;
     private String resultado_final;
@@ -19,8 +19,17 @@ public class Partida implements Compartible {
         this.ptos_jugador2 = 0;   
     }
 
-//Implementación de los métodos abstractos para Crítica
+    public Partida(int identificador, Usuario jugador1, Usuario jugador2, String resultado_final, int ptos_jugador1, int ptos_jugador2) {
+        this.identificador = identificador;
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+        this.resultado_final = resultado_final;
+        this.ptos_jugador1 = ptos_jugador1;
+        this.ptos_jugador2 = ptos_jugador2;
+    }
+
     
+    //Implementación de los métodos abstractos para Crítica
     @Override
     public void compartir (Usuario u) {
         
@@ -39,8 +48,8 @@ public class Partida implements Compartible {
         
     }    
     
- //Implementación Getters y Setters
     
+    //Implementación Getters y Setters  
     public int getIdentificador() {
         return identificador;
     }

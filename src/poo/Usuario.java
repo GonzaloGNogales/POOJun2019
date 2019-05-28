@@ -12,9 +12,9 @@ public class Usuario implements Serializable{
     private int partidas_ganadas;
     private int partidas_perdidas;
     private int partidas_empatadas;
-    private Partida[] partidas_completas;
-    private Partida[] partidas_pendientes; 
-    
+    private ArrayList<Partida> partidas_completas = new ArrayList<>();
+    private ArrayList<Partida> partidas_pendientes = new ArrayList<>();
+
     private ArrayList<Usuario> solicitudes_amigos_recibidas = new ArrayList<>();
     private ArrayList<Usuario> solicitudes_amigos_enviadas = new ArrayList<>();
     private ArrayList<Usuario> amigos = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Usuario implements Serializable{
         this.partidas_empatadas = 0;
     }
     
-    public Usuario(String nombre, String pass, StringBuilder muro, int partidas_ganadas, int partidas_perdidas, int partidas_empatadas, Partida[] partidas_completas, Partida[] partidas_pendientes, ArrayList<Usuario> solicitudes_amigos_recibidas, ArrayList<Usuario> solicitudes_amigos_enviadas, ArrayList<Usuario> amigos) {
+    public Usuario(String nombre, String pass, StringBuilder muro, int partidas_ganadas, int partidas_perdidas, int partidas_empatadas, ArrayList<Partida> partidas_completas, ArrayList<Partida> partidas_pendientes, ArrayList<Usuario> solicitudes_amigos_recibidas, ArrayList<Usuario> solicitudes_amigos_enviadas, ArrayList<Usuario> amigos) {
         this.nombre = nombre;
         this.pass = pass;
         this.muro = muro;
@@ -175,7 +175,7 @@ public class Usuario implements Serializable{
     }
     
     public void iniciarPartida (Usuario u) {
-        
+        Partida partida = new Partida();
     }
     
     public void completarPartida (Partida partida) {
@@ -223,15 +223,15 @@ public class Usuario implements Serializable{
             this.partidas_empatadas = partidas_empatadas;
     }
 
-    public Partida[] getPartidas_completas() {
+    public ArrayList<Partida> getPartidas_completas() {
             return partidas_completas;
     }
 
-    public Partida[] getPartidas_pendientes() {
+    public ArrayList<Partida> getPartidas_pendientes() {
             return partidas_pendientes;
     }
     
-    public void setPartidas_completas(Partida[] partidas_completas) {
+    public void setPartidas_completas(ArrayList<Partida> partidas_completas) {
             this.partidas_completas = partidas_completas;
     }
 
