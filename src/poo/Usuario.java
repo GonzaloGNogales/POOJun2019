@@ -5,16 +5,20 @@ import java.util.*;
 
 public class Usuario implements Serializable{
     private static final long serialVersionUID = 1L;
+    
+    //Variables de definición del usuario
     private String nombre;
     private String pass;
-	
     private StringBuilder muro;
+    
+    //Variables para sistema de partidas
     private int partidas_ganadas;
     private int partidas_perdidas;
     private int partidas_empatadas;
     private ArrayList<Partida> partidas_completas = new ArrayList<>();
     private ArrayList<Partida> partidas_pendientes = new ArrayList<>();
 
+    //Variables para sistema de amigos
     private ArrayList<Usuario> solicitudes_amigos_recibidas = new ArrayList<>();
     private ArrayList<Usuario> solicitudes_amigos_enviadas = new ArrayList<>();
     private ArrayList<Usuario> amigos = new ArrayList<>();
@@ -52,6 +56,7 @@ public class Usuario implements Serializable{
         this.amigos = amigos;
     }
     
+    //no-args
     public Usuario () {
         
     }
@@ -70,6 +75,8 @@ public class Usuario implements Serializable{
         this.amigos = u.getAmigos();
     }
     
+    
+    //Implementación de funciones del sistema
     public void invitarAmigo (Usuario u) {     
         u.getSolicitudes_amigos_recibidas().add(this);
         this.solicitudes_amigos_enviadas.add(u);
@@ -90,15 +97,6 @@ public class Usuario implements Serializable{
     public void eliminarAmigo (Usuario u) {
         this.amigos.remove(u);
         u.getAmigos().remove(this);
-    }
-    
-    @Override
-    public boolean equals (Object obj) {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (!(obj instanceof Usuario)) return false;
-        Usuario o = (Usuario) obj;
-        return o.getNombre().equals(this.getNombre());
     }
 
     //Compartir pelicula con todos los amigos.
@@ -174,8 +172,15 @@ public class Usuario implements Serializable{
 
     }
     
-    public void iniciarPartida (Usuario u) {
-        Partida partida = new Partida();
+    public Partida iniciarPartida (Usuario u) {
+        Partida partida = new Partida(this,u);
+        this.partidas_pendientes.add(partida);
+        u.getPartidas_pendientes().add(partida);
+        Usuarios.actualizar(this);
+        Usuarios.actualizar(u);
+        
+        return partida;
+        
     }
     
     public void completarPartida (Partida partida) {
@@ -263,4 +268,15 @@ public class Usuario implements Serializable{
             this.getMuro().append(s);
         }
     }
+          
+    //Redefinición del metodo equals para comparación de usuarios
+    @Override
+    public boolean equals (Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof Usuario)) return false;
+        Usuario o = (Usuario) obj;
+        return o.getNombre().equals(this.getNombre());
+    }
+    
 }

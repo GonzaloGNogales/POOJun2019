@@ -1,8 +1,11 @@
 package poo;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Partida implements Compartible {
+    
+    //Variables de definición de las partidas
     private int identificador = 0;
     private Usuario jugador1;
     private Usuario jugador2;
@@ -10,8 +13,12 @@ public class Partida implements Compartible {
     private int ptos_jugador1;
     private int ptos_jugador2;
     
+    //Variable para el identificador de partida autoincrementable
+    private static final AtomicInteger IDCONT = new AtomicInteger(0);
+    
+    //Constructores
     public Partida() {
-        this.identificador = 0;
+        this.identificador = IDCONT.incrementAndGet();
         this.jugador1 = null;
         this.jugador2 = null;
         this.resultado_final = "0-0";
@@ -19,8 +26,17 @@ public class Partida implements Compartible {
         this.ptos_jugador2 = 0;   
     }
 
-    public Partida(int identificador, Usuario jugador1, Usuario jugador2, String resultado_final, int ptos_jugador1, int ptos_jugador2) {
-        this.identificador = identificador;
+    public Partida(Usuario jugador1, Usuario jugador2) {
+        this.identificador = IDCONT.incrementAndGet();
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+        this.resultado_final = "";
+        this.ptos_jugador1 = 0;
+        this.ptos_jugador2 = 0;
+    }
+    
+    public Partida(Usuario jugador1, Usuario jugador2, String resultado_final, int ptos_jugador1, int ptos_jugador2) {
+        this.identificador = IDCONT.incrementAndGet();
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.resultado_final = resultado_final;
