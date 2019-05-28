@@ -97,6 +97,26 @@ public class Peliculas {
         return paux;
     }
     
+    public static Critica obtenerCritica (String crit) {
+        ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
+        Critica caux = new Critica();
+        boolean encontrado = false;
+
+        for (Pelicula pelicula: logReg) {
+            for (Critica c: pelicula.getCriticas()) {
+                if (c.getPelicula().compareTo(crit) == 0) { 
+                    caux = c;
+                    encontrado = true;
+                }
+            }
+        }
+        if (!encontrado) {
+            caux = null;
+        }
+
+        return caux;
+    }
+    
     public static ArrayList<Pelicula> obtenerPeliculas () {
         ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
         ArrayList<Pelicula> peliculas = new ArrayList<>();
