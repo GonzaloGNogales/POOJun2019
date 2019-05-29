@@ -184,6 +184,22 @@ public class Usuario implements Serializable{
         
     }
     
+    public static Usuario seleccionarUsuario () {
+        Random random = new Random();
+        int rnd = 0;
+        ArrayList <Usuario> usuarios = Usuarios.leer(); //Se cargan todos los usuarios en el arraylist usuarios
+        
+        while (rnd < 0 || rnd > usuarios.size()) {
+            rnd = random.nextInt();
+            
+            if (usuarios.get(rnd).getNombre().compareTo(Inicio.getUsuarioSesion().getNombre()) == 0) {
+                rnd = -1;
+            }
+        }
+
+        return usuarios.get(rnd);
+    }
+    
     //Métodos GET y SET
     public String getNombre() {
             return nombre;

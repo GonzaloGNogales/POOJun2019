@@ -1835,34 +1835,30 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_partidasPendientesFilmxActionPerformed
 
     private void jugarPartidaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarPartidaFilmxActionPerformed
-        if (amigosFilmx.isSelectionEmpty()) {
-            JOptionPane.showMessageDialog(Filmx,"Seleccione el amigo que desea retar a una partida de Filmx Quiz.","WARNING", JOptionPane.WARNING_MESSAGE);
-        }
-        else {
-            //Se crea una nueva partida que se añade a la lista de partidas pendientes
-            Usuario uJQ = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
-            Partida nuevaPartida = usuarioSesion.iniciarPartida(uJQ);
+        //Se crea una nueva partida que se añade a la lista de partidas pendientes eligiendo un usuario aleatorio
+        Usuario uJQ = Usuario.seleccionarUsuario();
+        Partida nuevaPartida = usuarioSesion.iniciarPartida(uJQ);
 
-            dlmP.addElement(nuevaPartida.toString());
-            listaPendientesPP.setModel(dlmP);
+        dlmP.addElement(nuevaPartida.toString());
+        listaPendientesPP.setModel(dlmP);
+
+        //Se actualizan los objetos dentro de los ficheros tras recibir la información de la partida
+        Usuarios.actualizar(usuarioSesion);
+        Usuarios.actualizar(uJQ);
+
+        //Configuración de la ventana JuegoFilmx.
+        FilmxQuiz.setModal(true);
+        FilmxQuiz.setLocationRelativeTo(null);
+        FilmxQuiz.setTitle("Filmx Quiz");
+        FilmxQuiz.setVisible(true);
+
+        //Generación de preguntas
+        Peliculas ps = new Peliculas();
+        Pelicula peliculaP = Pregunta.seleccionarPelicula(ps);
+        Pregunta pregunta = new Pregunta(peliculaP,nuevaPartida.getPtos_jugador1(),nuevaPartida.getPtos_jugador2());
+        //Función de formular pregunta de la clase Pregunta
             
-            //Se actualizan los objetos dentro de los ficheros tras recibir la información de la partida
-            Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(uJQ);
-            
-            //Configuración de la ventana JuegoFilmx.
-            FilmxQuiz.setModal(true);
-            FilmxQuiz.setLocationRelativeTo(null);
-            FilmxQuiz.setTitle("Filmx Quiz");
-            FilmxQuiz.setVisible(true);
-            
-            //Generación de preguntas
-            Peliculas ps = new Peliculas();
-            Pelicula peliculaP = Pregunta.seleccionarPelicula(ps);
-            Pregunta pregunta = new Pregunta(peliculaP,nuevaPartida.getPtos_jugador1(),nuevaPartida.getPtos_jugador2());
-            //Función de formular pregunta de la clase Pregunta
-            
-        }
+        
     }//GEN-LAST:event_jugarPartidaFilmxActionPerformed
 
     /**

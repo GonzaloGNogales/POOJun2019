@@ -64,7 +64,7 @@ public class Usuarios{
         
     }
     
-    private static ArrayList<Usuario> leer () { 
+    public static ArrayList<Usuario> leer () { 
         ArrayList<Usuario> vectorLeido = new ArrayList<>();
         try {
             ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo));

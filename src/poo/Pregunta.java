@@ -40,7 +40,6 @@ public class Pregunta {
     public void ofrecerNuevaPista () {
         
     }
-
        
     //Métodos GET y SET
     public int getId() {
