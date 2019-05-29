@@ -1856,17 +1856,12 @@ public class Inicio extends javax.swing.JFrame {
             FilmxQuiz.setTitle("Filmx Quiz");
             FilmxQuiz.setVisible(true);
             
+            //Generación de preguntas
+            Peliculas ps = new Peliculas();
+            Pelicula peliculaP = Pregunta.seleccionarPelicula(ps);
+            Pregunta pregunta = new Pregunta(peliculaP,nuevaPartida.getPtos_jugador1(),nuevaPartida.getPtos_jugador2());
+            //Función de formular pregunta de la clase Pregunta
             
-            /*
-            Usuario uANA = Usuarios.obtenerUsuario(solRecibidasNotificacionesAmigos.getSelectedItem().toString());
-            usuarioSesion.aceptarInvitacion(uANA);
-            Usuarios.actualizar(usuarioSesion);
-            Usuarios.actualizar(uANA);
-            dlm.addElement(uANA.getNombre());
-            amigosFilmx.setModel(dlm);
-            solRecibidasNotificacionesAmigos.removeItem(uANA.getNombre());
-            JOptionPane.showMessageDialog(NotificacionesAmigos,"Se ha aceptado la invitación correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);
-            */
         }
     }//GEN-LAST:event_jugarPartidaFilmxActionPerformed
 

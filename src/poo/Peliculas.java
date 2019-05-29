@@ -12,9 +12,16 @@ import java.util.ArrayList;
 public class Peliculas {
     static File archivo = new File("peliculas.txt");
     
-    public void verInfoPeliculas () {
+    //Constructor
+    public Peliculas () {
+        
+    }
+    
+    //Funcionalidad necesaria
+    public ArrayList<Pelicula> verInfoPeliculas () {
     	ArrayList<Pelicula> logReg = leer();  //logReg es el vector con Peliculas registrados
-    	logReg.toString();
+    	
+        return logReg;
     } 
 
     public static boolean addPelicula (Pelicula p) {
@@ -38,23 +45,23 @@ public class Peliculas {
         return terminado;
     }
 
-        public static void actualizar (Pelicula p) {
-        ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
-        boolean encontrado = false;
-        Pelicula aux = new Pelicula ();
-        
-        for (Pelicula pelicula: logReg) {
-            if (pelicula.getTitulo().compareTo(p.getTitulo()) == 0) { 
-                encontrado = true;
-                aux = pelicula;
-            }
+    public static void actualizar (Pelicula p) {
+    ArrayList<Pelicula> logReg = leer();  //logReg es el vector con usuarios registrados
+    boolean encontrado = false;
+    Pelicula aux = new Pelicula ();
+
+    for (Pelicula pelicula: logReg) {
+        if (pelicula.getTitulo().compareTo(p.getTitulo()) == 0) { 
+            encontrado = true;
+            aux = pelicula;
         }
-        if (encontrado) {
-            logReg.remove(aux);
-            logReg.add(p);
-        }
-        
-        escribir(logReg);
+    }
+    if (encontrado) {
+        logReg.remove(aux);
+        logReg.add(p);
+    }
+
+    escribir(logReg);
     }
         
     public static ArrayList<Pelicula> leer () { 
