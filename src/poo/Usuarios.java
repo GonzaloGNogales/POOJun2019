@@ -66,11 +66,11 @@ public class Usuarios{
     private static ArrayList<Usuario> leer () { 
         ArrayList<Usuario> vectorLeido = new ArrayList<>(0);
         try {
-            ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo.getAbsolutePath()));
+            ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo));
             vectorLeido = (ArrayList<Usuario>) ficheroLect.readObject();
             ficheroLect.close();
         }catch(Exception e) {
-            System.out.println("Exception leer fichero.");
+            System.out.println("Lectura usuarios terminada.");
         }
                 
 	return vectorLeido;
@@ -78,11 +78,11 @@ public class Usuarios{
     
     private static void escribir (ArrayList<Usuario> vectEscr) {
         try {
-            ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo.getAbsolutePath()));
+            ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo));
             ficheroEscr.writeObject(vectEscr);
             ficheroEscr.close();
         }catch(IOException e) {
-            System.out.println("Exception al Escribir");
+            System.out.println("Excepción al escribir usuario.");
         }
     }   
     

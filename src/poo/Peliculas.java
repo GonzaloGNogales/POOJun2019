@@ -60,22 +60,22 @@ public class Peliculas {
     public static ArrayList<Pelicula> leer () { 
         ArrayList<Pelicula> vectorLeido = new ArrayList<Pelicula>(0);
         try {
-            ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo.getAbsolutePath()));
+            ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo));
             vectorLeido = (ArrayList<Pelicula>) ficheroLect.readObject();
             ficheroLect.close();
         }catch(Exception e) {
-            System.out.println("Exception leer fichero.");
+            System.out.println("Lectura películas terminada.");
         }
         return vectorLeido;
     }
 
     private static void escribir (ArrayList<Pelicula> vectEscr) {
         try {
-            ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo.getAbsolutePath()));
+            ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo));
             ficheroEscr.writeObject(vectEscr);
             ficheroEscr.close();
         }catch(IOException e) {
-            System.out.println("Exception al Escribir");
+            System.out.println("Excepción al escribir película.");
         }
     }
     
