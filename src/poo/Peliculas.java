@@ -64,7 +64,7 @@ public class Peliculas {
             vectorLeido = (ArrayList<Pelicula>) ficheroLect.readObject();
             ficheroLect.close();
         }catch(Exception e) {
-            System.out.println("Lectura películas terminada.");
+            System.out.println("Lectura películas fallida.");
         }
         return vectorLeido;
     }
@@ -75,7 +75,7 @@ public class Peliculas {
             ficheroEscr.writeObject(vectEscr);
             ficheroEscr.close();
         }catch(IOException e) {
-            System.out.println("Excepción al escribir película.");
+            System.out.println("Fallo al escribir película.");
         }
     }
     

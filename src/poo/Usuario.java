@@ -176,11 +176,8 @@ public class Usuario implements Serializable{
         Partida partida = new Partida(this,u);
         this.partidas_pendientes.add(partida);
         u.getPartidas_pendientes().add(partida);
-        Usuarios.actualizar(this);
-        Usuarios.actualizar(u);
-        
+
         return partida;
-        
     }
     
     public void completarPartida (Partida partida) {

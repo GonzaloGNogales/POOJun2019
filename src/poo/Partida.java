@@ -1,9 +1,10 @@
 package poo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Partida implements Compartible {
+public class Partida implements Compartible, Serializable {
     
     //Variables de definición de las partidas
     private int identificador = 0;

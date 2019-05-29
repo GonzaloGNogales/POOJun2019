@@ -61,16 +61,17 @@ public class Usuarios{
         }
         
         escribir(logReg);
+        
     }
     
     private static ArrayList<Usuario> leer () { 
-        ArrayList<Usuario> vectorLeido = new ArrayList<>(0);
+        ArrayList<Usuario> vectorLeido = new ArrayList<>();
         try {
             ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(archivo));
             vectorLeido = (ArrayList<Usuario>) ficheroLect.readObject();
             ficheroLect.close();
         }catch(Exception e) {
-            System.out.println("Lectura usuarios terminada.");
+            System.out.println("Lectura usuarios fallida.");
         }
                 
 	return vectorLeido;
@@ -82,7 +83,7 @@ public class Usuarios{
             ficheroEscr.writeObject(vectEscr);
             ficheroEscr.close();
         }catch(IOException e) {
-            System.out.println("Excepción al escribir usuario.");
+            System.out.println("Fallo al escribir usuario.");
         }
     }   
     
