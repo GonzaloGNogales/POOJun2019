@@ -1628,6 +1628,9 @@
               <Dimension value="[150, 40]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="responderFilmxQuizActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="siguientePistaFilmxQuiz">
           <Properties>
@@ -1636,6 +1639,9 @@
               <Dimension value="[150, 40]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="siguientePistaFilmxQuizActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jugador2FilmxQuiz">
           <Properties>
