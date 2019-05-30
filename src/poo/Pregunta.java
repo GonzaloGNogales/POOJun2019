@@ -2,14 +2,11 @@ package poo;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pregunta {
-    //Variable para el identificador de partida autoincrementable
-    private static final AtomicInteger IDCONT = new AtomicInteger(0);
     
     //Variables que definen una pregunta
-    private int id = 0;
+    private int id;
     private Pelicula pelicula;
     private int puntos_jugador_1;
     private int puntos_jugador_2;
@@ -21,7 +18,7 @@ public class Pregunta {
     
     //Constructores
     public Pregunta(Pelicula pelicula, int puntos_jugador_1, int puntos_jugador_2) {
-        this.id = IDCONT.incrementAndGet();
+        this.id = 1;
         this.pelicula = pelicula;
         this.puntos_jugador_1 = puntos_jugador_1;
         this.puntos_jugador_2 = puntos_jugador_2;
@@ -34,9 +31,10 @@ public class Pregunta {
     
     public Pregunta (Pregunta pregunta) {
         Peliculas ps = new Peliculas();
-        Pelicula peliAux  = seleccionarPelicula(ps);
+        Pelicula peliAux  = Pregunta.seleccionarPelicula(ps);
+        System.err.println(peliAux.getTitulo());
         
-        this.id = IDCONT.incrementAndGet();
+        this.id = pregunta.getId() + 1;
         this.pelicula = peliAux;
         this.puntos_jugador_1 = pregunta.getPuntosJugador1();
         this.puntos_jugador_2 = pregunta.getPuntosJugador2();

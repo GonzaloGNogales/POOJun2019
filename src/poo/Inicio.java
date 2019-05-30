@@ -2206,10 +2206,12 @@ public class Inicio extends javax.swing.JFrame {
                 if (partidaNueva) {
                     preguntaLocal.setPuntosJugador1Acierto();
                     JOptionPane.showMessageDialog(FilmxQuiz,"Ha terminado de responder a todas las preguntas de FilmxQuiz, ahora le toca al jugador enemigo!","INFO", JOptionPane.INFORMATION_MESSAGE);
+                    preguntaLocal.setId(0);
                 }
                 else  {
                     preguntaLocal.setPuntosJugador2Acierto();
                     JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
+                    preguntaLocal.setId(0);
                 } 
                 
                 FilmxQuiz.dispose();
