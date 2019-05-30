@@ -7,15 +7,15 @@ import java.io.*;
 public class Pelicula implements Compartible, Serializable{
     private String titulo;
     private int año;
-    private String director;
     private String genero;
+    private String director;
     private String actor;
     private String actriz;
     
     private ArrayList<Critica> criticas = new ArrayList<>();
 
     //Constructores
-    public Pelicula(String titulo, int año, String director, String genero, String actor, String actriz, ArrayList<Critica> criticas) { //add entrada desde interfaz grafica 
+    public Pelicula(String titulo, int año, String genero, String director, String actor, String actriz, ArrayList<Critica> criticas) { //add entrada desde interfaz grafica 
         this.titulo = titulo;
         this.año = año;
         this.director = director;
@@ -25,7 +25,7 @@ public class Pelicula implements Compartible, Serializable{
         this.criticas = criticas;
     }
 
-    public Pelicula(String titulo, int año, String director, String genero, String actor, String actriz) { //add entrada desde interfaz grafica 
+    public Pelicula(String titulo, int año, String genero, String director, String actor, String actriz) { //add entrada desde interfaz grafica 
         this.titulo = titulo;
         this.año = año;
         this.director = director;
@@ -127,7 +127,7 @@ public class Pelicula implements Compartible, Serializable{
     
     @Override
     public String toString () {
-        return '\n' + "  ---- PELÍCULA ----  " + '\n' + "  Titulo de la película: " + this.titulo + '\n' + "  Año de estreno: " + this.año + '\n' + "  Director: " + this.director + '\n' + "  Género: " + this.genero +'\n' + "  Actor protagonista: " + this.actor + '\n' + "  Actiz protagonista: " + this.actriz + '\n';
+        return '\n' + "  ---- PELÍCULA ----  " + '\n' + "  Titulo de la película: " + this.titulo + '\n' + "  Año de estreno: " + this.año + '\n' + "  Género: " + this.genero + '\n' + "  Director/a: " + this.director +'\n' + "  Actor protagonista: " + this.actor + '\n' + "  Actiz protagonista: " + this.actriz + '\n';
     }
     
 }

@@ -43,7 +43,6 @@ public class Pregunta {
         Random random = new Random();
         
         int rnd = random.nextInt(peliculas.size());
-        System.err.println(rnd);
         
         return peliculas.get(rnd);
     }

@@ -2215,13 +2215,25 @@ public class Inicio extends javax.swing.JFrame {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
                         preguntaLocal.setPuntosJugador1Acierto();
+                        
+                        //Se actualiza la interfaz de FilmxQuiz
+                        puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                        puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                        respuestaFilmxQuiz.setText(null);
+                        
                         JOptionPane.showMessageDialog(FilmxQuiz,"Ha terminado de responder a todas las preguntas de FilmxQuiz, ahora le toca al jugador enemigo!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                        preguntaLocal.setId(0);
+                        preguntaLocal.setId(0);             
                     }
                     else  {
                         preguntaLocal.setPuntosJugador2Acierto();
+                        
+                        //Se actualiza la interfaz de FilmxQuiz
+                        puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                        puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                        respuestaFilmxQuiz.setText(null);
+                        
                         JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                        preguntaLocal.setId(0);
+                        preguntaLocal.setId(0);                      
                     }
                     
                     FilmxQuiz.dispose();
