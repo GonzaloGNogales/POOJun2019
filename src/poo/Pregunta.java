@@ -75,91 +75,91 @@ public class Pregunta {
     }
     
     //Definición de un método similar a toString() para mostrar la pregunta
-    public String mostrarPregunta (Pelicula p, int contadorFallo) {
+    public String mostrarPregunta (int contadorFallo) {
         String pregunta = new String();
         switch (this.id) {
             case 1:
                 switch (contadorFallo) {
                     case 0:
-                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + p.getAño() + "?";
+                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + this.pelicula.getAño() + "?";
                     case 1:    
-                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + p.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero();
+                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + this.pelicula.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero();
                     case 2:  
-                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + p.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero() + '\n' + "Pista nº2: El director/a es: " + p.getDirector();
+                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + this.pelicula.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector();
                     case 3:
-                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + p.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero() + '\n' + "Pista nº2: El director/a es: " + p.getDirector() + '\n' + "Pista nº3: El actor principal es: " + p.getActor();
+                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + this.pelicula.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor();
                     case 4:
-                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + p.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero() + '\n' + "Pista nº2: El director/a es: " + p.getDirector() + '\n' + "Pista nº3: El actor principal es: " + p.getActor() + '\n' + "Pista nº4: La actriz principal es: " + p.getActriz();                  
+                        pregunta = "¿Cuál es el título de la película cuyo año de distribución es " + this.pelicula.getAño() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor() + '\n' + "Pista nº4: La actriz principal es: " + this.pelicula.getActriz();                  
                 }
                 break;
             case 2:
                 switch (contadorFallo) {
                     case 0:
-                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + p.getTitulo() + "?";
+                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + this.pelicula.getTitulo() + "?";
                     case 1:    
-                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero();
+                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero();
                     case 2:  
-                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero() + '\n' + "Pista nº2: El director/a es: " + p.getDirector();
+                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector();
                     case 3:
-                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero() + '\n' + "Pista nº2: El director/a es: " + p.getDirector() + '\n' + "Pista nº3: El actor principal es: " + p.getActor();
+                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor();
                     case 4:
-                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getGenero() + '\n' + "Pista nº2: El director/a es: " + p.getDirector() + '\n' + "Pista nº3: El actor principal es: " + p.getActor() + '\n' + "Pista nº4: La actriz principal es: " + p.getActriz();                  
+                        pregunta = "¿Cuál es el año de distribución de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getGenero() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor() + '\n' + "Pista nº4: La actriz principal es: " + this.pelicula.getActriz();                  
                 }
                 break;
             case 3:
                 switch (contadorFallo) {
                     case 0:
-                        pregunta = "¿Cuál es el género de la película cuyo título es " + p.getTitulo() + "?";
+                        pregunta = "¿Cuál es el género de la película cuyo título es " + this.pelicula.getTitulo() + "?";
                     case 1:    
-                        pregunta = "¿Cuál es el género de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño();
+                        pregunta = "¿Cuál es el género de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño();
                     case 2:  
-                        pregunta = "¿Cuál es el género de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getDirector();
+                        pregunta = "¿Cuál es el género de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector();
                     case 3:
-                        pregunta = "¿Cuál es el género de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getDirector() + '\n' + "Pista nº3: El actor principal es: " + p.getActor();
+                        pregunta = "¿Cuál es el género de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor();
                     case 4:
-                        pregunta = "¿Cuál es el género de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getDirector() + '\n' + "Pista nº3: El actor principal es: " + p.getActor() + '\n' + "Pista nº4: La actriz principal es: " + p.getActriz();                  
+                        pregunta = "¿Cuál es el género de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getDirector() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor() + '\n' + "Pista nº4: La actriz principal es: " + this.pelicula.getActriz();                  
                 }
                 break;
             case 4:
                 switch (contadorFallo) {
                     case 0:
-                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + p.getTitulo() + "?";
+                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + this.pelicula.getTitulo() + "?";
                     case 1:    
-                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño();
+                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño();
                     case 2:  
-                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero();
+                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero();
                     case 3:
-                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero() + '\n' + "Pista nº3: El actor principal es: " + p.getActor();
+                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor();
                     case 4:
-                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero() + '\n' + "Pista nº3: El actor principal es: " + p.getActor() + '\n' + "Pista nº4: La actriz principal es: " + p.getActriz();                  
+                        pregunta = "¿Cuál es el director/a de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getActor() + '\n' + "Pista nº4: La actriz principal es: " + this.pelicula.getActriz();                  
                 }
                 break;
             case 5:
                 switch (contadorFallo) {
                     case 0:
-                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + p.getTitulo() + "?";
+                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + this.pelicula.getTitulo() + "?";
                     case 1:    
-                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño();
+                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño();
                     case 2:  
-                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero();
+                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero();
                     case 3:
-                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero() + '\n' + "Pista nº3: El actor principal es: " + p.getDirector();
+                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getDirector();
                     case 4:
-                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero() + '\n' + "Pista nº3: El actor principal es: " + p.getDirector()+ '\n' + "Pista nº4: La actriz principal es: " + p.getActriz();                  
+                        pregunta = "¿Cuál es el actor principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getDirector()+ '\n' + "Pista nº4: La actriz principal es: " + this.pelicula.getActriz();                  
                 }
                 break;
             case 6:
                 switch (contadorFallo) {
                     case 0:
-                        pregunta = "¿Cuál es la actriz principal de la película cuyo título es " + p.getTitulo() + "?";
+                        pregunta = "¿Cuál es la actriz principal de la película cuyo título es " + this.pelicula.getTitulo() + "?";
                     case 1:    
-                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño();
+                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño();
                     case 2:  
-                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero();
+                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero();
                     case 3:
-                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero() + '\n' + "Pista nº3: El actor principal es: " + p.getDirector();
+                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getDirector();
                     case 4:
-                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + p.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + p.getAño() + '\n' + "Pista nº2: El director/a es: " + p.getGenero() + '\n' + "Pista nº3: El actor principal es: " + p.getDirector()+ '\n' + "Pista nº4: La actriz principal es: " + p.getActor();                  
+                        pregunta = "¿Cuál es el actriz principal de la película cuyo título es " + this.pelicula.getTitulo() + "?" + '\n' + "Pista nº1: Su género es: " + this.pelicula.getAño() + '\n' + "Pista nº2: El director/a es: " + this.pelicula.getGenero() + '\n' + "Pista nº3: El actor principal es: " + this.pelicula.getDirector()+ '\n' + "Pista nº4: La actriz principal es: " + this.pelicula.getActor();                  
                 }
                 break;   
         }

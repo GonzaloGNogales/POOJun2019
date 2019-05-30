@@ -129,6 +129,20 @@ public class Inicio extends javax.swing.JFrame {
         cancelarPP = new javax.swing.JButton();
         responderPP = new javax.swing.JButton();
         FilmxQuiz = new javax.swing.JDialog();
+        preguntaFilmxQuiz = new javax.swing.JLabel();
+        cancelarFilmxQuiz = new javax.swing.JButton();
+        respuestaFilmxQuiz = new javax.swing.JTextField();
+        responderFilmxQuiz = new javax.swing.JButton();
+        siguientePistaFilmxQuiz = new javax.swing.JButton();
+        jugador2FilmxQuiz = new javax.swing.JLabel();
+        jugador1FilmxQuiz = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jugador1FQ = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jugador2FQ = new javax.swing.JLabel();
+        puntosJ1FilmxQuiz = new javax.swing.JLabel();
+        puntosJ2FilmxQuiz = new javax.swing.JLabel();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -322,7 +336,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jugarPartidaFilmx.setText("Jugar Partida");
+        jugarPartidaFilmx.setText("Jugar a FilmxQuiz");
         jugarPartidaFilmx.setPreferredSize(new java.awt.Dimension(120, 40));
         jugarPartidaFilmx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,11 +377,10 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(jugarPartidaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(partidasPendientesFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(FilmxLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nombreUsuarioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(FilmxLayout.createSequentialGroup()
                                 .addComponent(jScrollPane2)
@@ -396,11 +409,11 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FilmxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreUsuarioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreUsuarioSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FilmxLayout.createSequentialGroup()
@@ -1091,17 +1104,115 @@ public class Inicio extends javax.swing.JFrame {
         FilmxQuiz.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         FilmxQuiz.setModal(true);
         FilmxQuiz.setResizable(false);
-        FilmxQuiz.setSize(new java.awt.Dimension(400, 300));
+        FilmxQuiz.setSize(new java.awt.Dimension(755, 575));
+
+        preguntaFilmxQuiz.setPreferredSize(new java.awt.Dimension(735, 175));
+
+        cancelarFilmxQuiz.setText("Cancelar");
+        cancelarFilmxQuiz.setPreferredSize(new java.awt.Dimension(110, 35));
+        cancelarFilmxQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarFilmxQuizActionPerformed(evt);
+            }
+        });
+
+        respuestaFilmxQuiz.setPreferredSize(new java.awt.Dimension(735, 40));
+
+        responderFilmxQuiz.setText("Responder");
+        responderFilmxQuiz.setPreferredSize(new java.awt.Dimension(150, 40));
+
+        siguientePistaFilmxQuiz.setText("Siguiente Pista");
+        siguientePistaFilmxQuiz.setPreferredSize(new java.awt.Dimension(150, 40));
+
+        jugador2FilmxQuiz.setPreferredSize(new java.awt.Dimension(100, 30));
+
+        jugador1FilmxQuiz.setPreferredSize(new java.awt.Dimension(55, 30));
+
+        jLabel26.setText("vs");
+        jLabel26.setPreferredSize(new java.awt.Dimension(20, 30));
+
+        jLabel24.setText("Puntos de");
+        jLabel24.setPreferredSize(new java.awt.Dimension(84, 30));
+
+        jugador1FQ.setPreferredSize(new java.awt.Dimension(55, 30));
+
+        jLabel25.setText("Puntos de");
+        jLabel25.setPreferredSize(new java.awt.Dimension(84, 30));
+
+        jugador2FQ.setPreferredSize(new java.awt.Dimension(55, 30));
+
+        puntosJ1FilmxQuiz.setPreferredSize(new java.awt.Dimension(60, 30));
+
+        puntosJ2FilmxQuiz.setPreferredSize(new java.awt.Dimension(60, 30));
 
         javax.swing.GroupLayout FilmxQuizLayout = new javax.swing.GroupLayout(FilmxQuiz.getContentPane());
         FilmxQuiz.getContentPane().setLayout(FilmxQuizLayout);
         FilmxQuizLayout.setHorizontalGroup(
             FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(FilmxQuizLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FilmxQuizLayout.createSequentialGroup()
+                        .addComponent(siguientePistaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(responderFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FilmxQuizLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelarFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FilmxQuizLayout.createSequentialGroup()
+                        .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FilmxQuizLayout.createSequentialGroup()
+                                .addComponent(jugador1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jugador2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(192, 192, 192)
+                                .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(FilmxQuizLayout.createSequentialGroup()
+                                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jugador2FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(puntosJ2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(FilmxQuizLayout.createSequentialGroup()
+                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jugador1FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(puntosJ1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(respuestaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(preguntaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         FilmxQuizLayout.setVerticalGroup(
             FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(FilmxQuizLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jugador2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jugador1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jugador1FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puntosJ1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jugador2FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puntosJ2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(preguntaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(respuestaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(responderFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(siguientePistaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addComponent(cancelarFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         FilmxQuiz.getAccessibleContext().setAccessibleParent(Filmx);
@@ -1845,21 +1956,32 @@ public class Inicio extends javax.swing.JFrame {
         //Se actualizan los objetos dentro de los ficheros tras recibir la información de la partida
         Usuarios.actualizar(usuarioSesion);
         Usuarios.actualizar(uJQ);
-
+        
+        //Generación de preguntas
+        Peliculas ps = new Peliculas();
+        Pelicula peliculaP = Pregunta.seleccionarPelicula(ps);
+        Pregunta pregunta = new Pregunta(peliculaP,nuevaPartida.getPtos_jugador1(),nuevaPartida.getPtos_jugador2());
+        
+        //Función de formular pregunta de la clase Pregunta y diseño de la ventana de FilmxQuiz
+        int contadorFallos = 0;
+        jugador1FilmxQuiz.setText(nuevaPartida.getJugador1().getNombre());
+        jugador2FilmxQuiz.setText(nuevaPartida.getJugador2().getNombre());
+        jugador1FQ.setText(nuevaPartida.getJugador1().getNombre());
+        jugador2FQ.setText(nuevaPartida.getJugador2().getNombre());
+        puntosJ1FilmxQuiz.setText(String.valueOf(nuevaPartida.getPtos_jugador1()));
+        puntosJ2FilmxQuiz.setText(String.valueOf(nuevaPartida.getPtos_jugador2()));
+        preguntaFilmxQuiz.setText(pregunta.mostrarPregunta(contadorFallos));
+        
         //Configuración de la ventana JuegoFilmx.
         FilmxQuiz.setModal(true);
         FilmxQuiz.setLocationRelativeTo(null);
         FilmxQuiz.setTitle("Filmx Quiz");
         FilmxQuiz.setVisible(true);
-
-        //Generación de preguntas
-        Peliculas ps = new Peliculas();
-        Pelicula peliculaP = Pregunta.seleccionarPelicula(ps);
-        Pregunta pregunta = new Pregunta(peliculaP,nuevaPartida.getPtos_jugador1(),nuevaPartida.getPtos_jugador2());
-        //Función de formular pregunta de la clase Pregunta
-            
-        
     }//GEN-LAST:event_jugarPartidaFilmxActionPerformed
+
+    private void cancelarFilmxQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarFilmxQuizActionPerformed
+        FilmxQuiz.dispose();
+    }//GEN-LAST:event_cancelarFilmxQuizActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1923,6 +2045,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField añoAlta;
     private javax.swing.JButton cancelarAlta;
     private javax.swing.JButton cancelarCritica;
+    private javax.swing.JButton cancelarFilmxQuiz;
     private javax.swing.JButton cancelarInicio;
     private javax.swing.JButton cancelarInvitarAmigos;
     private javax.swing.JButton cancelarNotificacionesAmigos;
@@ -1965,6 +2088,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1977,6 +2103,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel jugador1FQ;
+    private javax.swing.JLabel jugador1FilmxQuiz;
+    private javax.swing.JLabel jugador2FQ;
+    private javax.swing.JLabel jugador2FilmxQuiz;
     private javax.swing.JButton jugarPartidaFilmx;
     private javax.swing.JList<String> listaPendientesPP;
     private javax.swing.JTextArea muroFilmx;
@@ -1988,15 +2118,21 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField passRegistro;
     private javax.swing.JComboBox<String> peliculaSelec;
     private javax.swing.JComboBox<String> peliculaSeleccionadaSCP;
+    private javax.swing.JLabel preguntaFilmxQuiz;
     private javax.swing.JButton publicarCritica;
+    private javax.swing.JLabel puntosJ1FilmxQuiz;
+    private javax.swing.JLabel puntosJ2FilmxQuiz;
     private javax.swing.JSpinner puntuacionCritica;
     private javax.swing.JButton rechazarNotificacionesAmigos;
     private javax.swing.JButton refrescarMuroFILMX;
     private javax.swing.JButton registrarRegistro;
     private javax.swing.JButton registrarseInicio;
+    private javax.swing.JButton responderFilmxQuiz;
     private javax.swing.JButton responderPP;
+    private javax.swing.JTextField respuestaFilmxQuiz;
     private javax.swing.JButton salirFilmx;
     private javax.swing.JButton selecPelicula;
+    private javax.swing.JButton siguientePistaFilmxQuiz;
     private javax.swing.JComboBox<String> solEnviadasNotificacionesAmigos;
     private javax.swing.JComboBox<String> solRecibidasNotificacionesAmigos;
     private javax.swing.JTextField tituloAlta;

@@ -14,6 +14,9 @@ public class Partida implements Compartible, Serializable {
     private int ptos_jugador1;
     private int ptos_jugador2;
     
+    //Variable para marcar como parcial la partida cuando ya ha respondido el jugador1 y espera al jugador 2
+    private boolean parcial;
+    
     //Variable para el identificador de partida autoincrementable
     private static final AtomicInteger IDCONT = new AtomicInteger(0);
     
@@ -24,7 +27,8 @@ public class Partida implements Compartible, Serializable {
         this.jugador2 = null;
         this.resultado_final = "0-0";
         this.ptos_jugador1 = 0;
-        this.ptos_jugador2 = 0;   
+        this.ptos_jugador2 = 0; 
+        this.parcial = false;
     }
 
     public Partida(Usuario jugador1, Usuario jugador2) {
@@ -34,6 +38,7 @@ public class Partida implements Compartible, Serializable {
         this.resultado_final = (ptos_jugador1 + " - " + ptos_jugador2);
         this.ptos_jugador1 = 0;
         this.ptos_jugador2 = 0;
+        this.parcial = false;
     }
     
     public Partida(Usuario jugador1, Usuario jugador2, String resultado_final, int ptos_jugador1, int ptos_jugador2) {
@@ -79,16 +84,16 @@ public class Partida implements Compartible, Serializable {
         return jugador1;
     }
 
-    public void setJugador1(Usuario ganador) {
-        this.jugador1 = ganador;
+    public void setJugador1(Usuario j1) {
+        this.jugador1 = j1;
     }
     
     public Usuario getJugador2() {
         return jugador2;
     }
 
-    public void setJugador2(Usuario ganador) {
-        this.jugador2 = ganador;
+    public void setJugador2(Usuario j2) {
+        this.jugador2 = j2;
     }
 
     public String getResultado_final() {
@@ -113,6 +118,14 @@ public class Partida implements Compartible, Serializable {
 
     public void setPtos_jugador2(int ptos_jugador2) {
         this.ptos_jugador2 = ptos_jugador2;
+    }
+    
+    public boolean getParcial () {
+        return parcial;
+    }
+    
+    public void setParcial (boolean valor) {
+        this.parcial = valor;
     }
 
     @Override
