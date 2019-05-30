@@ -2210,7 +2210,9 @@ public class Inicio extends javax.swing.JFrame {
                 else  {
                     preguntaLocal.setPuntosJugador2Acierto();
                     JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                }        
+                } 
+                
+                FilmxQuiz.dispose();
             }
             else {
                 preguntaLocal.subirContadorPista();
