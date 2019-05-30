@@ -29,33 +29,27 @@ public class Pregunta {
         
     }
     
-    public Pregunta (Pregunta pregunta) {
-        Peliculas ps = new Peliculas();
-        Pelicula peliAux  = Pregunta.seleccionarPelicula(ps);
-        System.err.println(peliAux.getTitulo());
-        
+    public Pregunta (Pelicula p, Pregunta pregunta) {
         this.id = pregunta.getId() + 1;
-        this.pelicula = peliAux;
+        this.pelicula = p;
         this.puntos_jugador_1 = pregunta.getPuntosJugador1();
         this.puntos_jugador_2 = pregunta.getPuntosJugador2();
         this.contadorPista = 0;
     }
     
     //Funcionalidad requerida
-    public static Pelicula seleccionarPelicula (Peliculas films) {
+    public static Pelicula seleccionarPelicula () {
+        ArrayList <Pelicula> peliculas = Peliculas.verInfoPeliculas(); //Se cargan todas las películas en el arraylist peliculas
         Random random = new Random();
-        int rnd = 0;
-        ArrayList <Pelicula> peliculas = films.verInfoPeliculas();
         
-        while (rnd < 0 || rnd > peliculas.size()) {
-            rnd = random.nextInt();
-        }
+        int rnd = random.nextInt(peliculas.size());
+        System.err.println(rnd);
         
         return peliculas.get(rnd);
     }
-    
+
     public void ofrecerNuevaPista () {
-        
+        this.contadorPista++;
     }
        
     //Métodos GET y SET
@@ -103,8 +97,8 @@ public class Pregunta {
         return this.contadorPista;
     }
 
-    public void subirContadorPista() {
-        this.contadorPista++;
+    public void setContadorPista(int contador) {
+        this.contadorPista = contador;
     }
     
     //Definición de un método similar a toString() para mostrar la pregunta

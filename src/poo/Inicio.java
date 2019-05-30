@@ -1972,8 +1972,7 @@ public class Inicio extends javax.swing.JFrame {
             Usuarios.actualizar(uJQ);
             
             //Generación de preguntas
-            Peliculas ps = new Peliculas();
-            Pelicula peliculaP = Pregunta.seleccionarPelicula(ps);
+            Pelicula peliculaP = Pregunta.seleccionarPelicula();
             Pregunta pregunta = new Pregunta(peliculaP,nuevaPartida.getPtos_jugador1(),nuevaPartida.getPtos_jugador2());
             preguntaLocal = pregunta;
             
@@ -2001,7 +2000,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void siguientePistaFilmxQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguientePistaFilmxQuizActionPerformed
         if (preguntaLocal.getContadorPista()< 4) {
-            preguntaLocal.subirContadorPista();
+            preguntaLocal.ofrecerNuevaPista();
             preguntaFilmxQuiz.setText(preguntaLocal.toString());
             
             //Alogritmo para controlar si el jugador 1 ya ha terminado de contestar (partida parcial = TRUE) o si sigue contestando (partida parcial = FALSE)
@@ -2040,198 +2039,213 @@ public class Inicio extends javax.swing.JFrame {
             }
         }
               
-        if (preguntaLocal.getId() == 1) {       
-            if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getTitulo()) == 0) {
-                //Se computan los puntosobtenidos al acertar
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Acierto();
+        switch (preguntaLocal.getId()) {
+            case 1:
+                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getTitulo()) == 0) {
+                    //Se computan los puntos obtenidos al acertar
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Acierto();
+                    }
+                    else  {
+                        preguntaLocal.setPuntosJugador2Acierto();
+                    }
+                    
+                    //Se crea el objeto de la siguiente pregunta que va a aparecer
+                    Pelicula peliculaAux = Pregunta.seleccionarPelicula();
+                    Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
+                    preguntaLocal = preguntaNueva;
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
-                else  {
-                    preguntaLocal.setPuntosJugador2Acierto();
-                }
+                else {
+                    preguntaLocal.ofrecerNuevaPista();
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                    
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Fallo();
+                    }
+                    else {
+                        preguntaLocal.setPuntosJugador2Fallo();
+                    }
+                }   
 
-                //Se crea el objeto de la siguiente pregunta que va a aparecer
-                Pregunta preguntaNueva = new Pregunta(preguntaLocal);
-                preguntaLocal = preguntaNueva;
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
-            }
-            else {
-                preguntaLocal.subirContadorPista();
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                //Se actualiza la interfaz de FilmxQuiz
+                puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                respuestaFilmxQuiz.setText(null);
+                break;
                 
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Fallo();
+            case 2:
+                if (respuestaFilmxQuiz.getText().compareTo(String.valueOf(preguntaLocal.getPelicula().getAño())) == 0) {
+                    //Se computan los puntos obtenidos al acertar
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Acierto();
+                    }
+                    else  {
+                        preguntaLocal.setPuntosJugador2Acierto();
+                    }
+                    
+                    //Se crea el objeto de la siguiente pregunta que va a aparecer
+                    Pelicula peliculaAux = Pregunta.seleccionarPelicula();
+                    Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
+                    preguntaLocal = preguntaNueva;
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
-                    preguntaLocal.setPuntosJugador2Fallo();
-                }
-            }
-            
-            //Se actualiza la interfaz de FilmxQuiz
-            puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
-            puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
-            respuestaFilmxQuiz.setText(null);
-        }
-        else if (preguntaLocal.getId() == 2) {
-            if (respuestaFilmxQuiz.getText().compareTo(String.valueOf(preguntaLocal.getPelicula().getAño())) == 0) {
-                //Se computan los puntosobtenidos al acertar
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Acierto();
-                }
-                else  {
-                    preguntaLocal.setPuntosJugador2Acierto();
-                }
+                    preguntaLocal.ofrecerNuevaPista();
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                    
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Fallo();
+                    }
+                    else {
+                        preguntaLocal.setPuntosJugador2Fallo();
+                    }
+                }   
 
-                //Se crea el objeto de la siguiente pregunta que va a aparecer
-                Pregunta preguntaNueva = new Pregunta(preguntaLocal);
-                preguntaLocal = preguntaNueva;
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
-            }
-            else {
-                preguntaLocal.subirContadorPista();
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                //Se actualiza la interfaz de FilmxQuiz
+                puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                respuestaFilmxQuiz.setText(null);
+                break;
                 
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Fallo();
+            case 3:
+                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getGenero()) == 0) {
+                    //Se computan los puntos obtenidos al acertar
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Acierto();
+                    }
+                    else  {
+                        preguntaLocal.setPuntosJugador2Acierto();
+                    }
+                    
+                    //Se crea el objeto de la siguiente pregunta que va a aparecer
+                    Pelicula peliculaAux = Pregunta.seleccionarPelicula();
+                    Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
+                    preguntaLocal = preguntaNueva;
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
-                    preguntaLocal.setPuntosJugador2Fallo();
-                }
-            }
-            
-            //Se actualiza la interfaz de FilmxQuiz
-            puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
-            puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
-            respuestaFilmxQuiz.setText(null);
-        }
-        else if (preguntaLocal.getId() == 3) {
-            if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getGenero()) == 0) {
-                //Se computan los puntosobtenidos al acertar
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Acierto();
-                }
-                else  {
-                    preguntaLocal.setPuntosJugador2Acierto();
-                }
+                    preguntaLocal.ofrecerNuevaPista();
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                    
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Fallo();
+                    }
+                    else {
+                        preguntaLocal.setPuntosJugador2Fallo();
+                    }
+                }   
 
-                //Se crea el objeto de la siguiente pregunta que va a aparecer
-                Pregunta preguntaNueva = new Pregunta(preguntaLocal);
-                preguntaLocal = preguntaNueva;
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
-            }
-            else {
-                preguntaLocal.subirContadorPista();
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                //Se actualiza la interfaz de FilmxQuiz
+                puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                respuestaFilmxQuiz.setText(null);
+                break;
                 
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Fallo();
+            case 4:
+                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getDirector()) == 0) {
+                    //Se computan los puntos obtenidos al acertar
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Acierto();
+                    }
+                    else  {
+                        preguntaLocal.setPuntosJugador2Acierto();
+                    }
+                    
+                    //Se crea el objeto de la siguiente pregunta que va a aparecer
+                    Pelicula peliculaAux = Pregunta.seleccionarPelicula();
+                    Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
+                    preguntaLocal = preguntaNueva;
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
-                    preguntaLocal.setPuntosJugador2Fallo();
-                }
-            }
-            
-            //Se actualiza la interfaz de FilmxQuiz
-            puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
-            puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
-            respuestaFilmxQuiz.setText(null);
-        }
-        else if (preguntaLocal.getId() == 4) {
-            if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getDirector()) == 0) {
-                //Se computan los puntosobtenidos al acertar
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Acierto();
-                }
-                else  {
-                    preguntaLocal.setPuntosJugador2Acierto();
-                }
+                    preguntaLocal.ofrecerNuevaPista();
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                    
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Fallo();
+                    }
+                    else {
+                        preguntaLocal.setPuntosJugador2Fallo();
+                    }
+                }   
 
-                //Se crea el objeto de la siguiente pregunta que va a aparecer
-                Pregunta preguntaNueva = new Pregunta(preguntaLocal);
-                preguntaLocal = preguntaNueva;
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
-            }
-            else {
-                preguntaLocal.subirContadorPista();
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                //Se actualiza la interfaz de FilmxQuiz
+                puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                respuestaFilmxQuiz.setText(null);
+                break;
                 
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Fallo();
+            case 5:
+                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getActor()) == 0) {
+                    //Se computan los puntos obtenidos al acertar
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Acierto();
+                    }
+                    else  {
+                        preguntaLocal.setPuntosJugador2Acierto();
+                    }
+                    
+                    //Se crea el objeto de la siguiente pregunta que va a aparecer
+                    Pelicula peliculaAux = Pregunta.seleccionarPelicula();
+                    Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
+                    preguntaLocal = preguntaNueva;
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
-                    preguntaLocal.setPuntosJugador2Fallo();
-                }
-            }
-            
-            //Se actualiza la interfaz de FilmxQuiz
-            puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
-            puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
-            respuestaFilmxQuiz.setText(null);
-        }
-        else if (preguntaLocal.getId() == 5) {
-            if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getActor()) == 0) {
-                //Se computan los puntosobtenidos al acertar
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Acierto();
-                }
-                else  {
-                    preguntaLocal.setPuntosJugador2Acierto();
-                }
+                    preguntaLocal.ofrecerNuevaPista();
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                    
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Fallo();
+                    }
+                    else {
+                        preguntaLocal.setPuntosJugador2Fallo();
+                    }
+                }   
 
-                //Se crea el objeto de la siguiente pregunta que va a aparecer
-                Pregunta preguntaNueva = new Pregunta(preguntaLocal);
-                preguntaLocal = preguntaNueva;
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
-            }
-            else {
-                preguntaLocal.subirContadorPista();
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                //Se actualiza la interfaz de FilmxQuiz
+                puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                respuestaFilmxQuiz.setText(null);
+                break;
                 
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Fallo();
+            case 6:
+                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getActriz()) == 0) {
+                    //Se computan los puntos obtenidos al acertar
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Acierto();
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ha terminado de responder a todas las preguntas de FilmxQuiz, ahora le toca al jugador enemigo!","INFO", JOptionPane.INFORMATION_MESSAGE);
+                        preguntaLocal.setId(0);
+                    }
+                    else  {
+                        preguntaLocal.setPuntosJugador2Acierto();
+                        JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
+                        preguntaLocal.setId(0);
+                    }
+                    
+                    FilmxQuiz.dispose();
                 }
                 else {
-                    preguntaLocal.setPuntosJugador2Fallo();
-                }
-            }
-            
-            //Se actualiza la interfaz de FilmxQuiz
-            puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
-            puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
-            respuestaFilmxQuiz.setText(null);
-        }
-        else if (preguntaLocal.getId() == 6) {
-            if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getActriz()) == 0) {
-                //Se computan los puntosobtenidos al acertar
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Acierto();
-                    JOptionPane.showMessageDialog(FilmxQuiz,"Ha terminado de responder a todas las preguntas de FilmxQuiz, ahora le toca al jugador enemigo!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                    preguntaLocal.setId(0);
-                }
-                else  {
-                    preguntaLocal.setPuntosJugador2Acierto();
-                    JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                    preguntaLocal.setId(0);
-                } 
+                    preguntaLocal.ofrecerNuevaPista();
+                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                    
+                    if (partidaNueva) {
+                        preguntaLocal.setPuntosJugador1Fallo();
+                    }
+                    else {
+                        preguntaLocal.setPuntosJugador2Fallo();
+                    }
+                }   
                 
-                FilmxQuiz.dispose();
-            }
-            else {
-                preguntaLocal.subirContadorPista();
-                preguntaFilmxQuiz.setText(preguntaLocal.toString());
+                //Se actualiza la interfaz de FilmxQuiz
+                puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
+                respuestaFilmxQuiz.setText(null);
+                break;
                 
-                if (partidaNueva) {
-                    preguntaLocal.setPuntosJugador1Fallo();
-                }
-                else {
-                    preguntaLocal.setPuntosJugador2Fallo();
-                }
-            }
-            
-            //Se actualiza la interfaz de FilmxQuiz
-            puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
-            puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
-            respuestaFilmxQuiz.setText(null);
+            default:
+                break;
         }
     }//GEN-LAST:event_responderFilmxQuizActionPerformed
 

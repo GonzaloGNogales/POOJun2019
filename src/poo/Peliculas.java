@@ -18,7 +18,7 @@ public class Peliculas {
     }
     
     //Funcionalidad necesaria
-    public ArrayList<Pelicula> verInfoPeliculas () {
+    public static ArrayList<Pelicula> verInfoPeliculas () {
     	ArrayList<Pelicula> logReg = leer();  //logReg es el vector con Peliculas registrados
     	
         return logReg;

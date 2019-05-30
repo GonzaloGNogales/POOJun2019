@@ -185,16 +185,13 @@ public class Usuario implements Serializable{
     }
     
     public static Usuario seleccionarUsuario () {
-        Random random = new Random();
-        int rnd = 0;
         ArrayList <Usuario> usuarios = Usuarios.leer(); //Se cargan todos los usuarios en el arraylist usuarios
+        Random random = new Random();
         
-        while (rnd < 0 || rnd > usuarios.size()) {
-            rnd = random.nextInt();
+        int rnd = random.nextInt(usuarios.size());
             
-            if (usuarios.get(rnd).getNombre().compareTo(Inicio.getUsuarioSesion().getNombre()) == 0) {
-                rnd = -1;
-            }
+        while (usuarios.get(rnd).getNombre().compareTo(Inicio.getUsuarioSesion().getNombre()) == 0) {
+            rnd = (int) Math.random()*usuarios.size();        
         }
 
         return usuarios.get(rnd);
