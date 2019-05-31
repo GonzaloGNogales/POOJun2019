@@ -50,15 +50,6 @@ public class Pregunta {
     public void ofrecerNuevaPista () {
         this.contadorPista++;
     }
-    
-    public int deducirPuntuacion (int n) {
-        return n -= 10;
-    }
-    
-    public int refrescarPuntuacionAcierto (int n) {
-        n = 50;
-        return n;
-    }
        
     //Métodos GET y SET
     public int getId() {

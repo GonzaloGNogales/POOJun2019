@@ -1430,7 +1430,7 @@
         <Property name="modal" type="boolean" value="true"/>
         <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[915, 300]"/>
+          <Dimension value="[1050, 300]"/>
         </Property>
       </Properties>
 
@@ -1439,7 +1439,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane5" pref="677" max="32767" attributes="0"/>
+                  <Component id="jScrollPane5" pref="812" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="cancelarPP" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
