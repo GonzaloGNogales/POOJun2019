@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Usuarios{
     static File archivo = new File("usuarios.txt");	
 	
+    //Comprueba que el usuario u pertenece al fichero y que, por consiguiente, está registrado 
     public static boolean autenticar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
         boolean encontrado = false;
@@ -25,6 +26,7 @@ public class Usuarios{
         return encontrado;
     }
     
+    //Añade el usuario u al fichero de usuarios
     public static boolean registrar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
         boolean terminado = false;
@@ -44,6 +46,7 @@ public class Usuarios{
         return terminado;
     }
     
+    //Renueva los datos del usuario en el fichero para guardarlos
     public static void actualizar (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
         boolean encontrado = false;
@@ -204,6 +207,7 @@ public class Usuarios{
         return aux;
     }
     
+    //Extrae un usuario dado su nombre del fichero de usuarios
     public static Usuario obtenerUsuario (String nom) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
         Usuario uaux = new Usuario();
@@ -220,5 +224,47 @@ public class Usuarios{
         }
         
         return uaux;
+    }
+    
+    //Extrae un usuario dada una partida del fichero de usuarios
+    public static Usuario obtenerUsuario (Partida partida) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Usuario uaux = new Usuario();
+        boolean encontrado = false;
+        
+        for (Usuario usuario: logReg) {
+            for (Partida p: usuario.getPartidas_pendientes()) {
+                if (p.getIdentificador() == (partida.getIdentificador())) { 
+                    uaux = usuario; 
+                    encontrado = true;
+                }
+            }      
+        }
+        if (!encontrado) {
+            uaux = null;
+        }
+        
+        return uaux;
+    }
+    
+    //Dada una identificación extrae del fichero la partida correspondiente
+    public static Partida obtenerPartida (int id) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Partida paux = new Partida();
+        boolean encontrado = false;
+        
+        for (Usuario usuario: logReg) {
+            for (Partida p: usuario.getPartidas_pendientes()) {
+                if (p.getIdentificador() == (id)) { 
+                    paux = p; 
+                    encontrado = true;
+                }
+            }      
+        }
+        if (!encontrado) {
+            paux = null;
+        }
+        
+        return paux;
     }
 }

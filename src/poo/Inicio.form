@@ -1504,6 +1504,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Responder Partida"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="responderPPActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

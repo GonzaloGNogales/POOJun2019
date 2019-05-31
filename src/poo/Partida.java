@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Partida implements Compartible, Serializable {
     
     //Variables de definición de las partidas
-    private int identificador = 0;
+    private int identificador;
     private Usuario jugador1;
     private Usuario jugador2;
     private String resultado_final;
@@ -17,12 +17,10 @@ public class Partida implements Compartible, Serializable {
     //Variable para marcar como parcial la partida cuando ya ha respondido el jugador1 y espera al jugador 2
     private boolean parcial;
     
-    //Variable para el identificador de partida autoincrementable
-    private static final AtomicInteger IDCONT = new AtomicInteger(0);
     
     //Constructores
     public Partida() {
-        this.identificador = IDCONT.incrementAndGet();
+        this.identificador = 0;
         this.jugador1 = null;
         this.jugador2 = null;
         this.resultado_final = "0-0";
@@ -31,8 +29,8 @@ public class Partida implements Compartible, Serializable {
         this.parcial = false;
     }
 
-    public Partida(Usuario jugador1, Usuario jugador2) {
-        this.identificador = IDCONT.incrementAndGet();
+    public Partida(int id, Usuario jugador1, Usuario jugador2) {
+        this.identificador = id;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.resultado_final = (ptos_jugador1 + " - " + ptos_jugador2);
@@ -41,8 +39,8 @@ public class Partida implements Compartible, Serializable {
         this.parcial = false;
     }
     
-    public Partida(Usuario jugador1, Usuario jugador2, String resultado_final, int ptos_jugador1, int ptos_jugador2) {
-        this.identificador = IDCONT.incrementAndGet();
+    public Partida(int id, Usuario jugador1, Usuario jugador2, String resultado_final, int ptos_jugador1, int ptos_jugador2) {
+        this.identificador = id;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.resultado_final = resultado_final;

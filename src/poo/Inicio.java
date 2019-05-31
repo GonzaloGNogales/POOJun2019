@@ -22,6 +22,9 @@ public class Inicio extends javax.swing.JFrame {
     //Pregunta Local para gestionar las preguntas con los botones
     private Pregunta preguntaLocal = new Pregunta();
     
+    //Partida a responder que se selecciona mediante el botón responder partida cuando se ha seleccionado de la lista.
+    private Partida partidaResponder = new Partida();
+    
     //Modelo necesario para ir agregando amigos a la lista para luego con el método setModel() pasarle la estructura creada y preparada al JList.
     private DefaultListModel dlm = new DefaultListModel();
     private DefaultListModel dlmC = new DefaultListModel();
@@ -1074,6 +1077,11 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         responderPP.setText("Responder Partida");
+        responderPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                responderPPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PartidasPendientesLayout = new javax.swing.GroupLayout(PartidasPendientes.getContentPane());
         PartidasPendientes.getContentPane().setLayout(PartidasPendientesLayout);
@@ -2032,12 +2040,20 @@ public class Inicio extends javax.swing.JFrame {
     private void responderFilmxQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responderFilmxQuizActionPerformed
         //Alogritmo para controlar si el jugador 1 ya ha terminado de contestar (partida parcial = TRUE) o si sigue contestando (partida parcial = FALSE)
         ArrayList<Partida> partidas = Usuarios.leerPartidasPendientes(usuarioSesion);
+        Partida pAux = new Partida ();
         boolean partidaNueva = false;
         for (Partida partida: partidas) {
             if (!(partida.getParcial())) {
                 partidaNueva = true;
+                pAux = partida;
+            }
+            else if (partida.getIdentificador() == partidaResponder.getIdentificador()) {
+                pAux = partida;
             }
         }
+        
+        
+        //Algoritmo para obtener la partida parcial que se va a contestar
               
         switch (preguntaLocal.getId()) {
             case 1:
@@ -2215,6 +2231,8 @@ public class Inicio extends javax.swing.JFrame {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
                         preguntaLocal.setPuntosJugador1Acierto();
+                        pAux.setParcial(true);
+                        Usuarios.actualizar(Usuarios.obtenerUsuario(pAux));
                         
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
@@ -2226,6 +2244,8 @@ public class Inicio extends javax.swing.JFrame {
                     }
                     else  {
                         preguntaLocal.setPuntosJugador2Acierto();
+                        String sAux = new String(usuarioSesion.completarPartida(pAux));
+                        muroFilmx.append(sAux);
                         
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
@@ -2260,6 +2280,26 @@ public class Inicio extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_responderFilmxQuizActionPerformed
+
+    private void responderPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_responderPPActionPerformed
+        if (listaPendientesPP.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(PartidasPendientes,"Seleccione una partida de la lista para poder responderla.","ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
+            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: ") + 1);
+            int id = (int) listaPendientesPP.getSelectedValue().charAt(index);
+            
+            System.err.println(id);
+            partidaResponder = Usuarios.obtenerPartida(id);
+            
+            //Configuración de la ventana JuegoFilmx.
+            FilmxQuiz.setModal(true);
+            FilmxQuiz.setLocationRelativeTo(null);
+            FilmxQuiz.setTitle("Filmx Quiz");
+            FilmxQuiz.setVisible(true);
+        }  
+    }//GEN-LAST:event_responderPPActionPerformed
 
     /**
      * @param args the command line arguments

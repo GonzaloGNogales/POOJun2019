@@ -1,6 +1,7 @@
 package poo;
 
 import java.io.*;
+import java.security.SecureRandom;
 import java.util.*;
 
 public class Usuario implements Serializable{
@@ -173,15 +174,39 @@ public class Usuario implements Serializable{
     }
     
     public Partida iniciarPartida (Usuario u) {
-        Partida partida = new Partida(this,u);
+        //Cada vez que se inicia una partida se le proporciona un identificador aleatorio y único
+        SecureRandom random = new SecureRandom();
+        int id = random.nextInt();
+        while (id < 0) {
+            id = random.nextInt();
+        }
+        System.err.println(id);
+        
+        Partida partida = new Partida(id,this,u);
         this.partidas_pendientes.add(partida);
         u.getPartidas_pendientes().add(partida);
 
         return partida;
     }
     
-    public void completarPartida (Partida partida) {
+    public StringBuilder completarPartida (Partida partida) {       
+        //Se quita la partida de partidas pendientes y se añade a partidas completadas.
+        partida.getJugador1().getPartidas_pendientes().remove(partida);
+        partida.getJugador2().getPartidas_pendientes().remove(partida);
+        partida.setParcial(false);
+        partida.getJugador1().getPartidas_completas().add(partida);   
+        partida.getJugador2().getPartidas_completas().add(partida);
         
+        //Se carga la información de la partida finalizada en los muros de los jugadores
+        StringBuilder mAux = new StringBuilder(partida.toString());       
+        partida.getJugador1().setMuro(mAux);
+        partida.getJugador2().setMuro(mAux);
+        
+        //Actualizamos los ficheros de los jugadores 1 y 2
+        Usuarios.actualizar(partida.getJugador1());
+        Usuarios.actualizar(partida.getJugador2());    
+        
+        return mAux;
     }
     
     public static Usuario seleccionarUsuario () {
