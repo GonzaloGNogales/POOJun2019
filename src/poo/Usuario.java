@@ -180,7 +180,6 @@ public class Usuario implements Serializable{
         while (id < 0) {
             id = random.nextInt();
         }
-        System.err.println(id);
         
         Partida partida = new Partida(id,this,u);
         this.partidas_pendientes.add(partida);

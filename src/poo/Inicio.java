@@ -2287,17 +2287,21 @@ public class Inicio extends javax.swing.JFrame {
         }
         else {
             //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
-            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: ") + 1);
-            int id = (int) listaPendientesPP.getSelectedValue().charAt(index);
+            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: "));
+            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 14);
+ 
+            partidaResponder = Usuarios.obtenerPartida(Integer.parseInt(id));
             
-            System.err.println(id);
-            partidaResponder = Usuarios.obtenerPartida(id);
-            
-            //Configuración de la ventana JuegoFilmx.
-            FilmxQuiz.setModal(true);
-            FilmxQuiz.setLocationRelativeTo(null);
-            FilmxQuiz.setTitle("Filmx Quiz");
-            FilmxQuiz.setVisible(true);
+            if (usuarioSesion.getNombre().compareTo(partidaResponder.getJugador2().getNombre()) == 0) {
+                //Configuración de la ventana JuegoFilmx.
+                FilmxQuiz.setModal(true);
+                FilmxQuiz.setLocationRelativeTo(null);
+                FilmxQuiz.setTitle("Filmx Quiz");
+                FilmxQuiz.setVisible(true);
+            }
+            else {
+                JOptionPane.showMessageDialog(PartidasPendientes,"Ya has jugado esta partida, espere a que el jugador 2 responda a las preguntas.","ERROR", JOptionPane.ERROR_MESSAGE);
+            }  
         }  
     }//GEN-LAST:event_responderPPActionPerformed
 
