@@ -98,8 +98,8 @@ public class Partida implements Compartible, Serializable {
         return resultado_final;
     }
 
-    public void setResultado_final(String resultado_final) {
-        this.resultado_final = resultado_final;
+    public void setResultado_final(int resultado1, int resultado2) {
+        this.resultado_final = (resultado1 + " - " + resultado2);
     }
 
     public int getPtos_jugador1() {

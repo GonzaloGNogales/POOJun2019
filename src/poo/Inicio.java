@@ -2024,7 +2024,6 @@ public class Inicio extends javax.swing.JFrame {
         if (preguntaLocal.getContadorPista()< 4) {
             preguntaLocal.ofrecerNuevaPista();
             puntuacionAcierto -= 10;
-            System.err.println(puntuacionAcierto);
             preguntaFilmxQuiz.setText(preguntaLocal.toString());
             
             //Alogritmo para controlar si el jugador 1 ya ha terminado de contestar (partida parcial = TRUE) o si sigue contestando (partida parcial = FALSE)
@@ -2287,7 +2286,10 @@ public class Inicio extends javax.swing.JFrame {
                     if (partidaNueva) {
                         preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                         pAux.setParcial(true);
-                        Usuarios.actualizar(Usuarios.obtenerUsuario(pAux));
+                        pAux.setPtos_jugador1(preguntaLocal.getPuntosJugador1());
+                        pAux.setPtos_jugador2(preguntaLocal.getPuntosJugador2());
+                        pAux.setResultado_final(preguntaLocal.getPuntosJugador1(), preguntaLocal.getPuntosJugador2());
+                        Usuarios.actualizar(Usuarios.obtenerUsuario(pAux));                       
                         
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
@@ -2303,6 +2305,9 @@ public class Inicio extends javax.swing.JFrame {
                     }
                     else  {
                         preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
+                        pAux.setPtos_jugador1(preguntaLocal.getPuntosJugador1());
+                        pAux.setPtos_jugador2(preguntaLocal.getPuntosJugador2());
+                        pAux.setResultado_final(preguntaLocal.getPuntosJugador1(), preguntaLocal.getPuntosJugador2());
                         String sAux = new String(usuarioSesion.completarPartida(pAux));
                         muroFilmx.append(sAux);
                         
