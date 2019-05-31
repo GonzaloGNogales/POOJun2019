@@ -50,6 +50,15 @@ public class Pregunta {
     public void ofrecerNuevaPista () {
         this.contadorPista++;
     }
+    
+    public int deducirPuntuacion (int n) {
+        return n -= 10;
+    }
+    
+    public int refrescarPuntuacionAcierto (int n) {
+        n = 50;
+        return n;
+    }
        
     //Métodos GET y SET
     public int getId() {
@@ -76,8 +85,8 @@ public class Pregunta {
         this.puntos_jugador_1 -= 10;
     }
     
-    public void setPuntosJugador1Acierto() {
-        this.puntos_jugador_1 += 50;
+    public void setPuntosJugador1Acierto(int num) {
+        this.puntos_jugador_1 += num;
     }
 
     public int getPuntosJugador2() {
@@ -88,8 +97,8 @@ public class Pregunta {
         return this.puntos_jugador_2 -= 10;
     }
 
-    public void setPuntosJugador2Acierto() {
-        this.puntos_jugador_2 += 50;
+    public void setPuntosJugador2Acierto(int num) {
+        this.puntos_jugador_2 += num;
     }
     
     public int getContadorPista() {

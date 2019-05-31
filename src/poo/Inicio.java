@@ -25,6 +25,9 @@ public class Inicio extends javax.swing.JFrame {
     //Partida a responder que se selecciona mediante el botón responder partida cuando se ha seleccionado de la lista.
     private Partida partidaResponder = new Partida();
     
+    //Variable global que contiene el entero de puntos que se suma al acertar una pregunta
+    private int puntuacionAcierto = 50;
+    
     //Modelo necesario para ir agregando amigos a la lista para luego con el método setModel() pasarle la estructura creada y preparada al JList.
     private DefaultListModel dlm = new DefaultListModel();
     private DefaultListModel dlmC = new DefaultListModel();
@@ -150,6 +153,8 @@ public class Inicio extends javax.swing.JFrame {
         puntosJ2FilmxQuiz = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         preguntaFilmxQuiz = new javax.swing.JTextArea();
+        jLabel27 = new javax.swing.JLabel();
+        numeroPreguntaFilmxQuiz = new javax.swing.JLabel();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -1166,6 +1171,8 @@ public class Inicio extends javax.swing.JFrame {
         preguntaFilmxQuiz.setRows(5);
         jScrollPane6.setViewportView(preguntaFilmxQuiz);
 
+        jLabel27.setText("Pregunta nº:");
+
         javax.swing.GroupLayout FilmxQuizLayout = new javax.swing.GroupLayout(FilmxQuiz.getContentPane());
         FilmxQuiz.getContentPane().setLayout(FilmxQuizLayout);
         FilmxQuizLayout.setHorizontalGroup(
@@ -1180,12 +1187,18 @@ public class Inicio extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(responderFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FilmxQuizLayout.createSequentialGroup()
-                            .addComponent(jugador1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(FilmxQuizLayout.createSequentialGroup()
+                                    .addComponent(jugador1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(FilmxQuizLayout.createSequentialGroup()
+                                    .addComponent(jLabel27)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(numeroPreguntaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(FilmxQuizLayout.createSequentialGroup()
-                                    .addGap(319, 319, 319)
+                                    .addGap(309, 309, 309)
                                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jugador2FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1217,7 +1230,10 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(puntosJ1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numeroPreguntaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jugador2FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(puntosJ2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -1991,6 +2007,7 @@ public class Inicio extends javax.swing.JFrame {
             jugador2FQ.setText(nuevaPartida.getJugador2().getNombre());
             puntosJ1FilmxQuiz.setText(String.valueOf(nuevaPartida.getPtos_jugador1()));
             puntosJ2FilmxQuiz.setText(String.valueOf(nuevaPartida.getPtos_jugador2()));
+            numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
             preguntaFilmxQuiz.setText(pregunta.toString());
 
             //Configuración de la ventana JuegoFilmx.
@@ -2009,6 +2026,7 @@ public class Inicio extends javax.swing.JFrame {
     private void siguientePistaFilmxQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguientePistaFilmxQuizActionPerformed
         if (preguntaLocal.getContadorPista()< 4) {
             preguntaLocal.ofrecerNuevaPista();
+            preguntaLocal.deducirPuntuacion(puntuacionAcierto);
             preguntaFilmxQuiz.setText(preguntaLocal.toString());
             
             //Alogritmo para controlar si el jugador 1 ya ha terminado de contestar (partida parcial = TRUE) o si sigue contestando (partida parcial = FALSE)
@@ -2051,29 +2069,34 @@ public class Inicio extends javax.swing.JFrame {
                 pAux = partida;
             }
         }
-        
-        
+
         //Algoritmo para obtener la partida parcial que se va a contestar
               
         switch (preguntaLocal.getId()) {
             case 1:
-                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getTitulo()) == 0) {
+                //Se escribe el numero de pregunta
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
+                if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getTitulo()) == 0) {                    
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Acierto();
+                        preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                     }
                     else  {
-                        preguntaLocal.setPuntosJugador2Acierto();
+                        preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                     }
                     
                     //Se crea el objeto de la siguiente pregunta que va a aparecer
                     Pelicula peliculaAux = Pregunta.seleccionarPelicula();
                     Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
                     preguntaLocal = preguntaNueva;
+                    //Se establecen los puntos a 50
+                    preguntaLocal.refrescarPuntuacionAcierto(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
+                    //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
                     preguntaLocal.ofrecerNuevaPista();
+                    preguntaLocal.deducirPuntuacion(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                     
                     if (partidaNueva) {
@@ -2091,23 +2114,29 @@ public class Inicio extends javax.swing.JFrame {
                 break;
                 
             case 2:
+                //Se escribe el numero de pregunta
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
                 if (respuestaFilmxQuiz.getText().compareTo(String.valueOf(preguntaLocal.getPelicula().getAño())) == 0) {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Acierto();
+                        preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                     }
                     else  {
-                        preguntaLocal.setPuntosJugador2Acierto();
+                        preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                     }
                     
                     //Se crea el objeto de la siguiente pregunta que va a aparecer
                     Pelicula peliculaAux = Pregunta.seleccionarPelicula();
                     Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
                     preguntaLocal = preguntaNueva;
+                    //Se establecen los puntos a 50
+                    preguntaLocal.refrescarPuntuacionAcierto(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
+                    //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
                     preguntaLocal.ofrecerNuevaPista();
+                    preguntaLocal.deducirPuntuacion(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                     
                     if (partidaNueva) {
@@ -2125,23 +2154,29 @@ public class Inicio extends javax.swing.JFrame {
                 break;
                 
             case 3:
+                //Se escribe el numero de pregunta
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
                 if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getGenero()) == 0) {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Acierto();
+                        preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                     }
                     else  {
-                        preguntaLocal.setPuntosJugador2Acierto();
+                        preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                     }
                     
                     //Se crea el objeto de la siguiente pregunta que va a aparecer
                     Pelicula peliculaAux = Pregunta.seleccionarPelicula();
                     Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
                     preguntaLocal = preguntaNueva;
+                    //Se establecen los puntos a 50
+                    preguntaLocal.refrescarPuntuacionAcierto(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
+                    //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
                     preguntaLocal.ofrecerNuevaPista();
+                    preguntaLocal.deducirPuntuacion(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                     
                     if (partidaNueva) {
@@ -2159,23 +2194,29 @@ public class Inicio extends javax.swing.JFrame {
                 break;
                 
             case 4:
+                //Se escribe el numero de pregunta
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
                 if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getDirector()) == 0) {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Acierto();
+                        preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                     }
                     else  {
-                        preguntaLocal.setPuntosJugador2Acierto();
+                        preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                     }
                     
                     //Se crea el objeto de la siguiente pregunta que va a aparecer
                     Pelicula peliculaAux = Pregunta.seleccionarPelicula();
                     Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
                     preguntaLocal = preguntaNueva;
+                    //Se establecen los puntos a 50
+                    preguntaLocal.refrescarPuntuacionAcierto(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
+                    //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
                     preguntaLocal.ofrecerNuevaPista();
+                    preguntaLocal.deducirPuntuacion(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                     
                     if (partidaNueva) {
@@ -2193,23 +2234,29 @@ public class Inicio extends javax.swing.JFrame {
                 break;
                 
             case 5:
+                //Se escribe el numero de pregunta
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
                 if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getActor()) == 0) {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Acierto();
+                        preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                     }
                     else  {
-                        preguntaLocal.setPuntosJugador2Acierto();
+                        preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                     }
                     
                     //Se crea el objeto de la siguiente pregunta que va a aparecer
                     Pelicula peliculaAux = Pregunta.seleccionarPelicula();
                     Pregunta preguntaNueva = new Pregunta(peliculaAux,preguntaLocal);
                     preguntaLocal = preguntaNueva;
+                    //Se establecen los puntos a 50
+                    preguntaLocal.refrescarPuntuacionAcierto(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                 }
                 else {
+                    //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
                     preguntaLocal.ofrecerNuevaPista();
+                    preguntaLocal.deducirPuntuacion(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                     
                     if (partidaNueva) {
@@ -2227,10 +2274,12 @@ public class Inicio extends javax.swing.JFrame {
                 break;
                 
             case 6:
+                //Se escribe el numero de pregunta
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(preguntaLocal.getId()));
                 if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getActriz()) == 0) {
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Acierto();
+                        preguntaLocal.setPuntosJugador1Acierto(puntuacionAcierto);
                         pAux.setParcial(true);
                         Usuarios.actualizar(Usuarios.obtenerUsuario(pAux));
                         
@@ -2240,10 +2289,10 @@ public class Inicio extends javax.swing.JFrame {
                         respuestaFilmxQuiz.setText(null);
                         
                         JOptionPane.showMessageDialog(FilmxQuiz,"Ha terminado de responder a todas las preguntas de FilmxQuiz, ahora le toca al jugador enemigo!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                        preguntaLocal.setId(0);             
+                                     
                     }
                     else  {
-                        preguntaLocal.setPuntosJugador2Acierto();
+                        preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                         String sAux = new String(usuarioSesion.completarPartida(pAux));
                         muroFilmx.append(sAux);
                         
@@ -2253,13 +2302,17 @@ public class Inicio extends javax.swing.JFrame {
                         respuestaFilmxQuiz.setText(null);
                         
                         JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
-                        preguntaLocal.setId(0);                      
                     }
                     
+                    //Se reestablecen los puntos a 50
+                    preguntaLocal.refrescarPuntuacionAcierto(puntuacionAcierto);
+                    preguntaLocal.setId(0);
                     FilmxQuiz.dispose();
                 }
                 else {
+                    //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
                     preguntaLocal.ofrecerNuevaPista();
+                    preguntaLocal.deducirPuntuacion(puntuacionAcierto);
                     preguntaFilmxQuiz.setText(preguntaLocal.toString());
                     
                     if (partidaNueva) {
@@ -2293,6 +2346,20 @@ public class Inicio extends javax.swing.JFrame {
             partidaResponder = Usuarios.obtenerPartida(Integer.parseInt(id));
             
             if (usuarioSesion.getNombre().compareTo(partidaResponder.getJugador2().getNombre()) == 0) {
+                //Generación de preguntas
+                Pelicula peliculaP = Pregunta.seleccionarPelicula();
+                Pregunta pregunta = new Pregunta(peliculaP,partidaResponder.getPtos_jugador1(),partidaResponder.getPtos_jugador2());
+                preguntaLocal = pregunta;
+
+                //Función de formular pregunta de la clase Pregunta y diseño de la ventana de FilmxQuiz
+                jugador1FilmxQuiz.setText(partidaResponder.getJugador1().getNombre());
+                jugador2FilmxQuiz.setText(partidaResponder.getJugador2().getNombre());
+                jugador1FQ.setText(partidaResponder.getJugador1().getNombre());
+                jugador2FQ.setText(partidaResponder.getJugador2().getNombre());
+                puntosJ1FilmxQuiz.setText(String.valueOf(partidaResponder.getPtos_jugador1()));
+                puntosJ2FilmxQuiz.setText(String.valueOf(partidaResponder.getPtos_jugador2()));
+                preguntaFilmxQuiz.setText(pregunta.toString());
+
                 //Configuración de la ventana JuegoFilmx.
                 FilmxQuiz.setModal(true);
                 FilmxQuiz.setLocationRelativeTo(null);
@@ -2413,6 +2480,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2436,6 +2504,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField nombreRegistro;
     private javax.swing.JLabel nombreUsuarioSesion;
     private javax.swing.JButton notificacionesFILMX;
+    private javax.swing.JLabel numeroPreguntaFilmxQuiz;
     private javax.swing.JButton partidasPendientesFilmx;
     private javax.swing.JPasswordField passInicio;
     private javax.swing.JTextField passRegistro;
