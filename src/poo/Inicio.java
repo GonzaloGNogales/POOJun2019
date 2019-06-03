@@ -2084,6 +2084,9 @@ public class Inicio extends javax.swing.JFrame {
                 pAux = partida;
             }
         }
+        
+        //Se escribe el numero de pregunta 1
+        numeroPreguntaFilmxQuiz.setText(String.valueOf(1));
 
         //Algoritmo para obtener la partida parcial que se va a contestar
               
@@ -2341,10 +2344,15 @@ public class Inicio extends javax.swing.JFrame {
                                      
                     }
                     else  {
+                        //Se actualiza la lista de partidas parciales de ambos jugadores
+                        dlmP.removeElement(pAux.toString());
+                        listaPendientesPP.setModel(dlmP);
+                        
                         preguntaLocal.setPuntosJugador2Acierto(puntuacionAcierto);
                         pAux.setPtos_jugador1(preguntaLocal.getPuntosJugador1());
                         pAux.setPtos_jugador2(preguntaLocal.getPuntosJugador2());
                         pAux.setResultado_final(preguntaLocal.getPuntosJugador1(), preguntaLocal.getPuntosJugador2());
+                        pAux.setParcial(false);
                         String sAux = new String(usuarioSesion.completarPartida(pAux));
                         muroFilmx.append(sAux);
                         
@@ -2352,11 +2360,7 @@ public class Inicio extends javax.swing.JFrame {
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
                         puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
                         respuestaFilmxQuiz.setText(null);
-                        
-                        //Se actualiza la lista de partidas parciales de ambos jugadores
-                        dlmP.removeElement(pAux.toString());
-                        listaPendientesPP.setModel(dlmP);
-                        
+   
                         JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
                     }
                     
@@ -2421,7 +2425,6 @@ public class Inicio extends javax.swing.JFrame {
                 FilmxQuiz.setLocationRelativeTo(null);
                 FilmxQuiz.setTitle("Filmx Quiz");
                 FilmxQuiz.setVisible(true);
-                PartidasPendientes.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(PartidasPendientes,"Ya has jugado esta partida, espere a que el jugador 2 responda a las preguntas.","ERROR", JOptionPane.ERROR_MESSAGE);
