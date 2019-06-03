@@ -176,7 +176,7 @@ public class Usuario implements Serializable{
     public Partida iniciarPartida (Usuario u) {
         //Cada vez que se inicia una partida se le proporciona un identificador aleatorio y único
         SecureRandom random = new SecureRandom();
-        int id = random.nextInt();
+        int id = 100000000 + random.nextInt(900000000);
         while (id < 0) {
             id = random.nextInt();
         }
@@ -186,6 +186,14 @@ public class Usuario implements Serializable{
         u.getPartidas_pendientes().add(partida);
 
         return partida;
+    }
+    
+    public void deshacerPartida (Partida partida) {
+        this.partidas_pendientes.remove(partida);
+        partida.getJugador2().getPartidas_pendientes().remove(partida);
+        
+        Usuarios.actualizar(this);
+        Usuarios.actualizar(partida.getJugador2());
     }
     
     public StringBuilder completarPartida (Partida partida) {       

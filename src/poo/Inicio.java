@@ -1983,6 +1983,9 @@ public class Inicio extends javax.swing.JFrame {
         if (Peliculas.obtenerPeliculas().size() < 1) {
             JOptionPane.showMessageDialog(Filmx,"Para jugar a FilmxQuiz debe dar de alta películas en el sistema.","ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        else if (Usuarios.leer().size() <= 1) {
+            JOptionPane.showMessageDialog(Filmx,"No hay suficientes jugadores registrados para jugar a FilmxQuiz.","ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         else {
             //Se crea una nueva partida que se añade a la lista de partidas pendientes eligiendo un usuario aleatorio
             Usuario uJQ = Usuario.seleccionarUsuario();
@@ -2017,6 +2020,21 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jugarPartidaFilmxActionPerformed
 
     private void cancelarFilmxQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarFilmxQuizActionPerformed
+        //Alogritmo para controlar si el jugador 1 ya ha terminado de contestar (partida parcial = TRUE) o si sigue contestando (partida parcial = FALSE)
+        ArrayList<Partida> partidas = Usuarios.leerPartidasPendientes(usuarioSesion);
+        Partida pAux = new Partida ();
+        boolean partidaNueva = false;
+        for (Partida partida: partidas) {
+            if (!(partida.getParcial())) {
+                partidaNueva = true;
+                pAux = partida;
+            }
+            else if (partida.getIdentificador() == partidaResponder.getIdentificador()) {
+                pAux = partida;
+            }
+        }
+        
+        usuarioSesion.deshacerPartida(pAux);
         FilmxQuiz.dispose();
     }//GEN-LAST:event_cancelarFilmxQuizActionPerformed
 
@@ -2335,6 +2353,10 @@ public class Inicio extends javax.swing.JFrame {
                         puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
                         respuestaFilmxQuiz.setText(null);
                         
+                        //Se actualiza la lista de partidas parciales de ambos jugadores
+                        dlmP.removeElement(pAux.toString());
+                        listaPendientesPP.setModel(dlmP);
+                        
                         JOptionPane.showMessageDialog(FilmxQuiz,"La partida ha terminado!","INFO", JOptionPane.INFORMATION_MESSAGE);
                     }
                     
@@ -2399,6 +2421,7 @@ public class Inicio extends javax.swing.JFrame {
                 FilmxQuiz.setLocationRelativeTo(null);
                 FilmxQuiz.setTitle("Filmx Quiz");
                 FilmxQuiz.setVisible(true);
+                PartidasPendientes.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(PartidasPendientes,"Ya has jugado esta partida, espere a que el jugador 2 responda a las preguntas.","ERROR", JOptionPane.ERROR_MESSAGE);
