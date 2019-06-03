@@ -226,25 +226,74 @@ public class Usuarios{
         return uaux;
     }
     
-    //Extrae un usuario dada una partida del fichero de usuarios
-    public static Usuario obtenerUsuario (Partida partida) {
+    //Extrae un usuario dado su nombre del fichero de usuarios
+    public static ArrayList<Usuario> obtenerJugadores (Partida partida) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
-        Usuario uaux = new Usuario();
-        boolean encontrado = false;
+        ArrayList<Usuario> ususAux = new ArrayList<>();
         
         for (Usuario usuario: logReg) {
             for (Partida p: usuario.getPartidas_pendientes()) {
-                if (p.getIdentificador() == (partida.getIdentificador())) { 
-                    uaux = usuario; 
-                    encontrado = true;
+                if (p.getIdentificador() == (partida.getIdentificador())) {
+                    ususAux.add(usuario); 
                 }
-            }      
-        }
-        if (!encontrado) {
-            uaux = null;
+            }
         }
         
-        return uaux;
+        return ususAux;
+    }
+       
+    //Extrae un usuario dada una partida del fichero de usuarios
+    public static void actualizarUsuariosPartida (Partida partida, ArrayList<Usuario> arrayUsuarios) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Usuario uauxJ1 = new Usuario();
+        Usuario uauxJ2 = new Usuario();
+        Usuario u1 = new Usuario();
+        Usuario u2 = new Usuario();
+        boolean encontrado = false;
+        
+        //Primera búsqueda de un jugador de la partida
+        for (Usuario usuario: logReg) {
+            for (Usuario usu: arrayUsuarios) {
+                if (usuario.getNombre().compareTo(usu.getNombre()) == 0) {  
+                    for (Partida p: usuario.getPartidas_pendientes()) {
+                        if (p.getIdentificador() == (partida.getIdentificador())) { 
+                            uauxJ1 = usuario; 
+                            u1 = usu;
+                            encontrado = true;
+                        }
+                    }   
+                }
+            }
+        }
+        
+        //Cuando encontramos al jugador lo actualizamos
+        if (encontrado) {
+            logReg.remove(uauxJ1);
+            logReg.add(u1);
+            encontrado = false;
+        }
+
+        //Segunda búsqueda para encontrar al otro jugador
+        for (Usuario usuario: logReg) {
+            for (Usuario usu: arrayUsuarios) {
+                if (usuario.getNombre().compareTo(usu.getNombre()) == 0 && !(usuario.getNombre().equals(uauxJ1.getNombre()))) {  
+                    for (Partida p: usuario.getPartidas_pendientes()) {
+                        if (p.getIdentificador() == (partida.getIdentificador())) { 
+                            uauxJ2 = usuario; 
+                            u2 = usu;
+                            encontrado = true;
+                        }
+                    }   
+                }
+            }
+        }
+        
+        //Cuando encontramos al jugador lo actualizamos
+        if (encontrado) {
+            logReg.remove(uauxJ2);
+            logReg.add(u2);
+        }
+        
     }
     
     //Dada una identificación extrae del fichero la partida correspondiente

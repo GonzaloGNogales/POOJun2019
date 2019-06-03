@@ -2288,8 +2288,27 @@ public class Inicio extends javax.swing.JFrame {
                         pAux.setParcial(true);
                         pAux.setPtos_jugador1(preguntaLocal.getPuntosJugador1());
                         pAux.setPtos_jugador2(preguntaLocal.getPuntosJugador2());
-                        pAux.setResultado_final(preguntaLocal.getPuntosJugador1(), preguntaLocal.getPuntosJugador2());
-                        Usuarios.actualizar(Usuarios.obtenerUsuario(pAux));                       
+                        pAux.setResultado_final(preguntaLocal.getPuntosJugador1(), preguntaLocal.getPuntosJugador2()); 
+                        
+                        //Actualización de puntos
+                        ArrayList<Usuario> jugadores = Usuarios.obtenerJugadores(pAux);
+                        for (Usuario u: jugadores) {
+                            for (Partida p: u.getPartidas_pendientes()) {
+                                if (p.getIdentificador() == pAux.getIdentificador()) {
+                                    Partida aux = p;
+                                    aux.setParcial(true);
+                                    aux.setPtos_jugador1(pAux.getPtos_jugador1());
+                                    aux.setPtos_jugador2(pAux.getPtos_jugador2());
+                                    aux.setResultado_final(pAux.getPtos_jugador1(), pAux.getPtos_jugador2());
+                                    
+                                    u.getPartidas_pendientes().remove(p);
+                                    u.getPartidas_pendientes().add(aux);
+                                    Usuarios.actualizar(u);
+                                }
+                            }
+                        }
+                        
+                        Usuarios.actualizarUsuariosPartida(pAux, jugadores);  
                         
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
@@ -2356,7 +2375,7 @@ public class Inicio extends javax.swing.JFrame {
         else {
             //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
             int index = listaPendientesPP.getSelectedValue().indexOf(("Id: "));
-            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 14);
+            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 13);
  
             partidaResponder = Usuarios.obtenerPartida(Integer.parseInt(id));
             
