@@ -33,6 +33,7 @@ public class Inicio extends javax.swing.JFrame {
     private DefaultListModel dlmC = new DefaultListModel();
     private DefaultListModel dlmP = new DefaultListModel();
     private DefaultListModel dlmCPartida = new DefaultListModel();
+    private DefaultListModel dlmClasificacion = new DefaultListModel();
     
     public Inicio() {
         initComponents();
@@ -165,7 +166,7 @@ public class Inicio extends javax.swing.JFrame {
         numeroPreguntaFilmxQuiz = new javax.swing.JLabel();
         menuClasificacion = new javax.swing.JDialog();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaClasificacion = new javax.swing.JList<>();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -1340,10 +1341,10 @@ public class Inicio extends javax.swing.JFrame {
         menuClasificacion.setResizable(false);
         menuClasificacion.setSize(new java.awt.Dimension(945, 510));
 
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setToolTipText("");
-        jScrollPane7.setViewportView(jList1);
-        jList1.getAccessibleContext().setAccessibleParent(Filmx);
+        listaClasificacion.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaClasificacion.setToolTipText("");
+        jScrollPane7.setViewportView(listaClasificacion);
+        listaClasificacion.getAccessibleContext().setAccessibleParent(Filmx);
 
         javax.swing.GroupLayout menuClasificacionLayout = new javax.swing.GroupLayout(menuClasificacion.getContentPane());
         menuClasificacion.getContentPane().setLayout(menuClasificacionLayout);
@@ -1532,6 +1533,14 @@ public class Inicio extends javax.swing.JFrame {
                 dlmCPartida.addElement(partida.toString());
             }
             partidaSeleccionadaSCP.setModel(dlmCPartida);
+            
+            //Se carga la clasificación al iniciar
+            dlmClasificacion.removeAllElements();
+            listaClasificacion.setModel(dlmClasificacion);
+            for (String s: Clasificacion.visualizar()) {
+                dlmClasificacion.addElement(s);
+            }
+            listaClasificacion.setModel(dlmClasificacion);
             
             Filmx.setVisible(true);
             this.dispose();
@@ -2785,7 +2794,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2799,6 +2807,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jugador2FQ;
     private javax.swing.JLabel jugador2FilmxQuiz;
     private javax.swing.JButton jugarPartidaFilmx;
+    private javax.swing.JList<String> listaClasificacion;
     private javax.swing.JList<String> listaPendientesPP;
     private javax.swing.JDialog menuClasificacion;
     private javax.swing.JTextArea muroFilmx;

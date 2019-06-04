@@ -12,13 +12,16 @@ public class Clasificacion {
         
     }
     
-    public void visualizar () {
+    public static ArrayList<String> visualizar () {
         //Se muestra el detalle de las partidas de todos los usuarios del sistema
         ArrayList<Usuario> usuariosSistema = Usuarios.leer();
+        ArrayList<String> resultado = new ArrayList<>();
         
         for (Usuario u: usuariosSistema) {
-            Item.detallePartidas(u.getNombre());
+            resultado.add(Item.detallePartidas(u.getNombre()));
         }  
+        
+        return resultado;
     }
     
     public void ordenarVictorias () {

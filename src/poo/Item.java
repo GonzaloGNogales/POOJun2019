@@ -28,6 +28,7 @@ public class Item {
         this.ptos = sumatorio_pts;
     }
     
+    //Muestra los detalles de las partidas del usuario que coincida con el nombre
     public static String detallePartidas (String nombre) {
         Usuario u = Usuarios.obtenerUsuario(nombre);
         Item i = new Item(u);
