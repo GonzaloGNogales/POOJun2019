@@ -171,6 +171,7 @@ public class Inicio extends javax.swing.JFrame {
         ordenarPuntosClasificacion = new javax.swing.JButton();
         ordenarVictoriasClasificacion = new javax.swing.JButton();
         ordenarPorcentajeClasificacion = new javax.swing.JButton();
+        txtClasificacion = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -1359,10 +1360,16 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         ordenarPuntosClasificacion.setText("Ordenar por puntos");
+        ordenarPuntosClasificacion.setPreferredSize(new java.awt.Dimension(180, 180));
 
         ordenarVictoriasClasificacion.setText("Ordenar por victorias");
+        ordenarVictoriasClasificacion.setPreferredSize(new java.awt.Dimension(180, 40));
 
         ordenarPorcentajeClasificacion.setText("Ordenar por porcentaje");
+        ordenarPorcentajeClasificacion.setPreferredSize(new java.awt.Dimension(180, 40));
+
+        txtClasificacion.setText("Guardar en TXT");
+        txtClasificacion.setPreferredSize(new java.awt.Dimension(145, 75));
 
         javax.swing.GroupLayout menuClasificacionLayout = new javax.swing.GroupLayout(menuClasificacion.getContentPane());
         menuClasificacion.getContentPane().setLayout(menuClasificacionLayout);
@@ -1379,9 +1386,10 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(menuClasificacionLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ordenarPuntosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ordenarPuntosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(92, Short.MAX_VALUE))))
         );
         menuClasificacionLayout.setVerticalGroup(
@@ -1395,7 +1403,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                        .addGap(48, 48, 48)
+                        .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
                         .addComponent(cancelarClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane7))
                 .addContainerGap())
@@ -2526,9 +2536,15 @@ public class Inicio extends javax.swing.JFrame {
                         String sAux = new String(usuarioSesion.completarPartida(pAux));
                         muroFilmx.append(sAux);
                         
-                        //Se actualiza la lista de compartir partidas
+                        //Se actualiza la lista de compartir partidas y la clasificación
                         dlmCPartida.addElement(pAux.mostrarCompleta());
                         partidaSeleccionadaSCP.setModel(dlmCPartida);
+                        dlmClasificacion.removeAllElements();
+                        listaClasificacion.setModel(dlmClasificacion);
+                        for (String s: Clasificacion.visualizar()) {
+                            dlmClasificacion.addElement(s);
+                        }
+                        listaClasificacion.setModel(dlmClasificacion);
                         
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
@@ -2886,6 +2902,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> solRecibidasNotificacionesAmigos;
     private javax.swing.JTextField tituloAlta;
     private javax.swing.JTextField tituloCritica;
+    private javax.swing.JButton txtClasificacion;
     private javax.swing.JTextField usuInicio;
     private javax.swing.JTextField usuarioBusInvitarAmigos;
     // End of variables declaration//GEN-END:variables

@@ -1896,9 +1896,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ordenarVictoriasClasificacion" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="ordenarPuntosClasificacion" min="-2" pref="165" max="-2" attributes="0"/>
-                              <Component id="ordenarPorcentajeClasificacion" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                              <Component id="ordenarVictoriasClasificacion" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="ordenarPuntosClasificacion" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="ordenarPorcentajeClasificacion" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                              <Component id="txtClasificacion" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="92" max="32767" attributes="0"/>
                       </Group>
@@ -1917,7 +1918,9 @@
                           <Component id="ordenarVictoriasClasificacion" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ordenarPorcentajeClasificacion" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace pref="297" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="txtClasificacion" min="-2" pref="75" max="-2" attributes="0"/>
+                          <EmptySpace pref="174" max="32767" attributes="0"/>
                           <Component id="cancelarClasificacion" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane7" max="32767" attributes="0"/>
@@ -1968,16 +1971,33 @@
         <Component class="javax.swing.JButton" name="ordenarPuntosClasificacion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ordenar por puntos"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[180, 180]"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="ordenarVictoriasClasificacion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ordenar por victorias"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[180, 40]"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="ordenarPorcentajeClasificacion">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ordenar por porcentaje"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[180, 40]"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="txtClasificacion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Guardar en TXT"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[145, 75]"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
