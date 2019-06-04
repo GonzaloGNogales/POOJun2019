@@ -13,7 +13,12 @@ public class Clasificacion {
     }
     
     public void visualizar () {
+        //Se muestra el detalle de las partidas de todos los usuarios del sistema
+        ArrayList<Usuario> usuariosSistema = Usuarios.leer();
         
+        for (Usuario u: usuariosSistema) {
+            Item.detallePartidas(u.getNombre());
+        }  
     }
     
     public void ordenarVictorias () {

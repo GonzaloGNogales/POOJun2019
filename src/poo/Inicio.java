@@ -32,7 +32,7 @@ public class Inicio extends javax.swing.JFrame {
     private DefaultListModel dlm = new DefaultListModel();
     private DefaultListModel dlmC = new DefaultListModel();
     private DefaultListModel dlmP = new DefaultListModel();
-    private DefaultListModel dlmCP = new DefaultListModel();
+    private DefaultListModel dlmCPartida = new DefaultListModel();
     
     public Inicio() {
         initComponents();
@@ -133,7 +133,7 @@ public class Inicio extends javax.swing.JFrame {
         compartirTodosSCPartida = new javax.swing.JButton();
         cancelarCpartidaSCP = new javax.swing.JButton();
         compartirSeleccionadosSCPartida = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
         partidaSeleccionadaSCP = new javax.swing.JList<>();
         SeleccionadorCompartirTodo = new javax.swing.JDialog();
         compartirTodosSCT = new javax.swing.JButton();
@@ -1008,6 +1008,8 @@ public class Inicio extends javax.swing.JFrame {
 
         SeleccionadorCompartirCritica.getAccessibleContext().setAccessibleParent(Filmx);
 
+        SeleccionadorCompartirPartida.setSize(new java.awt.Dimension(1000, 475));
+
         jLabel28.setText("Seleccione la partida que desea compartir:");
 
         compartirTodosSCPartida.setText("Compartir con todos");
@@ -1034,7 +1036,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         partidaSeleccionadaSCP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane7.setViewportView(partidaSeleccionadaSCP);
+        jScrollPane8.setViewportView(partidaSeleccionadaSCP);
 
         javax.swing.GroupLayout SeleccionadorCompartirPartidaLayout = new javax.swing.GroupLayout(SeleccionadorCompartirPartida.getContentPane());
         SeleccionadorCompartirPartida.getContentPane().setLayout(SeleccionadorCompartirPartidaLayout);
@@ -1043,12 +1045,15 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 35, Short.MAX_VALUE)
+                    .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 532, Short.MAX_VALUE))
+                    .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addGap(100, 100, 100)
                         .addComponent(cancelarCpartidaSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(compartirTodosSCPartida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(compartirSeleccionadosSCPartida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1067,7 +1072,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(compartirSeleccionadosSCPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
                         .addComponent(cancelarCpartidaSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane7))
+                    .addComponent(jScrollPane8))
                 .addContainerGap())
         );
 
@@ -1478,12 +1483,12 @@ public class Inicio extends javax.swing.JFrame {
             listaPendientesPP.setModel(dlmP);
             
             //Configuración inicial de la lista de partidas completadas para compartir
-            dlmCP.removeAllElements();
-            partidaSeleccionadaSCP.setModel(dlmP);
+            dlmCPartida.removeAllElements();
+            partidaSeleccionadaSCP.setModel(dlmCPartida);
             for (Partida partida: usuarioSesion.getPartidas_completas()) {
-                dlmCP.addElement(partida.toString());              
+                dlmCPartida.addElement(partida.toString());
             }
-            partidaSeleccionadaSCP.setModel(dlmCP);
+            partidaSeleccionadaSCP.setModel(dlmCPartida);
             
             Filmx.setVisible(true);
             this.dispose();
@@ -2430,8 +2435,8 @@ public class Inicio extends javax.swing.JFrame {
                         muroFilmx.append(sAux);
                         
                         //Se actualiza la lista de compartir partidas
-                        dlmCP.addElement(pAux.toString());
-                        partidaSeleccionadaSCP.setModel(dlmCP);
+                        dlmCPartida.addElement(pAux.toString());
+                        partidaSeleccionadaSCP.setModel(dlmCPartida);
                         
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
@@ -2515,8 +2520,8 @@ public class Inicio extends javax.swing.JFrame {
         }
         else {
             //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
-            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: "));
-            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 13);           
+            int index = partidaSeleccionadaSCP.getSelectedValue().indexOf(("Id: "));
+            String id = partidaSeleccionadaSCP.getSelectedValue().substring(index + 4, index + 13);           
             
             usuarioSesion.compartirPartida(Usuarios.obtenerPartidaCompleta(Integer.parseInt(id)));
             JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Se ha compartido la partida con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
@@ -2533,14 +2538,14 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
         else if (partidaSeleccionadaSCP.isSelectionEmpty() || "".equals(partidaSeleccionadaSCP.getSelectedValue())) {
-            JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Todavía no hay ninguna partida completada.","ERROR", JOptionPane.ERROR_MESSAGE);            
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Seleccione una partida de la lista o complete alguna para poder compartirla.","ERROR", JOptionPane.ERROR_MESSAGE);            
         }
         else {           
             int[] indices = amigosFilmx.getSelectedIndices();
             
             //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
-            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: "));
-            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 13);
+            int index = partidaSeleccionadaSCP.getSelectedValue().indexOf(("Id: "));
+            String id = partidaSeleccionadaSCP.getSelectedValue().substring(index + 4, index + 13);
  
             if (indices.length == 1) {               
                 Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
@@ -2597,10 +2602,10 @@ public class Inicio extends javax.swing.JFrame {
 
     private void CompartirPartidaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompartirPartidaFilmxActionPerformed
         //Configuración de la ventana SeleccionadorCompartirCrítica.
-        SeleccionadorCompartirCritica.setModal(true);
-        SeleccionadorCompartirCritica.setLocationRelativeTo(null);
-        SeleccionadorCompartirCritica.setTitle("Seleccionador Partida");
-        SeleccionadorCompartirCritica.setVisible(true);
+        SeleccionadorCompartirPartida.setModal(true);
+        SeleccionadorCompartirPartida.setLocationRelativeTo(null);
+        SeleccionadorCompartirPartida.setTitle("Seleccionador Partida");
+        SeleccionadorCompartirPartida.setVisible(true);
     }//GEN-LAST:event_CompartirPartidaFilmxActionPerformed
 
     /**
@@ -2729,7 +2734,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel jugador1FQ;
     private javax.swing.JLabel jugador1FilmxQuiz;
     private javax.swing.JLabel jugador2FQ;

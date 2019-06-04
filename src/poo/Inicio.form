@@ -1330,6 +1330,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="SeleccionadorCompartirPartida">
+      <Properties>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1000, 475]"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -1337,13 +1342,18 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel28" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
-                      <Component id="jScrollPane7" alignment="0" min="-2" pref="740" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel28" min="-2" pref="258" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="532" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane8" min="-2" pref="725" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           <Component id="cancelarCpartidaSCP" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <Component id="compartirTodosSCPartida" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
@@ -1360,14 +1370,14 @@
                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="compartirTodosSCPartida" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="compartirSeleccionadosSCPartida" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace pref="273" max="32767" attributes="0"/>
                           <Component id="cancelarCpartidaSCP" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane7" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane8" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -1410,7 +1420,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compartirSeleccionadosSCPartidaActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane7">
+        <Container class="javax.swing.JScrollPane" name="jScrollPane8">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>

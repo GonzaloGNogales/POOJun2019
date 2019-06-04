@@ -28,7 +28,7 @@ public class Item {
         this.ptos = sumatorio_pts;
     }
     
-    public String detallePartidas (String nombre) {
+    public static String detallePartidas (String nombre) {
         Usuario u = Usuarios.obtenerUsuario(nombre);
         Item i = new Item(u);
         
