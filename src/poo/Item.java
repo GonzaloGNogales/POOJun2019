@@ -9,16 +9,30 @@ public class Item {
     private int ptos;
     
     public Item (Usuario u) {
-	nombreUsuario = u.getNombre();
-	jugadas = (u.getPartidas_ganadas() + u.getPartidas_perdidas() + u.getPartidas_empatadas());
-	ganadas = u.getPartidas_ganadas();
-	perdidas = u.getPartidas_perdidas();
-	porcentaje_victorias = (u.getPartidas_ganadas() / (u.getPartidas_ganadas() + u.getPartidas_empatadas() + u.getPartidas_perdidas()));
-	ptos = ((u.getPartidas_ganadas() * 3) + (u.getPartidas_empatadas()));
+	this.nombreUsuario = u.getNombre();
+	this.jugadas = (u.getPartidas_ganadas() + u.getPartidas_perdidas() + u.getPartidas_empatadas());
+	this.ganadas = u.getPartidas_ganadas();
+	this.perdidas = u.getPartidas_perdidas();
+	this.porcentaje_victorias = (((u.getPartidas_ganadas()) / (u.getPartidas_ganadas() + u.getPartidas_empatadas() + u.getPartidas_perdidas())) * 100);
+	
+        //Cálculo del sumatorio de puntos del usuario que se analiza en el item
+        int sumatorio_pts = 0;
+        for (Partida partida: u.getPartidas_completas()) {
+            if (nombreUsuario.equals(partida.getJugador1())) {
+                sumatorio_pts += partida.getPtos_jugador1();
+            }
+            else if (nombreUsuario.equals(partida.getJugador2())) {
+                sumatorio_pts += partida.getPtos_jugador2();
+            }
+        }
+        this.ptos = sumatorio_pts;
     }
     
-    public void detallePartidas(String nombre) {
+    public String detallePartidas (String nombre) {
+        Usuario u = Usuarios.obtenerUsuario(nombre);
+        Item i = new Item(u);
         
+        return i.toString();
     }
     
     
