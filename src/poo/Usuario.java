@@ -130,9 +130,12 @@ public class Usuario implements Serializable{
     }
     
     public void compartirTodo () {
+        //Se almacenan los amigos en un array y se leen los ficheros de peliculas y de usuarios del sistema
         ArrayList<Usuario> usuarios = Usuarios.leerAmigos(this);
         ArrayList<Pelicula> peliculasSistema = Peliculas.leer();
+        ArrayList<Usuario> usuariosSistema = Usuarios.leer();
         
+        //Algoritmos para compartir sistemáticamente cada película, crítica o partida con todos los amigos del usuario que llama al método
         for (Pelicula p: peliculasSistema) {
             p.compartir(usuarios);
             ArrayList<Critica> criticasP = p.getCriticas();
@@ -140,11 +143,20 @@ public class Usuario implements Serializable{
             for (Critica c: criticasP) {
                 c.compartir(usuarios);
             }
-        }     
+        }    
+        
+        for (Usuario u: usuariosSistema) {
+            ArrayList<Partida> partidas = u.getPartidas_completas();
+            
+            for (Partida partida: partidas) {
+                partida.compartir(usuarios);
+            }
+        }
     }
     
     public void compartirTodo (Usuario u) {
         ArrayList<Pelicula> peliculasSistema = Peliculas.leer();
+        ArrayList<Usuario> usuariosSistema = Usuarios.leer();
         
         for (Pelicula p: peliculasSistema) {
             p.compartir(u);
@@ -152,6 +164,14 @@ public class Usuario implements Serializable{
             
             for (Critica c: criticasP) {
                 c.compartir(u);
+            }
+        }
+        
+        for (Usuario usu: usuariosSistema) {
+            ArrayList<Partida> partidas = usu.getPartidas_completas();
+            
+            for (Partida partida: partidas) {
+                partida.compartir(u);
             }
         }
     }
