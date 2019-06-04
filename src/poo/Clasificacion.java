@@ -7,11 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Clasificacion {
-    
-    public void actualizar (Partida p) {
-        
-    }
-    
+
     public static ArrayList<String> visualizar () {
         //Se muestra el detalle de las partidas de todos los usuarios del sistema
         ArrayList<Usuario> usuariosSistema = Usuarios.leer();
