@@ -209,10 +209,10 @@ public class Usuario implements Serializable{
     }
     
     public void deshacerPartida (Partida partida) {
-        this.partidas_pendientes.remove(partida);
+        partida.getJugador1().getPartidas_pendientes().remove(partida);
         partida.getJugador2().getPartidas_pendientes().remove(partida);
         
-        Usuarios.actualizar(this);
+        Usuarios.actualizar(partida.getJugador1());
         Usuarios.actualizar(partida.getJugador2());
     }
     

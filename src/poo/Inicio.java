@@ -1216,18 +1216,18 @@ public class Inicio extends javax.swing.JFrame {
 
         jugador2FilmxQuiz.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        jugador1FilmxQuiz.setPreferredSize(new java.awt.Dimension(55, 30));
+        jugador1FilmxQuiz.setPreferredSize(new java.awt.Dimension(50, 30));
 
         jLabel26.setText("vs");
         jLabel26.setPreferredSize(new java.awt.Dimension(20, 30));
 
-        jLabel24.setText("Puntos de");
-        jLabel24.setPreferredSize(new java.awt.Dimension(84, 30));
+        jLabel24.setText("Puntos de:");
+        jLabel24.setPreferredSize(new java.awt.Dimension(68, 30));
 
         jugador1FQ.setPreferredSize(new java.awt.Dimension(55, 30));
 
-        jLabel25.setText("Puntos de");
-        jLabel25.setPreferredSize(new java.awt.Dimension(84, 30));
+        jLabel25.setText("Puntos de:");
+        jLabel25.setPreferredSize(new java.awt.Dimension(68, 30));
 
         jugador2FQ.setPreferredSize(new java.awt.Dimension(55, 30));
 
@@ -1256,32 +1256,31 @@ public class Inicio extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(responderFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FilmxQuizLayout.createSequentialGroup()
-                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(FilmxQuizLayout.createSequentialGroup()
-                                    .addComponent(jugador1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jugador1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(FilmxQuizLayout.createSequentialGroup()
-                                    .addComponent(jLabel27)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(numeroPreguntaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(FilmxQuizLayout.createSequentialGroup()
-                                    .addGap(309, 309, 309)
-                                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jugador2FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(puntosJ2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(FilmxQuizLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jugador2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(numeroPreguntaFilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jugador2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(256, 256, 256)
+                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(FilmxQuizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FilmxQuizLayout.createSequentialGroup()
                                     .addComponent(jugador1FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(puntosJ1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(puntosJ1FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(16, 16, 16))
+                                .addGroup(FilmxQuizLayout.createSequentialGroup()
+                                    .addComponent(jugador2FQ, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(puntosJ2FilmxQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(respuestaFilmxQuiz, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(30, Short.MAX_VALUE))
@@ -2113,6 +2112,8 @@ public class Inicio extends javax.swing.JFrame {
         }
         
         usuarioSesion.deshacerPartida(pAux);
+        dlmP.removeElement(pAux);
+        listaPendientesPP.setModel(dlmP);
         FilmxQuiz.dispose();
     }//GEN-LAST:event_cancelarFilmxQuizActionPerformed
 
@@ -2162,14 +2163,14 @@ public class Inicio extends javax.swing.JFrame {
                 pAux = partida;
             }
         }
-        
-        //Se escribe el numero de pregunta 1
-        numeroPreguntaFilmxQuiz.setText(String.valueOf(1));
 
         //Algoritmo para obtener la partida parcial que se va a contestar
               
         switch (preguntaLocal.getId()) {
             case 1:
+                //Se escribe el numero de pregunta 1
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(1));
+                
                 if (respuestaFilmxQuiz.getText().compareTo(preguntaLocal.getPelicula().getTitulo()) == 0) {                    
                     //Se computan los puntos obtenidos al acertar
                     if (partidaNueva) {
@@ -2501,6 +2502,9 @@ public class Inicio extends javax.swing.JFrame {
                 puntosJ1FilmxQuiz.setText(String.valueOf(partidaResponder.getPtos_jugador1()));
                 puntosJ2FilmxQuiz.setText(String.valueOf(partidaResponder.getPtos_jugador2()));
                 preguntaFilmxQuiz.setText(pregunta.toString());
+                
+                //Se escribe el numero de pregunta 1
+                numeroPreguntaFilmxQuiz.setText(String.valueOf(1));
 
                 //Configuración de la ventana JuegoFilmx.
                 FilmxQuiz.setModal(true);
