@@ -32,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
     private DefaultListModel dlm = new DefaultListModel();
     private DefaultListModel dlmC = new DefaultListModel();
     private DefaultListModel dlmP = new DefaultListModel();
+    private DefaultListModel dlmCP = new DefaultListModel();
     
     public Inicio() {
         initComponents();
@@ -128,6 +129,12 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         criticaSeleccionadaSCC = new javax.swing.JList<>();
         SeleccionadorCompartirPartida = new javax.swing.JDialog();
+        jLabel28 = new javax.swing.JLabel();
+        compartirTodosSCPartida = new javax.swing.JButton();
+        cancelarCpartidaSCP = new javax.swing.JButton();
+        compartirSeleccionadosSCPartida = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        partidaSeleccionadaSCP = new javax.swing.JList<>();
         SeleccionadorCompartirTodo = new javax.swing.JDialog();
         compartirTodosSCT = new javax.swing.JButton();
         compartirSeleccionadosSCT = new javax.swing.JButton();
@@ -331,6 +338,11 @@ public class Inicio extends javax.swing.JFrame {
 
         CompartirPartidaFilmx.setText("Compartir Partida");
         CompartirPartidaFilmx.setPreferredSize(new java.awt.Dimension(150, 45));
+        CompartirPartidaFilmx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompartirPartidaFilmxActionPerformed(evt);
+            }
+        });
 
         CompartirCriticaFilmx.setText("Compartir Crítica");
         CompartirCriticaFilmx.setPreferredSize(new java.awt.Dimension(150, 45));
@@ -996,15 +1008,67 @@ public class Inicio extends javax.swing.JFrame {
 
         SeleccionadorCompartirCritica.getAccessibleContext().setAccessibleParent(Filmx);
 
+        jLabel28.setText("Seleccione la partida que desea compartir:");
+
+        compartirTodosSCPartida.setText("Compartir con todos");
+        compartirTodosSCPartida.setPreferredSize(new java.awt.Dimension(180, 50));
+        compartirTodosSCPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compartirTodosSCPartidaActionPerformed(evt);
+            }
+        });
+
+        cancelarCpartidaSCP.setText("Cancelar");
+        cancelarCpartidaSCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarCpartidaSCPActionPerformed(evt);
+            }
+        });
+
+        compartirSeleccionadosSCPartida.setText("Compartir seleccionados");
+        compartirSeleccionadosSCPartida.setPreferredSize(new java.awt.Dimension(180, 50));
+        compartirSeleccionadosSCPartida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compartirSeleccionadosSCPartidaActionPerformed(evt);
+            }
+        });
+
+        partidaSeleccionadaSCP.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane7.setViewportView(partidaSeleccionadaSCP);
+
         javax.swing.GroupLayout SeleccionadorCompartirPartidaLayout = new javax.swing.GroupLayout(SeleccionadorCompartirPartida.getContentPane());
         SeleccionadorCompartirPartida.getContentPane().setLayout(SeleccionadorCompartirPartidaLayout);
         SeleccionadorCompartirPartidaLayout.setHorizontalGroup(
             SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 35, Short.MAX_VALUE)
+                .addGroup(SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(cancelarCpartidaSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(compartirTodosSCPartida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(compartirSeleccionadosSCPartida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         SeleccionadorCompartirPartidaLayout.setVerticalGroup(
             SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addGap(18, 18, 18)
+                .addGroup(SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
+                        .addComponent(compartirTodosSCPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(compartirSeleccionadosSCPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
+                        .addComponent(cancelarCpartidaSCP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane7))
+                .addContainerGap())
         );
 
         SeleccionadorCompartirTodo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1394,6 +1458,7 @@ public class Inicio extends javax.swing.JFrame {
                 peliculaSeleccionadaSCP.addItem(p.getTitulo());
             }
             
+            //Configuración inicial de la lista de criticas para compartirlas
             dlmC.removeAllElements();
             criticaSeleccionadaSCC.setModel(dlmC);
             for (Pelicula p: Peliculas.obtenerPeliculas()) {
@@ -1404,12 +1469,21 @@ public class Inicio extends javax.swing.JFrame {
             }
             criticaSeleccionadaSCC.setModel(dlmC);
             
+            //Configuración inicial de la lista de partidas pendientes de FilmxQuiz
             dlmP.removeAllElements();
             listaPendientesPP.setModel(dlmP);
             for (Partida partida: usuarioSesion.getPartidas_pendientes()) {
                 dlmP.addElement(partida.toString());              
             }
             listaPendientesPP.setModel(dlmP);
+            
+            //Configuración inicial de la lista de partidas completadas para compartir
+            dlmCP.removeAllElements();
+            partidaSeleccionadaSCP.setModel(dlmP);
+            for (Partida partida: usuarioSesion.getPartidas_completas()) {
+                dlmCP.addElement(partida.toString());              
+            }
+            partidaSeleccionadaSCP.setModel(dlmCP);
             
             Filmx.setVisible(true);
             this.dispose();
@@ -2356,6 +2430,10 @@ public class Inicio extends javax.swing.JFrame {
                         String sAux = new String(usuarioSesion.completarPartida(pAux));
                         muroFilmx.append(sAux);
                         
+                        //Se actualiza la lista de compartir partidas
+                        dlmCP.addElement(pAux.toString());
+                        partidaSeleccionadaSCP.setModel(dlmCP);
+                        
                         //Se actualiza la interfaz de FilmxQuiz
                         puntosJ1FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador1()));
                         puntosJ2FilmxQuiz.setText(String.valueOf(preguntaLocal.getPuntosJugador2()));
@@ -2432,6 +2510,111 @@ public class Inicio extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_responderPPActionPerformed
 
+    private void compartirTodosSCPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirTodosSCPartidaActionPerformed
+        /*
+        if (criticaSeleccionadaSCC.isSelectionEmpty() || "".equals(criticaSeleccionadaSCC.getSelectedValue())) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Seleccione una crítica o publique alguna para compartirla.","ERROR", JOptionPane.ERROR_MESSAGE); 
+        }
+        else {
+            //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
+            int ind = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
+            String critica_Aux = criticaSeleccionadaSCC.getSelectedValue().substring(ind);
+                
+            //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
+            String critic = critica_Aux.substring(9, critica_Aux.length()-1);            
+            
+            usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critic));
+            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la película con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
+        */
+    }//GEN-LAST:event_compartirTodosSCPartidaActionPerformed
+
+    private void cancelarCpartidaSCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCpartidaSCPActionPerformed
+        SeleccionadorCompartirPartida.dispose();
+    }//GEN-LAST:event_cancelarCpartidaSCPActionPerformed
+
+    private void compartirSeleccionadosSCPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirSeleccionadosSCPartidaActionPerformed
+        /*
+        //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la crítica, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
+        if (amigosFilmx.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else if (criticaSeleccionadaSCC.isSelectionEmpty() || "".equals(criticaSeleccionadaSCC.getSelectedValue())) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Todavía no hay ninguna crítica publicada.","ERROR", JOptionPane.ERROR_MESSAGE);            
+        }
+        else {           
+            int[] indices = amigosFilmx.getSelectedIndices();
+            
+            //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
+            int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
+            String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
+                
+            //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
+            String critica = criticaAux.substring(9, criticaAux.length()-1);
+
+            if (indices.length == 1) {               
+                Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
+                
+                if (uC.getMuro().indexOf(critica) == -1) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Ya ha compartido la película con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
+                } 
+                
+                //System.err.println(Peliculas.obtenerCritica(critica));
+                usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critica), uC);  
+            }
+            else {
+                StringBuilder mensaje1 = new StringBuilder("");
+                StringBuilder mensaje2 = new StringBuilder("");
+                ArrayList<String> usuariosNom = new ArrayList<>(amigosFilmx.getSelectedValuesList());               
+                
+                for (String nom: usuariosNom) {
+                    Usuario uCs = Usuarios.obtenerUsuario(nom);
+                    
+                    if (uCs.getMuro().indexOf(critica) == -1) {
+                        if ("".equals(mensaje1)) {
+                           mensaje1.insert(0, uCs.getNombre()).append(" ");
+                        }
+                        else {
+                            mensaje1.append(uCs.getNombre()).append(" ");
+                        }                        
+                    }  
+                    else {
+                        if ("".equals(mensaje2)) {
+                           mensaje2.insert(0, uCs.getNombre()).append(" ");
+                        }
+                        else {
+                            mensaje2.append(uCs.getNombre()).append(" ");
+                        }  
+                    }  
+                    
+                    usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critica), uCs);
+                }
+                
+                if ("".equals(mensaje1.toString())) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Ya ha compartido la crítica con todos los amigos seleccionados.","ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+                else if ("".equals(mensaje2.toString())) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con todos los amigos seleccionados correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);                    
+                }
+                else {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con " + mensaje1 + "pero " + mensaje2 + "ya contaban con la crítica en su muro.","WARNING", JOptionPane.WARNING_MESSAGE);                    
+                }
+            }     
+        }
+        */
+    }//GEN-LAST:event_compartirSeleccionadosSCPartidaActionPerformed
+
+    private void CompartirPartidaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompartirPartidaFilmxActionPerformed
+        //Configuración de la ventana SeleccionadorCompartirCrítica.
+        SeleccionadorCompartirCritica.setModal(true);
+        SeleccionadorCompartirCritica.setLocationRelativeTo(null);
+        SeleccionadorCompartirCritica.setTitle("Seleccionador Partida");
+        SeleccionadorCompartirCritica.setVisible(true);
+    }//GEN-LAST:event_CompartirPartidaFilmxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2493,6 +2676,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JList<String> amigosFilmx;
     private javax.swing.JTextField añoAlta;
     private javax.swing.JButton cancelarAlta;
+    private javax.swing.JButton cancelarCpartidaSCP;
     private javax.swing.JButton cancelarCritica;
     private javax.swing.JButton cancelarFilmxQuiz;
     private javax.swing.JButton cancelarInicio;
@@ -2508,9 +2692,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton compartirPeliculaFilmx;
     private javax.swing.JButton compartirSeleccionadosSCC;
     private javax.swing.JButton compartirSeleccionadosSCP;
+    private javax.swing.JButton compartirSeleccionadosSCPartida;
     private javax.swing.JButton compartirSeleccionadosSCT;
     private javax.swing.JButton compartirTodosSCC;
     private javax.swing.JButton compartirTodosSCP;
+    private javax.swing.JButton compartirTodosSCPartida;
     private javax.swing.JButton compartirTodosSCT;
     private javax.swing.JTextArea criticaCritica;
     private javax.swing.JList<String> criticaSeleccionadaSCC;
@@ -2541,6 +2727,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2554,6 +2741,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel jugador1FQ;
     private javax.swing.JLabel jugador1FilmxQuiz;
     private javax.swing.JLabel jugador2FQ;
@@ -2565,6 +2753,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel nombreUsuarioSesion;
     private javax.swing.JButton notificacionesFILMX;
     private javax.swing.JLabel numeroPreguntaFilmxQuiz;
+    private javax.swing.JList<String> partidaSeleccionadaSCP;
     private javax.swing.JButton partidasPendientesFilmx;
     private javax.swing.JPasswordField passInicio;
     private javax.swing.JTextField passRegistro;

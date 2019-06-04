@@ -2,7 +2,6 @@ package poo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Partida implements Compartible, Serializable {
     
@@ -52,23 +51,31 @@ public class Partida implements Compartible, Serializable {
     //Implementación de los métodos abstractos para Crítica
     @Override
     public void compartir (Usuario u) {
-        
-        StringBuilder sb = new StringBuilder(this.toString());
-        u.setMuro(sb);
-        
+               
+        StringBuilder sbc1 = new StringBuilder(this.toString());
+        if (u.getMuro().indexOf(String.valueOf(this.getIdentificador())) == -1) {
+            sbc1.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre()).append('\n');
+            u.setMuro(sbc1);
+            Usuarios.actualizar(u);
+        }
+
     }
     
     @Override
     public void compartir (ArrayList<Usuario> users) {
         
-        StringBuilder sb = new StringBuilder(this.toString());    
-        for (Usuario u: users) {
-            u.setMuro(sb);
+        StringBuilder sbc2 = new StringBuilder(this.toString());    
+        for (Usuario us: users) {
+            Usuario uAux = Usuarios.obtenerUsuario(us.getNombre());
+            if (uAux.getMuro().indexOf(String.valueOf(this.getIdentificador())) == -1) {
+                sbc2.append("  Compartido por: ").append(Inicio.getUsuarioSesion().getNombre()).append('\n');
+                uAux.setMuro(sbc2);  
+                Usuarios.actualizar(uAux);
+            }       
         }
         
     }    
-    
-    
+      
     //Implementación Getters y Setters  
     public int getIdentificador() {
         return identificador;
