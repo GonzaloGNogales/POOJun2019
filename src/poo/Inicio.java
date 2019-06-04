@@ -1,9 +1,10 @@
 package poo;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -34,7 +35,7 @@ public class Inicio extends javax.swing.JFrame {
     private DefaultListModel dlmP = new DefaultListModel();
     private DefaultListModel dlmCPartida = new DefaultListModel();
     private DefaultListModel dlmClasificacion = new DefaultListModel();
-    
+        
     public Inicio() {
         initComponents();
     }
@@ -174,7 +175,7 @@ public class Inicio extends javax.swing.JFrame {
         txtClasificacion = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        tituloApp = new javax.swing.JLabel();
         usuInicio = new javax.swing.JTextField();
         registrarseInicio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -183,6 +184,7 @@ public class Inicio extends javax.swing.JFrame {
 
         Registro.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         Registro.setTitle("Registro");
+        Registro.setIconImage(getIconImage());
         Registro.setModal(true);
         Registro.setResizable(false);
         Registro.setSize(new java.awt.Dimension(330, 300));
@@ -255,6 +257,7 @@ public class Inicio extends javax.swing.JFrame {
 
         Filmx.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         Filmx.setTitle("Filmx");
+        Filmx.setIconImage(getIconImage());
         Filmx.setResizable(false);
         Filmx.setSize(new java.awt.Dimension(1079, 565));
 
@@ -497,6 +500,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         SeleccionadorPelicula.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        SeleccionadorPelicula.setIconImage(getIconImage());
         SeleccionadorPelicula.setModal(true);
         SeleccionadorPelicula.setResizable(false);
         SeleccionadorPelicula.setSize(new java.awt.Dimension(400, 200));
@@ -554,6 +558,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         Critica.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        Critica.setIconImage(getIconImage());
         Critica.setModal(true);
         Critica.setResizable(false);
         Critica.setSize(new java.awt.Dimension(640, 465));
@@ -645,6 +650,7 @@ public class Inicio extends javax.swing.JFrame {
         Critica.getAccessibleContext().setAccessibleParent(Critica);
 
         AltaPeliculas.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        AltaPeliculas.setIconImage(getIconImage());
         AltaPeliculas.setModal(true);
         AltaPeliculas.setResizable(false);
         AltaPeliculas.setSize(new java.awt.Dimension(400, 430));
@@ -750,6 +756,7 @@ public class Inicio extends javax.swing.JFrame {
 
         InvitarAmigos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         InvitarAmigos.setTitle("Invitar Amigos");
+        InvitarAmigos.setIconImage(getIconImage());
         InvitarAmigos.setModal(true);
         InvitarAmigos.setPreferredSize(new java.awt.Dimension(520, 235));
         InvitarAmigos.setResizable(false);
@@ -808,6 +815,7 @@ public class Inicio extends javax.swing.JFrame {
         InvitarAmigos.getAccessibleContext().setAccessibleParent(Filmx);
 
         NotificacionesAmigos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        NotificacionesAmigos.setIconImage(getIconImage());
         NotificacionesAmigos.setModal(true);
         NotificacionesAmigos.setResizable(false);
         NotificacionesAmigos.setSize(new java.awt.Dimension(436, 263));
@@ -890,6 +898,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         SeleccionadorCompartirPelicula.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        SeleccionadorCompartirPelicula.setIconImage(getIconImage());
         SeleccionadorCompartirPelicula.setModal(true);
         SeleccionadorCompartirPelicula.setResizable(false);
         SeleccionadorCompartirPelicula.setSize(new java.awt.Dimension(300, 305));
@@ -959,6 +968,7 @@ public class Inicio extends javax.swing.JFrame {
         SeleccionadorCompartirPelicula.getAccessibleContext().setAccessibleParent(Filmx);
 
         SeleccionadorCompartirCritica.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        SeleccionadorCompartirCritica.setIconImage(getIconImage());
         SeleccionadorCompartirCritica.setModal(true);
         SeleccionadorCompartirCritica.setPreferredSize(new java.awt.Dimension(1000, 475));
         SeleccionadorCompartirCritica.setResizable(false);
@@ -1030,6 +1040,7 @@ public class Inicio extends javax.swing.JFrame {
 
         SeleccionadorCompartirCritica.getAccessibleContext().setAccessibleParent(Filmx);
 
+        SeleccionadorCompartirPartida.setIconImage(getIconImage());
         SeleccionadorCompartirPartida.setSize(new java.awt.Dimension(1000, 475));
 
         jLabel28.setText("Seleccione la partida que desea compartir:");
@@ -1070,9 +1081,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 532, Short.MAX_VALUE))
-                    .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(SeleccionadorCompartirPartidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SeleccionadorCompartirPartidaLayout.createSequentialGroup()
                         .addGap(100, 100, 100)
@@ -1099,6 +1108,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         SeleccionadorCompartirTodo.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        SeleccionadorCompartirTodo.setIconImage(getIconImage());
         SeleccionadorCompartirTodo.setModal(true);
         SeleccionadorCompartirTodo.setResizable(false);
         SeleccionadorCompartirTodo.setSize(new java.awt.Dimension(255, 250));
@@ -1157,6 +1167,7 @@ public class Inicio extends javax.swing.JFrame {
         SeleccionadorCompartirTodo.getAccessibleContext().setAccessibleParent(Filmx);
 
         PartidasPendientes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        PartidasPendientes.setIconImage(getIconImage());
         PartidasPendientes.setModal(true);
         PartidasPendientes.setResizable(false);
         PartidasPendientes.setSize(new java.awt.Dimension(1050, 300));
@@ -1206,6 +1217,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         FilmxQuiz.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        FilmxQuiz.setIconImage(getIconImage());
         FilmxQuiz.setModal(true);
         FilmxQuiz.setResizable(false);
         FilmxQuiz.setSize(new java.awt.Dimension(725, 575));
@@ -1342,6 +1354,7 @@ public class Inicio extends javax.swing.JFrame {
         FilmxQuiz.getAccessibleContext().setAccessibleParent(Filmx);
 
         menuClasificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        menuClasificacion.setIconImage(getIconImage());
         menuClasificacion.setModal(true);
         menuClasificacion.setResizable(false);
         menuClasificacion.setSize(new java.awt.Dimension(945, 510));
@@ -1414,6 +1427,7 @@ public class Inicio extends javax.swing.JFrame {
         menuClasificacion.getAccessibleContext().setAccessibleParent(Filmx);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setName("Inicio"); // NOI18N
         setResizable(false);
         setSize(new java.awt.Dimension(381, 370));
@@ -1434,7 +1448,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("                                                         FILMX");
+        tituloApp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoFilmx/tituloFilmx.png"))); // NOI18N
 
         usuInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1461,44 +1475,48 @@ public class Inicio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(inicioSesionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usuInicio)
-                            .addComponent(passInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(registrarseInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelarInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(registrarseInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cancelarInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(usuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(passInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inicioSesionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(101, 101, 101))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tituloApp)
+                        .addGap(10, 10, 10))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(tituloApp)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usuInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(inicioSesionInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registrarseInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1509,7 +1527,6 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inicioSesionInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inicioSesionInicioActionPerformed
-        
         //Se crean los objetos necesarios para componer un usuario que tras controlar su autenticación con un valor booleano va a ser el usuario de la sesion con el que se va a trabajar.
         String pass = new String(passInicio.getPassword());
         Usuario uAux = new Usuario(usuInicio.getText(),pass);
@@ -2731,6 +2748,17 @@ public class Inicio extends javax.swing.JFrame {
         menuClasificacion.dispose();
     }//GEN-LAST:event_cancelarClasificacionActionPerformed
 
+    
+    //Redefino el metodo getIconImage de todas las ventanas para poder establecer el logo.
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+            getImage(ClassLoader.getSystemResource("logoFilmx/logoVentanas.png"));
+
+
+        return retValue;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -2825,7 +2853,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton inicioSesionInicio;
     private javax.swing.JButton invitarAmigosFILMX;
     private javax.swing.JButton invitarInvitarAmigos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2901,6 +2928,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> solEnviadasNotificacionesAmigos;
     private javax.swing.JComboBox<String> solRecibidasNotificacionesAmigos;
     private javax.swing.JTextField tituloAlta;
+    private javax.swing.JLabel tituloApp;
     private javax.swing.JTextField tituloCritica;
     private javax.swing.JButton txtClasificacion;
     private javax.swing.JTextField usuInicio;
