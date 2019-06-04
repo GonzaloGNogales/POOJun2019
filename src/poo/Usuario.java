@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Usuario implements Serializable{
     private static final long serialVersionUID = 1L;
+    private final int SUMA_PARTIDA = 1;
     
     //Variables de definición del usuario
     private String nombre;
@@ -224,6 +225,20 @@ public class Usuario implements Serializable{
         partida.getJugador1().getPartidas_completas().add(partida);   
         partida.getJugador2().getPartidas_completas().add(partida);
         
+        //Ajustar los atributos de partida ganada, perdida o empatada
+        if (partida.getPtos_jugador1() > partida.getPtos_jugador2()) {
+            partida.getJugador1().setPartidas_ganadas(SUMA_PARTIDA);
+            partida.getJugador2().setPartidas_perdidas(SUMA_PARTIDA);
+        }
+        else if (partida.getPtos_jugador1() == partida.getPtos_jugador2()) {
+            partida.getJugador1().setPartidas_empatadas(SUMA_PARTIDA);
+            partida.getJugador2().setPartidas_empatadas(SUMA_PARTIDA);
+        }
+        else {
+            partida.getJugador1().setPartidas_perdidas(SUMA_PARTIDA);
+            partida.getJugador2().setPartidas_ganadas(SUMA_PARTIDA);
+        }
+        
         //Se carga la información de la partida finalizada en los muros de los jugadores
         StringBuilder mAux = new StringBuilder(partida.toString());       
         partida.getJugador1().setMuro(mAux);
@@ -270,24 +285,24 @@ public class Usuario implements Serializable{
             return partidas_ganadas;
     }
 
-    public void setPartidas_ganadas(int partidas_ganadas) {
-            this.partidas_ganadas = partidas_ganadas;
+    public void setPartidas_ganadas(int num) {
+            this.partidas_ganadas += num;
     }
 
     public int getPartidas_perdidas() {
             return partidas_perdidas;
     }
 
-    public void setPartidas_perdidas(int partidas_perdidas) {
-            this.partidas_perdidas = partidas_perdidas;
+    public void setPartidas_perdidas(int num) {
+            this.partidas_perdidas += num;
     }
 
     public int getPartidas_empatadas() {
             return partidas_empatadas;
     }
 
-    public void setPartidas_empatadas(int partidas_empatadas) {
-            this.partidas_empatadas = partidas_empatadas;
+    public void setPartidas_empatadas(int num) {
+            this.partidas_empatadas += num;
     }
 
     public ArrayList<Partida> getPartidas_completas() {
