@@ -136,6 +136,10 @@ public class Partida implements Compartible, Serializable {
     @Override
     public String toString () {
         return '\n' + "  ---- PARTIDA ----  " + '\n' + "  Id: " + this.identificador + '\n' + "  Jugador 1: " + this.jugador1.getNombre() + '\n' + "  Jugador 2: " + this.jugador2.getNombre() + '\n' + "  Puntos del jugador 1: " + this.ptos_jugador1 + '\n' + "  Puntos del jugador 2: " + this.ptos_jugador2 + '\n';
-    }    
+    }   
+    
+    public String mostrarCompleta () {
+        return '\n' + "  ---- PARTIDA ----  " + '\n' + "  Id: " + this.identificador + '\n' + "  Jugador 1: " + this.jugador1.getNombre() + '\n' + "  Jugador 2: " + this.jugador2.getNombre() + '\n' + "  Resultado Final: " + this.resultado_final + '\n';
+    } 
     
 } 

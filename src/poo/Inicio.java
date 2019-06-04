@@ -167,6 +167,10 @@ public class Inicio extends javax.swing.JFrame {
         menuClasificacion = new javax.swing.JDialog();
         jScrollPane7 = new javax.swing.JScrollPane();
         listaClasificacion = new javax.swing.JList<>();
+        cancelarClasificacion = new javax.swing.JButton();
+        ordenarPuntosClasificacion = new javax.swing.JButton();
+        ordenarVictoriasClasificacion = new javax.swing.JButton();
+        ordenarPorcentajeClasificacion = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -1346,6 +1350,20 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane7.setViewportView(listaClasificacion);
         listaClasificacion.getAccessibleContext().setAccessibleParent(Filmx);
 
+        cancelarClasificacion.setText("Cancelar");
+        cancelarClasificacion.setPreferredSize(new java.awt.Dimension(110, 35));
+        cancelarClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarClasificacionActionPerformed(evt);
+            }
+        });
+
+        ordenarPuntosClasificacion.setText("Ordenar por puntos");
+
+        ordenarVictoriasClasificacion.setText("Ordenar por victorias");
+
+        ordenarPorcentajeClasificacion.setText("Ordenar por porcentaje");
+
         javax.swing.GroupLayout menuClasificacionLayout = new javax.swing.GroupLayout(menuClasificacion.getContentPane());
         menuClasificacion.getContentPane().setLayout(menuClasificacionLayout);
         menuClasificacionLayout.setHorizontalGroup(
@@ -1353,13 +1371,33 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(menuClasificacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuClasificacionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelarClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(menuClasificacionLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ordenarPuntosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(92, Short.MAX_VALUE))))
         );
         menuClasificacionLayout.setVerticalGroup(
             menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuClasificacionLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuClasificacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(menuClasificacionLayout.createSequentialGroup()
+                        .addComponent(ordenarPuntosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
+                        .addComponent(cancelarClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane7))
                 .addContainerGap())
         );
 
@@ -1530,7 +1568,7 @@ public class Inicio extends javax.swing.JFrame {
             dlmCPartida.removeAllElements();
             partidaSeleccionadaSCP.setModel(dlmCPartida);
             for (Partida partida: usuarioSesion.getPartidas_completas()) {
-                dlmCPartida.addElement(partida.toString());
+                dlmCPartida.addElement(partida.mostrarCompleta());
             }
             partidaSeleccionadaSCP.setModel(dlmCPartida);
             
@@ -2489,7 +2527,7 @@ public class Inicio extends javax.swing.JFrame {
                         muroFilmx.append(sAux);
                         
                         //Se actualiza la lista de compartir partidas
-                        dlmCPartida.addElement(pAux.toString());
+                        dlmCPartida.addElement(pAux.mostrarCompleta());
                         partidaSeleccionadaSCP.setModel(dlmCPartida);
                         
                         //Se actualiza la interfaz de FilmxQuiz
@@ -2673,6 +2711,10 @@ public class Inicio extends javax.swing.JFrame {
         menuClasificacion.setVisible(true);
     }//GEN-LAST:event_clasificacionFilmxActionPerformed
 
+    private void cancelarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarClasificacionActionPerformed
+        menuClasificacion.dispose();
+    }//GEN-LAST:event_cancelarClasificacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2734,6 +2776,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JList<String> amigosFilmx;
     private javax.swing.JTextField añoAlta;
     private javax.swing.JButton cancelarAlta;
+    private javax.swing.JButton cancelarClasificacion;
     private javax.swing.JButton cancelarCpartidaSCP;
     private javax.swing.JButton cancelarCritica;
     private javax.swing.JButton cancelarFilmxQuiz;
@@ -2815,6 +2858,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel nombreUsuarioSesion;
     private javax.swing.JButton notificacionesFILMX;
     private javax.swing.JLabel numeroPreguntaFilmxQuiz;
+    private javax.swing.JButton ordenarPorcentajeClasificacion;
+    private javax.swing.JButton ordenarPuntosClasificacion;
+    private javax.swing.JButton ordenarVictoriasClasificacion;
     private javax.swing.JList<String> partidaSeleccionadaSCP;
     private javax.swing.JButton partidasPendientesFilmx;
     private javax.swing.JPasswordField passInicio;

@@ -4,6 +4,7 @@ public class Item {
     private String nombreUsuario;
     private int jugadas;
     private int ganadas;
+    private int empatadas;
     private int perdidas;
     private double porcentaje_victorias;
     private int ptos;
@@ -12,16 +13,23 @@ public class Item {
 	this.nombreUsuario = u.getNombre();
 	this.jugadas = (u.getPartidas_ganadas() + u.getPartidas_perdidas() + u.getPartidas_empatadas());
 	this.ganadas = u.getPartidas_ganadas();
+        this.empatadas = u.getPartidas_empatadas();
 	this.perdidas = u.getPartidas_perdidas();
-	this.porcentaje_victorias = (((u.getPartidas_ganadas()) / (u.getPartidas_ganadas() + u.getPartidas_empatadas() + u.getPartidas_perdidas())) * 100);
+        
+        if ((u.getPartidas_ganadas() + u.getPartidas_perdidas() + u.getPartidas_empatadas()) != 0) {
+            this.porcentaje_victorias = (((u.getPartidas_ganadas()) / (u.getPartidas_ganadas() + u.getPartidas_empatadas() + u.getPartidas_perdidas())) * 100);
+        }
+        else {
+            this.porcentaje_victorias = 0;
+        }
 	
         //Cálculo del sumatorio de puntos del usuario que se analiza en el item
         int sumatorio_pts = 0;
         for (Partida partida: u.getPartidas_completas()) {
-            if (nombreUsuario.equals(partida.getJugador1())) {
+            if (nombreUsuario.compareTo(partida.getJugador1().getNombre()) == 0) {
                 sumatorio_pts += partida.getPtos_jugador1();
             }
-            else if (nombreUsuario.equals(partida.getJugador2())) {
+            else if (nombreUsuario.compareTo(partida.getJugador2().getNombre()) == 0) {
                 sumatorio_pts += partida.getPtos_jugador2();
             }
         }
@@ -68,6 +76,22 @@ public class Item {
 
     public void setGanadas(int ganadas) {
 	this.ganadas = ganadas;
+    }
+
+    public int getEmpatadas() {
+        return empatadas;
+    }
+
+    public void setEmpatadas(int empatadas) {
+        this.empatadas = empatadas;
+    }
+
+    public double getPorcentaje_victorias() {
+        return porcentaje_victorias;
+    }
+
+    public void setPorcentaje_victorias(double porcentaje_victorias) {
+        this.porcentaje_victorias = porcentaje_victorias;
     }
     
     public void setGanadas (String dato){
