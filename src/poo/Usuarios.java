@@ -316,4 +316,25 @@ public class Usuarios{
         
         return paux;
     }
+    
+    //Dada una identificación extrae del fichero la partida correspondiente
+    public static Partida obtenerPartidaCompleta (int id) {
+        ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados
+        Partida paux = new Partida();
+        boolean encontrado = false;
+        
+        for (Usuario usuario: logReg) {
+            for (Partida p: usuario.getPartidas_completas()) {
+                if (p.getIdentificador() == (id)) { 
+                    paux = p; 
+                    encontrado = true;
+                }
+            }      
+        }
+        if (!encontrado) {
+            paux = null;
+        }
+        
+        return paux;
+    }
 }

@@ -1909,7 +1909,7 @@ public class Inicio extends javax.swing.JFrame {
             String critic = critica_Aux.substring(9, critica_Aux.length()-1);            
             
             usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critic));
-            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la película con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_compartirTodosSCCActionPerformed
 
@@ -1942,10 +1942,9 @@ public class Inicio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
-                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Ya ha compartido la película con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Ya ha compartido la crítica con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
                 } 
                 
-                //System.err.println(Peliculas.obtenerCritica(critica));
                 usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critica), uC);  
             }
             else {
@@ -2511,22 +2510,17 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_responderPPActionPerformed
 
     private void compartirTodosSCPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirTodosSCPartidaActionPerformed
-        /*
-        if (criticaSeleccionadaSCC.isSelectionEmpty() || "".equals(criticaSeleccionadaSCC.getSelectedValue())) {
-            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Seleccione una crítica o publique alguna para compartirla.","ERROR", JOptionPane.ERROR_MESSAGE); 
+        if (partidaSeleccionadaSCP.isSelectionEmpty() || "".equals(partidaSeleccionadaSCP.getSelectedValue())) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Seleccione una partida o complete alguna para poder compartirla.","ERROR", JOptionPane.ERROR_MESSAGE); 
         }
         else {
-            //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
-            int ind = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
-            String critica_Aux = criticaSeleccionadaSCC.getSelectedValue().substring(ind);
-                
-            //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
-            String critic = critica_Aux.substring(9, critica_Aux.length()-1);            
+            //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
+            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: "));
+            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 13);           
             
-            usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critic));
-            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la película con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
+            usuarioSesion.compartirPartida(Usuarios.obtenerPartidaCompleta(Integer.parseInt(id)));
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Se ha compartido la partida con todos sus amigos, menos con los que ya contaban con ella en su muro.","INFO", JOptionPane.INFORMATION_MESSAGE);
         }
-        */
     }//GEN-LAST:event_compartirTodosSCPartidaActionPerformed
 
     private void cancelarCpartidaSCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCpartidaSCPActionPerformed
@@ -2534,36 +2528,31 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarCpartidaSCPActionPerformed
 
     private void compartirSeleccionadosSCPartidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compartirSeleccionadosSCPartidaActionPerformed
-        /*
-        //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la crítica, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
+        //Si se ha seleccionado algun amigo en la lista de amigos se le compartirá la partida, que también haya seleccionado el usuario, y ésta aparecerá en su muro.
         if (amigosFilmx.isSelectionEmpty()) {
-            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Seleccione el amigo o los amigos con los que desea compartir haciendo click en su nombre que aparece en la lista y añadiendo más maneteniendo pulsado CTRL.","WARNING", JOptionPane.WARNING_MESSAGE);
         }
-        else if (criticaSeleccionadaSCC.isSelectionEmpty() || "".equals(criticaSeleccionadaSCC.getSelectedValue())) {
-            JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Todavía no hay ninguna crítica publicada.","ERROR", JOptionPane.ERROR_MESSAGE);            
+        else if (partidaSeleccionadaSCP.isSelectionEmpty() || "".equals(partidaSeleccionadaSCP.getSelectedValue())) {
+            JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Todavía no hay ninguna partida completada.","ERROR", JOptionPane.ERROR_MESSAGE);            
         }
         else {           
             int[] indices = amigosFilmx.getSelectedIndices();
             
-            //Algoritmo para extraer el texto de la critica para identificarla mediante uso de Strings.
-            int index = criticaSeleccionadaSCC.getSelectedValue().indexOf("Crítica: ");
-            String criticaAux = criticaSeleccionadaSCC.getSelectedValue().substring(index);
-                
-            //Los indices que componen el string "Crítica: " que siempre aparece en los elementos de la lista cuenta con  caracteres, por lo que se escoge el substring a partir del 9.
-            String critica = criticaAux.substring(9, criticaAux.length()-1);
-
+            //Algoritmo para extraer la id de la partida para identificarla mediante uso de Strings.
+            int index = listaPendientesPP.getSelectedValue().indexOf(("Id: "));
+            String id = listaPendientesPP.getSelectedValue().substring(index + 4, index + 13);
+ 
             if (indices.length == 1) {               
                 Usuario uC = Usuarios.obtenerUsuario(amigosFilmx.getSelectedValue());
                 
-                if (uC.getMuro().indexOf(critica) == -1) {
-                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
+                if (uC.getMuro().indexOf(id) == -1) {
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Se ha compartido la partida con su amigo.","INFO", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
-                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Ya ha compartido la película con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Ya ha compartido la partida con su amigo, seleccione otro amigo para compartir.","ERROR", JOptionPane.ERROR_MESSAGE);
                 } 
                 
-                //System.err.println(Peliculas.obtenerCritica(critica));
-                usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critica), uC);  
+                usuarioSesion.compartirPartida(Usuarios.obtenerPartidaCompleta(Integer.parseInt(id)), uC);  
             }
             else {
                 StringBuilder mensaje1 = new StringBuilder("");
@@ -2573,7 +2562,7 @@ public class Inicio extends javax.swing.JFrame {
                 for (String nom: usuariosNom) {
                     Usuario uCs = Usuarios.obtenerUsuario(nom);
                     
-                    if (uCs.getMuro().indexOf(critica) == -1) {
+                    if (uCs.getMuro().indexOf(id) == -1) {
                         if ("".equals(mensaje1)) {
                            mensaje1.insert(0, uCs.getNombre()).append(" ");
                         }
@@ -2590,21 +2579,20 @@ public class Inicio extends javax.swing.JFrame {
                         }  
                     }  
                     
-                    usuarioSesion.compartirCritica(Peliculas.obtenerCritica(critica), uCs);
+                    usuarioSesion.compartirPartida(Usuarios.obtenerPartidaCompleta(Integer.parseInt(id)), uCs);
                 }
                 
                 if ("".equals(mensaje1.toString())) {
-                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Ya ha compartido la crítica con todos los amigos seleccionados.","ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Ya ha compartido la partida con todos los amigos seleccionados.","ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 else if ("".equals(mensaje2.toString())) {
-                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con todos los amigos seleccionados correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);                    
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Se ha compartido la partida con todos los amigos seleccionados correctamente.","INFO", JOptionPane.INFORMATION_MESSAGE);                    
                 }
                 else {
-                    JOptionPane.showMessageDialog(SeleccionadorCompartirCritica,"Se ha compartido la crítica con " + mensaje1 + "pero " + mensaje2 + "ya contaban con la crítica en su muro.","WARNING", JOptionPane.WARNING_MESSAGE);                    
+                    JOptionPane.showMessageDialog(SeleccionadorCompartirPartida,"Se ha compartido la partida con " + mensaje1 + "pero " + mensaje2 + "ya contaban con la crítica en su muro.","WARNING", JOptionPane.WARNING_MESSAGE);                    
                 }
             }     
         }
-        */
     }//GEN-LAST:event_compartirSeleccionadosSCPartidaActionPerformed
 
     private void CompartirPartidaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompartirPartidaFilmxActionPerformed
