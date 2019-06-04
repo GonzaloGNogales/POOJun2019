@@ -89,11 +89,12 @@ public class Item {
 
     @Override
     public String toString (){
-        String mensaje= ("Nombre: " + nombreUsuario +" Jugadas: "+ jugadas +
-                                " Ganadas: "+ ganadas +" Perdidas: "+ perdidas +
-                                " Porcentaje de victorias: "+ porcentaje_victorias+ 
-                                " Puntos: "+ ptos);
-        return mensaje;
+        return '\n' + " Nombre: " + nombreUsuario + '\n' + 
+               " Jugadas: " + jugadas + '\n' +
+               " Ganadas: " + ganadas + '\n' +
+               " Perdidas: " + perdidas + '\n' +
+               " Porcentaje de victorias: " + porcentaje_victorias + '\n' +
+               " Puntos: " + ptos + '\n';
     }
 }
 
