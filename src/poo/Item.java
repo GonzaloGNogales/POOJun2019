@@ -85,14 +85,6 @@ public class Item {
     public void setEmpatadas(int empatadas) {
         this.empatadas = empatadas;
     }
-
-    public double getPorcentaje_victorias() {
-        return porcentaje_victorias;
-    }
-
-    public void setPorcentaje_victorias(double porcentaje_victorias) {
-        this.porcentaje_victorias = porcentaje_victorias;
-    }
     
     public void setGanadas (String dato){
 	this.ganadas = Integer.parseInt(dato);
@@ -111,7 +103,7 @@ public class Item {
     }
 
     public double getPorcentajeVictorias() {
-	return porcentaje_victorias;
+	return this.porcentaje_victorias;
     }
 
     public void setPorcentajeVictorias(Usuario u) {

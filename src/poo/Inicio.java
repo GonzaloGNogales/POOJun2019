@@ -2,6 +2,7 @@ package poo;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -1383,15 +1384,35 @@ public class Inicio extends javax.swing.JFrame {
 
         ordenarPuntosClasificacion.setText("Ordenar por puntos");
         ordenarPuntosClasificacion.setPreferredSize(new java.awt.Dimension(180, 180));
+        ordenarPuntosClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarPuntosClasificacionActionPerformed(evt);
+            }
+        });
 
         ordenarVictoriasClasificacion.setText("Ordenar por victorias");
         ordenarVictoriasClasificacion.setPreferredSize(new java.awt.Dimension(180, 40));
+        ordenarVictoriasClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarVictoriasClasificacionActionPerformed(evt);
+            }
+        });
 
         ordenarPorcentajeClasificacion.setText("Ordenar por porcentaje");
         ordenarPorcentajeClasificacion.setPreferredSize(new java.awt.Dimension(180, 40));
+        ordenarPorcentajeClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ordenarPorcentajeClasificacionActionPerformed(evt);
+            }
+        });
 
         txtClasificacion.setText("Guardar en TXT");
         txtClasificacion.setPreferredSize(new java.awt.Dimension(145, 75));
+        txtClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClasificacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuClasificacionLayout = new javax.swing.GroupLayout(menuClasificacion.getContentPane());
         menuClasificacion.getContentPane().setLayout(menuClasificacionLayout);
@@ -1661,6 +1682,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_salirFilmxActionPerformed
 
     private void cerrarSesionFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionFilmxActionPerformed
+        //Se cierra el Frame de Filmx y se vuelve a abrir el Inicio para cargar otro usuario.
         Filmx.dispose();
         this.setLocationRelativeTo(null);
         this.setTitle("Inicio");
@@ -2756,6 +2778,47 @@ public class Inicio extends javax.swing.JFrame {
     private void cancelarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarClasificacionActionPerformed
         menuClasificacion.dispose();
     }//GEN-LAST:event_cancelarClasificacionActionPerformed
+
+    private void ordenarPuntosClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarPuntosClasificacionActionPerformed
+        Clasificacion c = new Clasificacion();
+        
+        dlmClasificacion.removeAllElements();
+        listaClasificacion.setModel(dlmClasificacion);
+        for (String s: c.ordenarPuntos()) {
+            dlmClasificacion.addElement(s);
+        }
+        listaClasificacion.setModel(dlmClasificacion);
+    }//GEN-LAST:event_ordenarPuntosClasificacionActionPerformed
+
+    private void ordenarVictoriasClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarVictoriasClasificacionActionPerformed
+        Clasificacion c = new Clasificacion();
+        
+        dlmClasificacion.removeAllElements();
+        listaClasificacion.setModel(dlmClasificacion);
+        for (String s: c.ordenarVictorias()) {
+            dlmClasificacion.addElement(s);
+        }
+        listaClasificacion.setModel(dlmClasificacion);
+    }//GEN-LAST:event_ordenarVictoriasClasificacionActionPerformed
+
+    private void ordenarPorcentajeClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarPorcentajeClasificacionActionPerformed
+        Clasificacion c = new Clasificacion();
+        
+        dlmClasificacion.removeAllElements();
+        listaClasificacion.setModel(dlmClasificacion);
+        for (String s: c.ordenarPorcentaje()) {
+            dlmClasificacion.addElement(s);
+        }
+        listaClasificacion.setModel(dlmClasificacion);
+    }//GEN-LAST:event_ordenarPorcentajeClasificacionActionPerformed
+
+    private void txtClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClasificacionActionPerformed
+        Clasificacion c = new Clasificacion();
+        String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
+        
+        c.volcarTXT(nombreArchivo);
+        JOptionPane.showMessageDialog(menuClasificacion,"La clasificación se ha guardado en el archivo " + nombreArchivo + " correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);                    
+    }//GEN-LAST:event_txtClasificacionActionPerformed
 
     
     //Redefino el metodo getIconImage de todas las ventanas para poder establecer el logo.

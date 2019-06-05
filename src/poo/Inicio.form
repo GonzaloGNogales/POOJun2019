@@ -2031,6 +2031,9 @@
               <Dimension value="[180, 180]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarPuntosClasificacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ordenarVictoriasClasificacion">
           <Properties>
@@ -2039,6 +2042,9 @@
               <Dimension value="[180, 40]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarVictoriasClasificacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ordenarPorcentajeClasificacion">
           <Properties>
@@ -2047,6 +2053,9 @@
               <Dimension value="[180, 40]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ordenarPorcentajeClasificacionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="txtClasificacion">
           <Properties>
@@ -2055,6 +2064,9 @@
               <Dimension value="[145, 75]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtClasificacionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
