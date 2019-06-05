@@ -76,6 +76,7 @@ public class Inicio extends javax.swing.JFrame {
         nombreUsuarioSesion = new javax.swing.JLabel();
         clasificacionFilmx = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        ajustesFilmx = new javax.swing.JButton();
         SeleccionadorPelicula = new javax.swing.JDialog();
         jLabel8 = new javax.swing.JLabel();
         peliculaSelec = new javax.swing.JComboBox<>();
@@ -179,6 +180,12 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         detallesC = new javax.swing.JTextArea();
         cancelarDetallesClasificacion = new javax.swing.JButton();
+        AjustesFilmx = new javax.swing.JDialog();
+        guardarUSerializado = new javax.swing.JButton();
+        guardarPSerializado = new javax.swing.JButton();
+        cancelarAjustes = new javax.swing.JButton();
+        cargarP = new javax.swing.JButton();
+        cargarU = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         tituloApp = new javax.swing.JLabel();
@@ -405,6 +412,14 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logoFilmx/logoFilmx.png"))); // NOI18N
 
+        ajustesFilmx.setText("⚙");
+        ajustesFilmx.setPreferredSize(new java.awt.Dimension(50, 50));
+        ajustesFilmx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajustesFilmxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FilmxLayout = new javax.swing.GroupLayout(Filmx.getContentPane());
         Filmx.getContentPane().setLayout(FilmxLayout);
         FilmxLayout.setHorizontalGroup(
@@ -443,7 +458,9 @@ public class Inicio extends javax.swing.JFrame {
                             .addGroup(FilmxLayout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(refrescarMuroFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(refrescarMuroFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ajustesFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(FilmxLayout.createSequentialGroup()
                                 .addComponent(compartirPeliculaFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -474,7 +491,10 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(nombreUsuarioSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(refrescarMuroFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(FilmxLayout.createSequentialGroup()
+                                .addComponent(refrescarMuroFILMX, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ajustesFilmx, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(FilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(FilmxLayout.createSequentialGroup()
@@ -1512,6 +1532,88 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         DetallesClasificacion.getAccessibleContext().setAccessibleParent(MenuClasificacion);
+
+        AjustesFilmx.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        AjustesFilmx.setIconImage(getIconImage());
+        AjustesFilmx.setModal(true);
+        AjustesFilmx.setResizable(false);
+        AjustesFilmx.setSize(new java.awt.Dimension(400, 255));
+
+        guardarUSerializado.setText("Guardar Usuarios Serializado");
+        guardarUSerializado.setPreferredSize(new java.awt.Dimension(170, 65));
+        guardarUSerializado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarUSerializadoActionPerformed(evt);
+            }
+        });
+
+        guardarPSerializado.setText("Guardar Películas Serializado");
+        guardarPSerializado.setPreferredSize(new java.awt.Dimension(170, 65));
+        guardarPSerializado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarPSerializadoActionPerformed(evt);
+            }
+        });
+
+        cancelarAjustes.setText("Cancelar");
+        cancelarAjustes.setPreferredSize(new java.awt.Dimension(90, 35));
+        cancelarAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarAjustesActionPerformed(evt);
+            }
+        });
+
+        cargarP.setText("Cargar Películas");
+        cargarP.setPreferredSize(new java.awt.Dimension(170, 65));
+        cargarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarPActionPerformed(evt);
+            }
+        });
+
+        cargarU.setText("Cargar Usuarios");
+        cargarU.setPreferredSize(new java.awt.Dimension(170, 65));
+        cargarU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarUActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AjustesFilmxLayout = new javax.swing.GroupLayout(AjustesFilmx.getContentPane());
+        AjustesFilmx.getContentPane().setLayout(AjustesFilmxLayout);
+        AjustesFilmxLayout.setHorizontalGroup(
+            AjustesFilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AjustesFilmxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AjustesFilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AjustesFilmxLayout.createSequentialGroup()
+                        .addComponent(guardarUSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(guardarPSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjustesFilmxLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelarAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjustesFilmxLayout.createSequentialGroup()
+                        .addComponent(cargarU, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cargarP, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        AjustesFilmxLayout.setVerticalGroup(
+            AjustesFilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AjustesFilmxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AjustesFilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarUSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarPSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(AjustesFilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cargarU, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cargarP, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(cancelarAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -2941,6 +3043,76 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mostrarDetallesClasificacionActionPerformed
 
+    private void ajustesFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajustesFilmxActionPerformed
+        //Configuración de la ventana AjustesFilmx.
+        AjustesFilmx.setModal(true);
+        AjustesFilmx.setLocationRelativeTo(null);
+        AjustesFilmx.setTitle("Ajustes");
+        AjustesFilmx.setVisible(true);  
+    }//GEN-LAST:event_ajustesFilmxActionPerformed
+
+    private void cancelarAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarAjustesActionPerformed
+        AjustesFilmx.dispose();
+    }//GEN-LAST:event_cancelarAjustesActionPerformed
+
+    private void guardarUSerializadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarUSerializadoActionPerformed
+        //Se abre un JOptionPane y el usuario escribe el nombre del archivo
+        ArrayList<Usuario> usuariosSistema = Usuarios.leer();
+        String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
+        
+        if (nombreArchivo != null) {
+            //Al nombre que el usuario ha escrito se le agrega el .txt
+            Usuarios.escribirNuevo(usuariosSistema, nombreArchivo + ".txt"); 
+            JOptionPane.showMessageDialog(MenuClasificacion,"La información de los usuarios se han guardado en el archivo " + nombreArchivo + ".txt correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else {
+            JOptionPane.showMessageDialog(MenuClasificacion,"Se ha cancelado la operación.","CANCELAR", JOptionPane.ERROR_MESSAGE);            
+        }    
+    }//GEN-LAST:event_guardarUSerializadoActionPerformed
+
+    private void guardarPSerializadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPSerializadoActionPerformed
+        //Se abre un JOptionPane y el usuario escribe el nombre del archivo
+        ArrayList<Pelicula> peliculasSistema = Peliculas.leer();
+        String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
+        
+        if (nombreArchivo != null) {
+            //Al nombre que el usuario ha escrito se le agrega el .txt
+            Peliculas.escribirNuevo(peliculasSistema, nombreArchivo + ".txt"); 
+            JOptionPane.showMessageDialog(MenuClasificacion,"La información de las películas se ha guardado en el archivo " + nombreArchivo + ".txt correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else {
+            JOptionPane.showMessageDialog(MenuClasificacion,"Se ha cancelado la operación.","CANCELAR", JOptionPane.ERROR_MESSAGE);            
+        }    
+    }//GEN-LAST:event_guardarPSerializadoActionPerformed
+
+    private void cargarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarUActionPerformed
+        //Se abre un JOptionPane y el usuario escribe el nombre del archivo
+        String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
+        
+        if (nombreArchivo != null) {
+            //Al nombre que el usuario ha escrito se le agrega el .txt
+            Usuarios.cargarSerializado(nombreArchivo + ".txt"); 
+            JOptionPane.showMessageDialog(MenuClasificacion,"La información de los usuarios se ha cargado en el sistema.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else {
+            JOptionPane.showMessageDialog(MenuClasificacion,"Se ha cancelado la operación.","CANCELAR", JOptionPane.ERROR_MESSAGE);            
+        } 
+    }//GEN-LAST:event_cargarUActionPerformed
+
+    private void cargarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarPActionPerformed
+        //Se abre un JOptionPane y el usuario escribe el nombre del archivo
+        String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
+        
+        if (nombreArchivo != null) {
+            //Al nombre que el usuario ha escrito se le agrega el .txt
+            Peliculas.cargarSerializado(nombreArchivo + ".txt"); 
+            JOptionPane.showMessageDialog(MenuClasificacion,"La información de las películas se ha cargado en el sistema.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else {
+            JOptionPane.showMessageDialog(MenuClasificacion,"Se ha cancelado la operación.","CANCELAR", JOptionPane.ERROR_MESSAGE);            
+        } 
+    }//GEN-LAST:event_cargarPActionPerformed
+
     
     //Redefino el metodo getIconImage de todas las ventanas para poder establecer el logo.
     @Override
@@ -2989,6 +3161,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog AjustesFilmx;
     private javax.swing.JDialog AltaPeliculas;
     private javax.swing.JButton CompartirCriticaFilmx;
     private javax.swing.JButton CompartirPartidaFilmx;
@@ -3011,9 +3184,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton aceptarNotificacionesAmigos;
     private javax.swing.JTextField actorAlta;
     private javax.swing.JTextField actrizAlta;
+    private javax.swing.JButton ajustesFilmx;
     private javax.swing.JButton altaPeliculaFilmx;
     private javax.swing.JList<String> amigosFilmx;
     private javax.swing.JTextField añoAlta;
+    private javax.swing.JButton cancelarAjustes;
     private javax.swing.JButton cancelarAlta;
     private javax.swing.JButton cancelarClasificacion;
     private javax.swing.JButton cancelarCpartidaSCP;
@@ -3029,6 +3204,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton cancelarSCP;
     private javax.swing.JButton cancelarSCT;
     private javax.swing.JButton cancelarSeleccionadorPelicula;
+    private javax.swing.JButton cargarP;
+    private javax.swing.JButton cargarU;
     private javax.swing.JButton cerrarSesionFilmx;
     private javax.swing.JButton clasificacionFilmx;
     private javax.swing.JButton compartirPeliculaFilmx;
@@ -3047,6 +3224,8 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextField directorAlta;
     private javax.swing.JButton eliminarAmigoFILMX;
     private javax.swing.JTextField generoAlta;
+    private javax.swing.JButton guardarPSerializado;
+    private javax.swing.JButton guardarUSerializado;
     private javax.swing.JButton inicioSesionInicio;
     private javax.swing.JButton invitarAmigosFILMX;
     private javax.swing.JButton invitarInvitarAmigos;

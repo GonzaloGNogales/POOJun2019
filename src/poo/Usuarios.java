@@ -80,6 +80,27 @@ public class Usuarios{
 	return vectorLeido;
     }
     
+    public static void cargarSerializado (String nombre) { 
+        ArrayList<Usuario> vectorLeido = new ArrayList<>();
+        try {
+            ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(nombre));
+            vectorLeido = (ArrayList<Usuario>) ficheroLect.readObject();
+            ficheroLect.close();
+            
+            if (archivo.exists()) {
+                archivo.delete();
+                archivo.createNewFile();
+                escribir(vectorLeido);
+            }
+            else {
+                archivo.createNewFile();
+                escribir(vectorLeido);
+            }
+        }catch(Exception e) {
+            System.out.println("Lectura usuarios fallida.");
+        }                
+    }
+    
     private static void escribir (ArrayList<Usuario> vectEscr) {
         try {
             ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo));
@@ -88,7 +109,18 @@ public class Usuarios{
         }catch(IOException e) {
             System.out.println("Fallo al escribir usuario.");
         }
-    }   
+    }  
+    
+    public static void escribirNuevo (ArrayList<Usuario> vectEscr, String nombre) {
+        try {
+            File f = new File(nombre);
+            ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(f));
+            ficheroEscr.writeObject(vectEscr);
+            ficheroEscr.close();
+        }catch(IOException e) {
+            System.out.println("Fallo al escribir usuario.");
+        }
+    } 
     
     public static StringBuilder leerMuroUsuario (Usuario u) {
         ArrayList<Usuario> logReg = leer();  //logReg es el vector con usuarios registrados

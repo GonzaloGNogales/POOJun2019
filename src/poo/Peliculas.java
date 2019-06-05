@@ -75,10 +75,42 @@ public class Peliculas {
         }
         return vectorLeido;
     }
+    
+    public static void cargarSerializado (String nombre) { 
+        ArrayList<Pelicula> vectorLeido = new ArrayList<>();
+        try {
+            ObjectInputStream ficheroLect = new ObjectInputStream(new FileInputStream(nombre));
+            vectorLeido = (ArrayList<Pelicula>) ficheroLect.readObject();
+            ficheroLect.close();
+            
+            if (archivo.exists()) {
+                archivo.delete();
+                archivo.createNewFile();
+                escribir(vectorLeido);
+            }
+            else {
+                archivo.createNewFile();
+                escribir(vectorLeido);
+            }
+        }catch(Exception e) {
+            System.out.println("Lectura peliculas fallida.");
+        } 
+    }
 
     private static void escribir (ArrayList<Pelicula> vectEscr) {
         try {
             ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(archivo));
+            ficheroEscr.writeObject(vectEscr);
+            ficheroEscr.close();
+        }catch(IOException e) {
+            System.out.println("Fallo al escribir película.");
+        }
+    }
+    
+    public static void escribirNuevo (ArrayList<Pelicula> vectEscr, String nombre) {
+        try {
+            File f = new File(nombre);
+            ObjectOutputStream ficheroEscr = new ObjectOutputStream(new FileOutputStream(f));
             ficheroEscr.writeObject(vectEscr);
             ficheroEscr.close();
         }catch(IOException e) {
