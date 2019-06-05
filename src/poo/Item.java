@@ -1,5 +1,8 @@
 package poo;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 public class Item {
     private String nombreUsuario;
     private int jugadas;
@@ -16,8 +19,12 @@ public class Item {
         this.empatadas = u.getPartidas_empatadas();
 	this.perdidas = u.getPartidas_perdidas();
         
+        DecimalFormatSymbols separador = new DecimalFormatSymbols();
+        separador.setDecimalSeparator('.');
+        DecimalFormat formato = new DecimalFormat("#.##", separador);
         if ((u.getPartidas_ganadas() + u.getPartidas_perdidas() + u.getPartidas_empatadas()) != 0) {
-            this.porcentaje_victorias = (((u.getPartidas_ganadas()) / (u.getPartidas_ganadas() + u.getPartidas_empatadas() + u.getPartidas_perdidas())) * 100);
+            double porcentaje = (((double)(u.getPartidas_ganadas()) / (double)(u.getPartidas_ganadas() + u.getPartidas_empatadas() + u.getPartidas_perdidas())) * 100);
+            this.porcentaje_victorias = Double.parseDouble(formato.format(porcentaje));
         }
         else {
             this.porcentaje_victorias = 0;
@@ -123,6 +130,7 @@ public class Item {
         return '\n' + " Nombre: " + nombreUsuario + '\n' + 
                " Jugadas: " + jugadas + '\n' +
                " Ganadas: " + ganadas + '\n' +
+               " Empatadas: " + empatadas + '\n' +
                " Perdidas: " + perdidas + '\n' +
                " Porcentaje de victorias: " + porcentaje_victorias + '\n' +
                " Puntos: " + ptos + '\n';

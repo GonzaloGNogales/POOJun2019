@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Clasificacion {
 
@@ -20,24 +22,29 @@ public class Clasificacion {
         return resultado;
     }
     
+    
+    
     public ArrayList<String> ordenarVictorias () {
         ArrayList<Usuario> usuariosSistema = Usuarios.leer();
         ArrayList<Item> aux = new ArrayList<>();
-        ArrayList<String> resultado = new ArrayList<>();
-        
-        //Se ordenan los items en un array auxiliar
+           
+        //Se introducen todos los items en un array auxiliar
         for (Usuario u: usuariosSistema) {
             Item item = new Item(u);
-            
-            if (item.getGanadas() > aux.get(0).getGanadas()) {
-                aux.add(0, item);
-            }
-            else {
-                aux.add(item);
-            }               
+            aux.add(item);              
         }
         
+        //Se utiliza la clase abstracta Comparator redefiniendo el método de Collecions para que se ordenen los items de mayor a menor
+        Collections.sort(aux, new Comparator<Item>() {
+            @Override
+            public int compare(Item i1, Item i2) {		
+                    return new Integer(i2.getGanadas()).compareTo(new Integer(i1.getGanadas()));
+            }
+        });
+        
         //Se transforma el array de items ordenados en un array de strings
+        ArrayList<String> resultado = new ArrayList<>();
+
         for (Item i: aux) {
             resultado.add(i.toString());
         }
@@ -48,21 +55,24 @@ public class Clasificacion {
     public ArrayList<String> ordenarPorcentaje () {
         ArrayList<Usuario> usuariosSistema = Usuarios.leer();
         ArrayList<Item> aux = new ArrayList<>();
-        ArrayList<String> resultado = new ArrayList<>();
         
-        //Se ordenan los items en un array auxiliar
+        //Se introducen todos los items en un array auxiliar
         for (Usuario u: usuariosSistema) {
             Item item = new Item(u);
-            
-            if (item.getPorcentajeVictorias() > aux.get(0).getPorcentajeVictorias()) {
-                aux.add(0, item);
-            }
-            else {
-                aux.add(item);
-            }               
+            aux.add(item);              
         }
         
+        //Se utiliza la clase abstracta Comparator redefiniendo el método de Collecions para que se ordenen los items de mayor a menor
+        Collections.sort(aux, new Comparator<Item>() {         
+            @Override
+            public int compare(Item i1, Item i2) {		
+                    return new Double(i2.getPorcentajeVictorias()).compareTo(new Double(i1.getPorcentajeVictorias()));
+            }
+        });
+        
         //Se transforma el array de items ordenados en un array de strings
+        ArrayList<String> resultado = new ArrayList<>();
+        
         for (Item i: aux) {
             resultado.add(i.toString());
         }
@@ -73,21 +83,24 @@ public class Clasificacion {
     public ArrayList<String> ordenarPuntos () {
         ArrayList<Usuario> usuariosSistema = Usuarios.leer();
         ArrayList<Item> aux = new ArrayList<>();
-        ArrayList<String> resultado = new ArrayList<>();
         
-        //Se ordenan los items en un array auxiliar
+        //Se introducen todos los items en un array auxiliar
         for (Usuario u: usuariosSistema) {
             Item item = new Item(u);
-            
-            if (item.getPtos()> aux.get(0).getPtos()) {
-                aux.add(0, item);
-            }
-            else {
-                aux.add(item);
-            }               
+            aux.add(item);              
         }
+
+        //Se utiliza la clase abstracta Comparator redefiniendo el método de Collecions para que se ordenen los items de mayor a menor
+        Collections.sort(aux, new Comparator<Item>() {
+            @Override
+            public int compare(Item i1, Item i2) {		
+                    return new Integer(i2.getPtos()).compareTo(new Integer(i1.getPtos()));
+            }
+        });
         
         //Se transforma el array de items ordenados en un array de strings
+        ArrayList<String> resultado = new ArrayList<>();
+        
         for (Item i: aux) {
             resultado.add(i.toString());
         }
