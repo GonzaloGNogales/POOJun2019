@@ -16,7 +16,7 @@ public class Clasificacion {
         ArrayList<String> resultado = new ArrayList<>();
         
         for (Usuario u: usuariosSistema) {
-            resultado.add(Item.detallePartidas(u.getNombre()));
+            resultado.add(Item.detallePartida(u.getNombre()));
         }  
         
         return resultado;

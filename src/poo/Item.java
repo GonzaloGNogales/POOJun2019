@@ -2,6 +2,7 @@ package poo;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 
 public class Item {
     private String nombreUsuario;
@@ -43,14 +44,25 @@ public class Item {
         this.ptos = sumatorio_pts;
     }
     
-    //Muestra los detalles de las partidas del usuario que coincida con el nombre
-    public static String detallePartidas (String nombre) {
+    //Muestra los detalles de las partida del usuario que coincida con el nombre
+    public static String detallePartida (String nombre) {
         Usuario u = Usuarios.obtenerUsuario(nombre);
         Item i = new Item(u);
         
         return i.toString();
     }
     
+    //Muestra los detalles de las partidas del usuario que coincida con el nombre
+    public static ArrayList<String> detallePartidas (String nombre) {
+        Usuario u = Usuarios.obtenerUsuario(nombre);
+        ArrayList<String> resultado = new ArrayList<>();
+        
+        for (Partida p: u.getPartidas_completas()) {
+            resultado.add(p.toString());
+        }
+        
+        return resultado;
+    }
     
     //Métodos GET y SET
     public String getNombreUsuario() {

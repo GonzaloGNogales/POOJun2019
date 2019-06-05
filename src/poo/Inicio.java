@@ -167,7 +167,7 @@ public class Inicio extends javax.swing.JFrame {
         preguntaFilmxQuiz = new javax.swing.JTextArea();
         jLabel27 = new javax.swing.JLabel();
         numeroPreguntaFilmxQuiz = new javax.swing.JLabel();
-        menuClasificacion = new javax.swing.JDialog();
+        MenuClasificacion = new javax.swing.JDialog();
         jScrollPane7 = new javax.swing.JScrollPane();
         listaClasificacion = new javax.swing.JList<>();
         cancelarClasificacion = new javax.swing.JButton();
@@ -175,6 +175,11 @@ public class Inicio extends javax.swing.JFrame {
         ordenarVictoriasClasificacion = new javax.swing.JButton();
         ordenarPorcentajeClasificacion = new javax.swing.JButton();
         txtClasificacion = new javax.swing.JButton();
+        mostrarDetallesClasificacion = new javax.swing.JButton();
+        DetallesClasificacion = new javax.swing.JDialog();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        detallesC = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         tituloApp = new javax.swing.JLabel();
@@ -1363,11 +1368,11 @@ public class Inicio extends javax.swing.JFrame {
 
         FilmxQuiz.getAccessibleContext().setAccessibleParent(Filmx);
 
-        menuClasificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        menuClasificacion.setIconImage(getIconImage());
-        menuClasificacion.setModal(true);
-        menuClasificacion.setResizable(false);
-        menuClasificacion.setSize(new java.awt.Dimension(945, 510));
+        MenuClasificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        MenuClasificacion.setIconImage(getIconImage());
+        MenuClasificacion.setModal(true);
+        MenuClasificacion.setResizable(false);
+        MenuClasificacion.setSize(new java.awt.Dimension(945, 510));
 
         listaClasificacion.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaClasificacion.setToolTipText("");
@@ -1414,47 +1419,98 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout menuClasificacionLayout = new javax.swing.GroupLayout(menuClasificacion.getContentPane());
-        menuClasificacion.getContentPane().setLayout(menuClasificacionLayout);
-        menuClasificacionLayout.setHorizontalGroup(
-            menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuClasificacionLayout.createSequentialGroup()
+        mostrarDetallesClasificacion.setText("Mostrar Detalles");
+        mostrarDetallesClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarDetallesClasificacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MenuClasificacionLayout = new javax.swing.GroupLayout(MenuClasificacion.getContentPane());
+        MenuClasificacion.getContentPane().setLayout(MenuClasificacionLayout);
+        MenuClasificacionLayout.setHorizontalGroup(
+            MenuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuClasificacionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuClasificacionLayout.createSequentialGroup()
+                .addGroup(MenuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MenuClasificacionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelarClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addGroup(menuClasificacionLayout.createSequentialGroup()
+                    .addGroup(MenuClasificacionLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(MenuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ordenarPuntosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mostrarDetallesClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(92, Short.MAX_VALUE))))
         );
-        menuClasificacionLayout.setVerticalGroup(
-            menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuClasificacionLayout.createSequentialGroup()
+        MenuClasificacionLayout.setVerticalGroup(
+            MenuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuClasificacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(menuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(menuClasificacionLayout.createSequentialGroup()
+                .addGroup(MenuClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(MenuClasificacionLayout.createSequentialGroup()
                         .addComponent(ordenarPuntosClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ordenarVictoriasClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(ordenarPorcentajeClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
+                        .addGap(18, 18, 18)
+                        .addComponent(mostrarDetallesClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
                         .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                         .addComponent(cancelarClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane7))
                 .addContainerGap())
         );
 
-        menuClasificacion.getAccessibleContext().setAccessibleParent(Filmx);
+        MenuClasificacion.getAccessibleContext().setAccessibleParent(Filmx);
+
+        DetallesClasificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DetallesClasificacion.setModal(true);
+        DetallesClasificacion.setResizable(false);
+        DetallesClasificacion.setSize(new java.awt.Dimension(400, 420));
+
+        detallesC.setColumns(20);
+        detallesC.setRows(5);
+        jScrollPane9.setViewportView(detallesC);
+
+        jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout DetallesClasificacionLayout = new javax.swing.GroupLayout(DetallesClasificacion.getContentPane());
+        DetallesClasificacion.getContentPane().setLayout(DetallesClasificacionLayout);
+        DetallesClasificacionLayout.setHorizontalGroup(
+            DetallesClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DetallesClasificacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DetallesClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetallesClasificacionLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        DetallesClasificacionLayout.setVerticalGroup(
+            DetallesClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DetallesClasificacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        DetallesClasificacion.getAccessibleContext().setAccessibleParent(MenuClasificacion);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -2768,15 +2824,15 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_CompartirPartidaFilmxActionPerformed
 
     private void clasificacionFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clasificacionFilmxActionPerformed
-        //Configuración de la ventana menuClasificación.
-        menuClasificacion.setModal(true);
-        menuClasificacion.setLocationRelativeTo(null);
-        menuClasificacion.setTitle("Clasificación");
-        menuClasificacion.setVisible(true);
+        //Configuración de la ventana MenuClasificación.
+        MenuClasificacion.setModal(true);
+        MenuClasificacion.setLocationRelativeTo(null);
+        MenuClasificacion.setTitle("Clasificación");
+        MenuClasificacion.setVisible(true);
     }//GEN-LAST:event_clasificacionFilmxActionPerformed
 
     private void cancelarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarClasificacionActionPerformed
-        menuClasificacion.dispose();
+        MenuClasificacion.dispose();
     }//GEN-LAST:event_cancelarClasificacionActionPerformed
 
     private void ordenarPuntosClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordenarPuntosClasificacionActionPerformed
@@ -2818,9 +2874,36 @@ public class Inicio extends javax.swing.JFrame {
         String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
         
         //Al nombre que el usuario ha escrito se le agrega el .txt
-        c.volcarTXT(nombreArchivo + ".txt");
-        JOptionPane.showMessageDialog(menuClasificacion,"La clasificación se ha guardado en el archivo " + nombreArchivo + " correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);                    
+        c.volcarTXT(nombreArchivo + ".txt");                
+        JOptionPane.showMessageDialog(MenuClasificacion,"La clasificación se ha guardado en el archivo " + nombreArchivo + " correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_txtClasificacionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        detallesC.setText(null);
+        DetallesClasificacion.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mostrarDetallesClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDetallesClasificacionActionPerformed
+        if (listaClasificacion.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(MenuClasificacion,"Seleccione el usuario del que quiere ver el detalle de sus partidas.","WARNING", JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            //Algoritmo para extraer el nombre del usuario identificarlo mediante uso de Strings.
+            int indexIni = listaClasificacion.getSelectedValue().indexOf(("Nombre: "));
+            int indexFin = listaClasificacion.getSelectedValue().indexOf((" Jugadas: "));
+            String nombre = listaClasificacion.getSelectedValue().substring(indexIni + 8, indexFin - 1);
+
+            for (String s: Item.detallePartidas(nombre)) {
+                detallesC.append(s);
+            }
+
+            //Configuración de la ventana DetallesClasificación.
+            DetallesClasificacion.setModal(true);
+            DetallesClasificacion.setLocationRelativeTo(null);
+            DetallesClasificacion.setTitle("Detalles");
+            DetallesClasificacion.setVisible(true);            
+        }
+    }//GEN-LAST:event_mostrarDetallesClasificacionActionPerformed
 
     
     //Redefino el metodo getIconImage de todas las ventanas para poder establecer el logo.
@@ -2875,9 +2958,11 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton CompartirPartidaFilmx;
     private javax.swing.JButton CompartirTodoFilmx;
     private javax.swing.JDialog Critica;
+    private javax.swing.JDialog DetallesClasificacion;
     private javax.swing.JFrame Filmx;
     private javax.swing.JDialog FilmxQuiz;
     private javax.swing.JDialog InvitarAmigos;
+    private javax.swing.JDialog MenuClasificacion;
     private javax.swing.JDialog NotificacionesAmigos;
     private javax.swing.JDialog PartidasPendientes;
     private javax.swing.JDialog Registro;
@@ -2921,12 +3006,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JTextArea criticaCritica;
     private javax.swing.JList<String> criticaSeleccionadaSCC;
     private javax.swing.JButton criticarPeliculaFilmx;
+    private javax.swing.JTextArea detallesC;
     private javax.swing.JTextField directorAlta;
     private javax.swing.JButton eliminarAmigoFILMX;
     private javax.swing.JTextField generoAlta;
     private javax.swing.JButton inicioSesionInicio;
     private javax.swing.JButton invitarAmigosFILMX;
     private javax.swing.JButton invitarInvitarAmigos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2963,6 +3050,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel jugador1FQ;
     private javax.swing.JLabel jugador1FilmxQuiz;
     private javax.swing.JLabel jugador2FQ;
@@ -2970,7 +3058,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton jugarPartidaFilmx;
     private javax.swing.JList<String> listaClasificacion;
     private javax.swing.JList<String> listaPendientesPP;
-    private javax.swing.JDialog menuClasificacion;
+    private javax.swing.JButton mostrarDetallesClasificacion;
     private javax.swing.JTextArea muroFilmx;
     private javax.swing.JTextField nombreRegistro;
     private javax.swing.JLabel nombreUsuarioSesion;
