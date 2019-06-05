@@ -2181,7 +2181,7 @@
         <Property name="modal" type="boolean" value="true"/>
         <Property name="resizable" type="boolean" value="false"/>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[400, 255]"/>
+          <Dimension value="[470, 255]"/>
         </Property>
       </Properties>
 
@@ -2192,18 +2192,18 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="guardarUSerializado" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace pref="40" max="32767" attributes="0"/>
-                          <Component id="guardarPSerializado" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="guardarUSerializado" min="-2" pref="210" max="-2" attributes="0"/>
+                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <Component id="guardarPSerializado" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="cancelarAjustes" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="cargarU" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="cargarU" min="-2" pref="210" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="cargarP" min="-2" pref="170" max="-2" attributes="0"/>
+                          <Component id="cargarP" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -2235,7 +2235,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar Usuarios Serializado"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 65]"/>
+              <Dimension value="[210, 65]"/>
             </Property>
           </Properties>
           <Events>
@@ -2246,7 +2246,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar Pel&#xed;culas Serializado"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 65]"/>
+              <Dimension value="[210, 65]"/>
             </Property>
           </Properties>
           <Events>
@@ -2268,7 +2268,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cargar Pel&#xed;culas"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 65]"/>
+              <Dimension value="[210, 65]"/>
             </Property>
           </Properties>
           <Events>
@@ -2279,7 +2279,7 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cargar Usuarios"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[170, 65]"/>
+              <Dimension value="[210, 65]"/>
             </Property>
           </Properties>
           <Events>

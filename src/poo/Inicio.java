@@ -1537,10 +1537,10 @@ public class Inicio extends javax.swing.JFrame {
         AjustesFilmx.setIconImage(getIconImage());
         AjustesFilmx.setModal(true);
         AjustesFilmx.setResizable(false);
-        AjustesFilmx.setSize(new java.awt.Dimension(400, 255));
+        AjustesFilmx.setSize(new java.awt.Dimension(470, 255));
 
         guardarUSerializado.setText("Guardar Usuarios Serializado");
-        guardarUSerializado.setPreferredSize(new java.awt.Dimension(170, 65));
+        guardarUSerializado.setPreferredSize(new java.awt.Dimension(210, 65));
         guardarUSerializado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarUSerializadoActionPerformed(evt);
@@ -1548,7 +1548,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         guardarPSerializado.setText("Guardar Películas Serializado");
-        guardarPSerializado.setPreferredSize(new java.awt.Dimension(170, 65));
+        guardarPSerializado.setPreferredSize(new java.awt.Dimension(210, 65));
         guardarPSerializado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarPSerializadoActionPerformed(evt);
@@ -1564,7 +1564,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         cargarP.setText("Cargar Películas");
-        cargarP.setPreferredSize(new java.awt.Dimension(170, 65));
+        cargarP.setPreferredSize(new java.awt.Dimension(210, 65));
         cargarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarPActionPerformed(evt);
@@ -1572,7 +1572,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         cargarU.setText("Cargar Usuarios");
-        cargarU.setPreferredSize(new java.awt.Dimension(170, 65));
+        cargarU.setPreferredSize(new java.awt.Dimension(210, 65));
         cargarU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarUActionPerformed(evt);
@@ -1587,16 +1587,16 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(AjustesFilmxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AjustesFilmxLayout.createSequentialGroup()
-                        .addComponent(guardarUSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(guardarPSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(guardarUSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(guardarPSerializado, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjustesFilmxLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(cancelarAjustes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjustesFilmxLayout.createSequentialGroup()
-                        .addComponent(cargarU, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cargarU, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cargarP, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cargarP, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         AjustesFilmxLayout.setVerticalGroup(
@@ -3105,7 +3105,7 @@ public class Inicio extends javax.swing.JFrame {
         
         if (nombreArchivo != null) {
             //Al nombre que el usuario ha escrito se le agrega el .txt
-            Peliculas.cargarSerializado(nombreArchivo + ".txt"); 
+            Peliculas.cargarSerializado(nombreArchivo + ".txt");
             JOptionPane.showMessageDialog(MenuClasificacion,"La información de las películas se ha cargado en el sistema.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);            
         }
         else {
