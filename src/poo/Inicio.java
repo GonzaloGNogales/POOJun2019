@@ -1723,7 +1723,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarRegistroActionPerformed
 
     private void tituloAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloAltaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_tituloAltaActionPerformed
 
     private void altaPeliculaFilmxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_altaPeliculaFilmxActionPerformed
@@ -2813,10 +2813,12 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_ordenarPorcentajeClasificacionActionPerformed
 
     private void txtClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClasificacionActionPerformed
+        //Se abre un JOptionPane y el usuario escribe el nombre del archivo
         Clasificacion c = new Clasificacion();
         String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
         
-        c.volcarTXT(nombreArchivo);
+        //Al nombre que el usuario ha escrito se le agrega el .txt
+        c.volcarTXT(nombreArchivo + ".txt");
         JOptionPane.showMessageDialog(menuClasificacion,"La clasificación se ha guardado en el archivo " + nombreArchivo + " correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);                    
     }//GEN-LAST:event_txtClasificacionActionPerformed
 
