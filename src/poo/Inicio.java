@@ -2,7 +2,6 @@ package poo;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.File;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -179,7 +178,7 @@ public class Inicio extends javax.swing.JFrame {
         DetallesClasificacion = new javax.swing.JDialog();
         jScrollPane9 = new javax.swing.JScrollPane();
         detallesC = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        cancelarDetallesClasificacion = new javax.swing.JButton();
         cancelarInicio = new javax.swing.JButton();
         inicioSesionInicio = new javax.swing.JButton();
         tituloApp = new javax.swing.JLabel();
@@ -1472,18 +1471,20 @@ public class Inicio extends javax.swing.JFrame {
         MenuClasificacion.getAccessibleContext().setAccessibleParent(Filmx);
 
         DetallesClasificacion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DetallesClasificacion.setIconImage(getIconImage());
         DetallesClasificacion.setModal(true);
         DetallesClasificacion.setResizable(false);
         DetallesClasificacion.setSize(new java.awt.Dimension(400, 420));
 
+        detallesC.setEditable(false);
         detallesC.setColumns(20);
         detallesC.setRows(5);
         jScrollPane9.setViewportView(detallesC);
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cancelarDetallesClasificacion.setText("Cancelar");
+        cancelarDetallesClasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cancelarDetallesClasificacionActionPerformed(evt);
             }
         });
 
@@ -1497,7 +1498,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DetallesClasificacionLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cancelarDetallesClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         DetallesClasificacionLayout.setVerticalGroup(
@@ -1506,7 +1507,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelarDetallesClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2323,7 +2324,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarFilmxQuizActionPerformed
 
     private void siguientePistaFilmxQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguientePistaFilmxQuizActionPerformed
-        if (preguntaLocal.getContadorPista()< 4) {
+        if (preguntaLocal.getContadorPista() < 4) {
             preguntaLocal.ofrecerNuevaPista();
             puntuacionAcierto -= 10;
             preguntaFilmxQuiz.setText(preguntaLocal.toString());
@@ -2399,16 +2400,21 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 else {
                     //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
-                    preguntaLocal.ofrecerNuevaPista();
-                    puntuacionAcierto -= 10;
-                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
-                    
-                    if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Fallo();
+                    if (preguntaLocal.getContadorPista() < 4) {
+                        preguntaLocal.ofrecerNuevaPista();
+                        puntuacionAcierto -= 10;
+                        preguntaFilmxQuiz.setText(preguntaLocal.toString());
+
+                        if (partidaNueva) {
+                            preguntaLocal.setPuntosJugador1Fallo();
+                        }
+                        else {
+                            preguntaLocal.setPuntosJugador2Fallo();
+                        } 
                     }
                     else {
-                        preguntaLocal.setPuntosJugador2Fallo();
-                    }
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ya no puede conseguir más pistas.","WARNING", JOptionPane.WARNING_MESSAGE);  
+                    }                
                 }   
 
                 //Se actualiza la interfaz de FilmxQuiz
@@ -2441,16 +2447,21 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 else {
                     //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
-                    preguntaLocal.ofrecerNuevaPista();
-                    puntuacionAcierto -= 10;
-                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
-                    
-                    if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Fallo();
+                    if (preguntaLocal.getContadorPista() < 4) {
+                        preguntaLocal.ofrecerNuevaPista();
+                        puntuacionAcierto -= 10;
+                        preguntaFilmxQuiz.setText(preguntaLocal.toString());
+
+                        if (partidaNueva) {
+                            preguntaLocal.setPuntosJugador1Fallo();
+                        }
+                        else {
+                            preguntaLocal.setPuntosJugador2Fallo();
+                        } 
                     }
                     else {
-                        preguntaLocal.setPuntosJugador2Fallo();
-                    }
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ya no puede conseguir más pistas.","WARNING", JOptionPane.WARNING_MESSAGE);  
+                    }   
                 }   
 
                 //Se actualiza la interfaz de FilmxQuiz
@@ -2483,16 +2494,21 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 else {
                     //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
-                    preguntaLocal.ofrecerNuevaPista();
-                    puntuacionAcierto -= 10;
-                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
-                    
-                    if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Fallo();
+                    if (preguntaLocal.getContadorPista() < 4) {
+                        preguntaLocal.ofrecerNuevaPista();
+                        puntuacionAcierto -= 10;
+                        preguntaFilmxQuiz.setText(preguntaLocal.toString());
+
+                        if (partidaNueva) {
+                            preguntaLocal.setPuntosJugador1Fallo();
+                        }
+                        else {
+                            preguntaLocal.setPuntosJugador2Fallo();
+                        } 
                     }
                     else {
-                        preguntaLocal.setPuntosJugador2Fallo();
-                    }
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ya no puede conseguir más pistas.","WARNING", JOptionPane.WARNING_MESSAGE);  
+                    }   
                 }   
 
                 //Se actualiza la interfaz de FilmxQuiz
@@ -2525,16 +2541,21 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 else {
                     //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
-                    preguntaLocal.ofrecerNuevaPista();
-                    puntuacionAcierto -= 10;
-                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
-                    
-                    if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Fallo();
+                    if (preguntaLocal.getContadorPista() < 4) {
+                        preguntaLocal.ofrecerNuevaPista();
+                        puntuacionAcierto -= 10;
+                        preguntaFilmxQuiz.setText(preguntaLocal.toString());
+
+                        if (partidaNueva) {
+                            preguntaLocal.setPuntosJugador1Fallo();
+                        }
+                        else {
+                            preguntaLocal.setPuntosJugador2Fallo();
+                        } 
                     }
                     else {
-                        preguntaLocal.setPuntosJugador2Fallo();
-                    }
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ya no puede conseguir más pistas.","WARNING", JOptionPane.WARNING_MESSAGE);  
+                    }   
                 }   
 
                 //Se actualiza la interfaz de FilmxQuiz
@@ -2567,16 +2588,21 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 else {
                     //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
-                    preguntaLocal.ofrecerNuevaPista();
-                    puntuacionAcierto -= 10;
-                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
-                    
-                    if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Fallo();
+                    if (preguntaLocal.getContadorPista() < 4) {
+                        preguntaLocal.ofrecerNuevaPista();
+                        puntuacionAcierto -= 10;
+                        preguntaFilmxQuiz.setText(preguntaLocal.toString());
+
+                        if (partidaNueva) {
+                            preguntaLocal.setPuntosJugador1Fallo();
+                        }
+                        else {
+                            preguntaLocal.setPuntosJugador2Fallo();
+                        } 
                     }
                     else {
-                        preguntaLocal.setPuntosJugador2Fallo();
-                    }
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ya no puede conseguir más pistas.","WARNING", JOptionPane.WARNING_MESSAGE);  
+                    }   
                 }   
 
                 //Se actualiza la interfaz de FilmxQuiz
@@ -2665,16 +2691,21 @@ public class Inicio extends javax.swing.JFrame {
                 }
                 else {
                     //Se ofrece una nueva pista y se deduce la puntuación de acierto en 10 puntos
-                    preguntaLocal.ofrecerNuevaPista();
-                    puntuacionAcierto -= 10;
-                    preguntaFilmxQuiz.setText(preguntaLocal.toString());
-                    
-                    if (partidaNueva) {
-                        preguntaLocal.setPuntosJugador1Fallo();
+                    if (preguntaLocal.getContadorPista() < 4) {
+                        preguntaLocal.ofrecerNuevaPista();
+                        puntuacionAcierto -= 10;
+                        preguntaFilmxQuiz.setText(preguntaLocal.toString());
+
+                        if (partidaNueva) {
+                            preguntaLocal.setPuntosJugador1Fallo();
+                        }
+                        else {
+                            preguntaLocal.setPuntosJugador2Fallo();
+                        } 
                     }
                     else {
-                        preguntaLocal.setPuntosJugador2Fallo();
-                    }
+                        JOptionPane.showMessageDialog(FilmxQuiz,"Ya no puede conseguir más pistas.","WARNING", JOptionPane.WARNING_MESSAGE);  
+                    }   
                 }   
                 
                 //Se actualiza la interfaz de FilmxQuiz
@@ -2873,15 +2904,20 @@ public class Inicio extends javax.swing.JFrame {
         Clasificacion c = new Clasificacion();
         String nombreArchivo = JOptionPane.showInputDialog("Escriba el nombre del archivo.");                   
         
-        //Al nombre que el usuario ha escrito se le agrega el .txt
-        c.volcarTXT(nombreArchivo + ".txt");                
-        JOptionPane.showMessageDialog(MenuClasificacion,"La clasificación se ha guardado en el archivo " + nombreArchivo + " correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+        if (nombreArchivo != null) {
+            //Al nombre que el usuario ha escrito se le agrega el .txt
+            c.volcarTXT(nombreArchivo + ".txt"); 
+            JOptionPane.showMessageDialog(MenuClasificacion,"La clasificación se ha guardado en el archivo " + nombreArchivo + ".txt correctamente.","CORRECTO", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else {
+            JOptionPane.showMessageDialog(MenuClasificacion,"Se ha cancelado la operación.","CANCELAR", JOptionPane.ERROR_MESSAGE);            
+        }           
     }//GEN-LAST:event_txtClasificacionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cancelarDetallesClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarDetallesClasificacionActionPerformed
         detallesC.setText(null);
         DetallesClasificacion.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cancelarDetallesClasificacionActionPerformed
 
     private void mostrarDetallesClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarDetallesClasificacionActionPerformed
         if (listaClasificacion.isSelectionEmpty()) {
@@ -2982,6 +3018,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton cancelarClasificacion;
     private javax.swing.JButton cancelarCpartidaSCP;
     private javax.swing.JButton cancelarCritica;
+    private javax.swing.JButton cancelarDetallesClasificacion;
     private javax.swing.JButton cancelarFilmxQuiz;
     private javax.swing.JButton cancelarInicio;
     private javax.swing.JButton cancelarInvitarAmigos;
@@ -3013,7 +3050,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton inicioSesionInicio;
     private javax.swing.JButton invitarAmigosFILMX;
     private javax.swing.JButton invitarInvitarAmigos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
